@@ -4,4 +4,4 @@ node_modules
 bitnami
 .gitignore
 dist
-tsconfig.json
+.git
