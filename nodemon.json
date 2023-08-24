@@ -1,0 +1,16 @@
+{
+    "ignore": [
+        ".git",
+        "node_modules",
+        "dist",
+        "bitnami",
+        "test",
+        "data.xml"
+    ],
+    "watch": [
+        "./"
+    ],
+    "exec": "yarn dev",
+    "ext": "ts",
+    "delay": 2000
+}
