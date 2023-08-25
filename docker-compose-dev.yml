@@ -9,11 +9,10 @@ services:
     ports:
       - 3000:3000
     # network_mode: host
-    environment:
-      - NODE_ENV=production
     volumes:
       - ./:/app
-      - ./logs:/app/logs
+    environment:
+      - NODE_ENV=development
     depends_on:
       - kafka
   zookeeper:
@@ -30,8 +29,8 @@ services:
     image: bitnami/kafka:latest
     container_name: kafka
     restart: always
-    # ports:
-    #   - 9093:9093
+    ports:
+      - 9093:9093
     environment:
       # - KAFKA_BROKER_ID=1
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
