@@ -4,6 +4,9 @@ import {
   Class,
   Course,
   RegistrationType,
+  AXTeacherTA,
+  UserRole,
+  User,
 } from "../models";
 import ProgramConfig from "../assets/programs.json";
 import logger from "../utils/logger";
@@ -12,12 +15,14 @@ import dayjs from "dayjs";
 
 const syncClasses = async (
   course: Course,
-  axClassSchedule: Array<AXClassSchedule>
+  axClassSchedule: Array<AXClassSchedule>,
+  axClassTeachers?: Array<AXTeacherTA>
 ) => {
   logger.info("start sync classes");
 
-  const { id: courseId, program, level, lesson_duration, center_id } = course;
   try {
+    const { id: courseId, program, level, lesson_duration, center_id } = course;
+
     const programme = ProgramConfig[program as keyof typeof ProgramConfig];
     const lessons = programme?.[level as keyof typeof programme]?.split(",");
     if (!lessons || (lessons && lessons.length == 0)) {
@@ -25,29 +30,81 @@ const syncClasses = async (
       return [];
     }
 
-    const classes = [];
-    for (let i = 0; i < axClassSchedule.length; i++) {
-      const item = axClassSchedule[i];
-      classes.push({
-        duration: Number(lesson_duration),
-        lesson_id: lessons[i],
-        teacher_type: "native",
-        date_start: `${item["LessonDate"]}${item.From?.replace(":", "")}`,
-        date_end: `${item["LessonDate"]}${item.To?.replace(":", "")}`,
-      });
-    }
+    const teacherIds: string[] = [];
+    const classTeacherMap = axClassTeachers?.reduce((result: any, item) => {
+      let data = (result[item.LessonNo] || {}) as { [key: string]: string };
 
-    const res = await rolloutClasses({
+      if (teacherIds.indexOf(item.StaffCode) < 0) {
+        teacherIds.push(item.StaffCode);
+      }
+      let ids = data[`${item.Role.toLowerCase()}`];
+
+      if (ids && item.Role === UserRole.TA) {
+        ids += `,${item.StaffCode}`;
+      } else {
+        ids = item.StaffCode;
+      }
+      data[`${item.Role.toLowerCase()}`] = ids;
+      return {
+        ...result,
+        [item.LessonNo]: data,
+      };
+    }, {}) as {
+      [key: string]: {
+        teacher: string;
+        ta: string;
+      };
+    };
+
+    const teachersInfo = await getUsers(teacherIds).then((data) => {
+      return data?.reduce(
+        (result, item) => ({
+          ...result,
+          [item.staffcode]: item,
+        }),
+        {} as { [key: string]: User }
+      );
+    });
+
+    const promises = [];
+    for (let i = 0; i < axClassSchedule.length; i++) {
+      promises.push(
+        new Promise<Class>((res) => {
+          const item = axClassSchedule[i];
+          let classData: { [key: string]: any } = {};
+          if (classTeacherMap) {
+            const users = classTeacherMap?.[item.LessonNo];
+            classData["teacher_id"] =
+              teachersInfo?.[users["teacher"]]?.id || null;
+            let taNum = 1;
+
+            users.ta.split(",").forEach((item) => {
+              classData[`ta${taNum}_id`] = teachersInfo?.[item]?.id || null;
+            });
+          }
+          classData = {
+            ...classData,
+            duration: Number(lesson_duration),
+            lesson_id: lessons[i],
+            teacher_type: "native",
+            date_start: `${item["LessonDate"]}${item.From?.replace(":", "")}`,
+            date_end: `${item["LessonDate"]}${item.To?.replace(":", "")}`,
+          };
+          res(classData);
+        })
+      );
+    }
+    const classes = await Promise.all(promises);
+    const data = {
       courseId: courseId!,
       center: center_id!,
       classes,
-    });
+    };
+    const res = await rolloutClasses(data);
     res && res?.length > 0 && logger.info("sync classses successfully");
-    logger.info("done sync classes");
-
     return res;
   } catch (error) {
-    logger.error(error);
+    logger.error(`sync class error --> ${error}`);
   }
   return [];
 };
@@ -101,8 +158,7 @@ const syncClassSeats = async ({
 
     const studentIds = await getUsers(studentCodes);
 
-    logger.info(`The number of seats is ${validSeats.length}`);
-    logger.info(`The number of studnet ids is ${studentIds?.length}`);
+    logger.info(`The number of student ids is ${studentIds?.length}`);
 
     const data = {
       id: course.id!,
@@ -117,9 +173,10 @@ const syncClassSeats = async ({
 
     await addStudentsToCourse(data);
     logger.info("done sync class seats");
+    logger.info("done all processes 🚀 --->>>>");
     return true;
   } catch (error) {
-    logger.error("sync class seats error = ", error);
+    logger.error(`sync class seats error --> ${error}`);
   }
   return false;
 };
