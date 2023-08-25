@@ -1,3 +1,8 @@
+export enum UserRole {
+  "Teacher" = "Teacher",
+  "TA" = "TA",
+}
+
 export interface User {
   id?: number;
   status?: string;

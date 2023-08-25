@@ -1,6 +1,6 @@
 export interface AXClassSchedule {
   LessonDate?: string;
-  LessonNo?: number;
+  LessonNo: number;
   From?: string;
   To?: string;
 }
