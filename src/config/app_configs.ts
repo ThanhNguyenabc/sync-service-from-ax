@@ -1,7 +1,7 @@
 const AppConfig = {
   development: {
     HOST: "localhost",
-    PORT: 3000,
+    PORT: 4000,
     LMS_API_URL: "https://dev.ila.edu.vn/lms/lab/api.php",
     MYSQL_DATABASE_HOST: "localhost",
     MYSQL_DATABASE_USER: "root",
@@ -10,7 +10,7 @@ const AppConfig = {
   },
   production: {
     HOST: "localhost",
-    PORT: 3000,
+    PORT: 4000,
     LMS_API_URL: "https://dev.ila.edu.vn/lms/lab/api.php",
     MYSQL_DATABASE_HOST: "localhost",
     MYSQL_DATABASE_USER: "root",

@@ -7,7 +7,7 @@ services:
     container_name: xml_parser_app
     restart: always
     ports:
-      - 3000:3000
+      - 4000:4000
     # network_mode: host
     environment:
       - NODE_ENV=production
