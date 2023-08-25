@@ -11,23 +11,28 @@ const fetcher = async (
   status: number;
   data: any;
 }> => {
-  logger.info(`[api] function name: ${fName}\n`);
+  logger.info(`[api] send function's name: ${fName}\n`);
   try {
     const response = await axios.post(BASE_URL, data, {
       params: {
         f: fName,
         nologin: "true",
-        timezone:
-          Intl.DateTimeFormat().resolvedOptions().timeZone || "Asia/Bangkok",
+        timezone: "Asia/Bangkok",
       },
     });
+
+    if (
+      typeof response.data === "string" &&
+      response.data.indexOf("Fatal error") >= 0
+    ) {
+      logger.error(`[api] f=${fName} error --> ${response.data}`);
+    }
     return {
       status: response.status,
       data: response.data,
     };
   } catch (error) {
-    logger.error("api error ->");
-    logger.error(error);
+    logger.error(`[api] f=${fName} error --> ${error}`);
 
     return {
       status: 0,
@@ -37,6 +42,7 @@ const fetcher = async (
 };
 
 // ---------------------------------------------------------------------------
+
 // ----------------------------Course API-------------------------------------
 // ---------------------------------------------------------------------------
 
@@ -86,10 +92,8 @@ export const addStudentsToCourse = async ({
     amount: 0,
     options,
   };
-  console.log(data);
   try {
     const response = await fetcher("Courses_MultipleStudents_Add", data);
-    console.log(response.data);
     return true;
   } catch (error) {}
   return false;
@@ -133,7 +137,7 @@ export const getClassesByCourse = (courseId: number) => {
 
 export const getUsers = async (
   staffcodes: Array<string>
-): Promise<Array<{ id: number; staffcode: string }> | null> => {
+): Promise<Array<{ id: number; staffcode: string; role: string }> | null> => {
   try {
     const response = await fetcher("User_List_By_StaffCode", {
       staffcodes: staffcodes,
