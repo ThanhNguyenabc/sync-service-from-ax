@@ -3,7 +3,7 @@ WORKDIR /app
 COPY . /app
 USER root
 RUN mkdir bitnami
-RUN chown 1001:1001 /bitnami
+RUN sudo chown 1001:1001 ./bitnami
 
 RUN npm install typescript -g
 RUN yarn install --network-timeout=60000
