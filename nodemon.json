@@ -8,7 +8,7 @@
         "data.xml"
     ],
     "watch": [
-        "./"
+        "./src"
     ],
     "exec": "yarn dev",
     "ext": "ts",
