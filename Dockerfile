@@ -2,6 +2,7 @@ FROM node:latest
 WORKDIR /app
 COPY . /app
 USER root
+RUN mkdir bitnami
 RUN chown 1001:1001 /bitnami/kafka
 RUN chown 1001:1001 /bitnami/zookeeper
 
