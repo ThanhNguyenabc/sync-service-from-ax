@@ -3,5 +3,4 @@ node_modules
 *.log
 bitnami
 .gitignore
-dist
 .git
