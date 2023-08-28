@@ -4,3 +4,4 @@ node_modules
 bitnami
 .gitignore
 .git
+dist

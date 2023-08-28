@@ -10,7 +10,6 @@
     "watch": [
         "./src"
     ],
-    "exec": "yarn dev",
     "ext": "ts",
     "delay": 2000
 }
