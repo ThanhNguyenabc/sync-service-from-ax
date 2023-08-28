@@ -4,7 +4,7 @@ services:
   app:
     build: 
       context: ./
-      target: dev
+      target: production
     container_name: xml_parser_app
     restart: always
     ports:
