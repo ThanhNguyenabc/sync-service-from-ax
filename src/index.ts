@@ -29,7 +29,7 @@ const createApplication = () => {
   });
 
   process.on("uncaughtException", (error) => {
-    logger.error(error.stack);
+    logger.error(`❌ [error]  --> ${error.stack}`);
   });
 };
 

@@ -47,7 +47,8 @@ const createCourseInfo = (axClassInfo: AXCourse) => {
 };
 
 const syncCourse = async (axClassInfo: AXCourse) => {
-  logger.info("start sync course");
+  logger.info("[course]: start course 🚀");
+
   try {
     const currentCourse = await getCourseByCondition({
       center_id: axClassInfo.Center,
@@ -61,21 +62,19 @@ const syncCourse = async (axClassInfo: AXCourse) => {
       course.id = currentCourse.id;
       course.classes = currentCourse.classes;
       const status = await Promise.all([updateCourse(course)]);
-      status &&
-        logger.info(`update course successfully with course-id: ${course.id}`);
+      status && logger.info(`[course] update successfully`);
     } else {
       course.status = "desgin";
       const newCourseId = await createCourse(course);
       course.id = newCourseId;
-      logger.info(
-        `create course successfully with new course-id: ${newCourseId}`
-      );
+      logger.info(`[course] create new course successfully`);
     }
+
+    logger.info(`✅ done sync course-id ${course.id}`);
     return course;
   } catch (error) {
-    logger.error(`sync course error --> ${error}`);
+    logger.error(`❌ [course] error --> ${error}`);
   }
-  logger.info("done sync course");
 };
 
 export { syncCourse };

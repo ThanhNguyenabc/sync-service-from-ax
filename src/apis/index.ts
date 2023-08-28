@@ -12,7 +12,7 @@ const fetcher = async (
   data: any;
 }> => {
   logger.info(`[api] send function's name: ${fName}\n`);
-  try {
+    try {
     const response = await axios.post(BASE_URL, data, {
       params: {
         f: fName,

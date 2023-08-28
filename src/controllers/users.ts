@@ -3,7 +3,8 @@ import { AXStudentProfile, User } from "../models";
 import logger from "../utils/logger";
 
 const syncStudent = async (students: Array<AXStudentProfile>) => {
-  logger.info("start sync class seats");
+  logger.info("[students]: start sync students 🚀");
+
   try {
     const usersMap = students.reduce((res, item) => {
       if (item.StudentCode)
@@ -65,17 +66,16 @@ const syncStudent = async (students: Array<AXStudentProfile>) => {
 
     if (insertUserList.length > 0) {
       const status = await createUsers(insertUserList);
-      status && logger.info("insert student successfully");
+      status && logger.info("✅ [students] insert successfully");
     }
     if (updateUserList.length > 0) {
       const status = await updateUsers(updateUserList);
-      status && logger.info("update student successfully");
+      status && logger.info("✅ [students] update successfully");
     }
     return true;
   } catch (error) {
-    logger.error(`sync users errror --> ${error}`);
+    logger.error(`❌ [sstudents] error --> ${error}`);
   }
-  logger.info("done sync class seats");
   return false;
 };
 

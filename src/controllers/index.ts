@@ -64,11 +64,10 @@ const convertXmlFile = async (req: Request, res: Response) => {
     ]);
 
     res.status(200).json({
-      status: "ok",
-      message: "Successfully !",
+      status: 200,
+      message: "Received xml-data successfully",
     });
   } catch (error) {
-    logger.error(error);
     res.status(500).json({
       status: 500,
       message: "Internal server error",

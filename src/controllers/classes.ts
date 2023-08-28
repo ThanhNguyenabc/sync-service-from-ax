@@ -18,7 +18,7 @@ const syncClasses = async (
   axClassSchedule: Array<AXClassSchedule>,
   axClassTeachers?: Array<AXTeacherTA>
 ) => {
-  logger.info("start sync classes");
+  logger.info("[classes]: start sync 🚀");
 
   try {
     const { id: courseId, program, level, lesson_duration, center_id } = course;
@@ -26,15 +26,16 @@ const syncClasses = async (
     const programme = ProgramConfig[program as keyof typeof ProgramConfig];
     const lessons = programme?.[level as keyof typeof programme]?.split(",");
     if (!lessons || (lessons && lessons.length == 0)) {
-      logger.warn("missing lesson config");
+      logger.error("❌ [classes]: missing lesson config");
       return [];
     }
 
     const teacherIds: string[] = [];
+
     const classTeacherMap = axClassTeachers?.reduce((result: any, item) => {
       let data = (result[item.LessonNo] || {}) as { [key: string]: string };
 
-      if (teacherIds.indexOf(item.StaffCode) < 0) {
+      if (item.StaffCode && teacherIds.indexOf(item.StaffCode) < 0) {
         teacherIds.push(item.StaffCode);
       }
       let ids = data[`${item.Role.toLowerCase()}`];
@@ -45,6 +46,7 @@ const syncClasses = async (
         ids = item.StaffCode;
       }
       data[`${item.Role.toLowerCase()}`] = ids;
+
       return {
         ...result,
         [item.LessonNo]: data,
@@ -56,15 +58,20 @@ const syncClasses = async (
       };
     };
 
-    const teachersInfo = await getUsers(teacherIds).then((data) => {
-      return data?.reduce(
-        (result, item) => ({
-          ...result,
-          [item.staffcode]: item,
-        }),
-        {} as { [key: string]: User }
-      );
-    });
+    let teachersInfo: { [key: string]: User } | null = null;
+    if (teacherIds.length > 0) {
+      teachersInfo = await getUsers(teacherIds).then((data) => {
+        return (
+          data?.reduce(
+            (result, item) => ({
+              ...result,
+              [item.staffcode]: item,
+            }),
+            {} as { [key: string]: User }
+          ) || null
+        );
+      });
+    }
 
     const promises = [];
     for (let i = 0; i < axClassSchedule.length; i++) {
@@ -72,7 +79,7 @@ const syncClasses = async (
         new Promise<Class>((res) => {
           const item = axClassSchedule[i];
           let classData: { [key: string]: any } = {};
-          if (classTeacherMap) {
+          if (teachersInfo && classTeacherMap) {
             const users = classTeacherMap?.[item.LessonNo];
             classData["teacher_id"] =
               teachersInfo?.[users["teacher"]]?.id || null;
@@ -100,11 +107,14 @@ const syncClasses = async (
       center: center_id!,
       classes,
     };
+
     const res = await rolloutClasses(data);
-    res && res?.length > 0 && logger.info("sync classses successfully");
+    res && res?.length > 0
+      ? logger.info("✅ [classes]: sync successfully")
+      : logger.info("❌ [classes]: sync fail");
     return res;
   } catch (error) {
-    logger.error(`sync class error --> ${error}`);
+    logger.error(`❌ [sync class] error --> ${error}`);
   }
   return [];
 };
@@ -116,7 +126,7 @@ const syncClassSeats = async ({
   course: Course;
   axRegistrations: Array<AXRegistration>;
 }) => {
-  logger.info("start sync class seats");
+  logger.info("[class seats]: start sync 🚀");
   try {
     const { classes, id } = course;
     if (!classes || (classes && classes.length == 0)) {
@@ -158,8 +168,6 @@ const syncClassSeats = async ({
 
     const studentIds = await getUsers(studentCodes);
 
-    logger.info(`The number of student ids is ${studentIds?.length}`);
-
     const data = {
       id: course.id!,
       students: [] as any[],
@@ -172,11 +180,11 @@ const syncClassSeats = async ({
     });
 
     await addStudentsToCourse(data);
-    logger.info("done sync class seats");
+    logger.info("✅ [class seats]: done");
     logger.info("done all processes 🚀 --->>>>");
     return true;
   } catch (error) {
-    logger.error(`sync class seats error --> ${error}`);
+    logger.error(`❌ [class seats] error --> ${error}`);
   }
   return false;
 };

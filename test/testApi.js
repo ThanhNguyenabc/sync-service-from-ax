@@ -12,7 +12,7 @@ const sendTestingRequest = async () => {
       return;
     }
 
-    await fetch("http://localhost:4000/parse-xml", {
+    await fetch("http://localhost:3000/parse-xml", {
       method: "POST",
       headers: {
         Accept: "*/*",
