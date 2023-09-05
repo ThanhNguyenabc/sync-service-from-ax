@@ -13,11 +13,16 @@ const createCourseInfo = (axClassInfo: AXCourse) => {
 
   const isHaveCambridge =
     axClassInfo.CourseTemplate?.toLowerCase().includes("cam");
-  let level = `${axClassInfo.LevelId}-${axClassInfo.Module}`;
+  let level = `${axClassInfo.LevelId}`;
+
+  if (axClassInfo.Module && axClassInfo.Module.length > 0) {
+    level = `${level}-${axClassInfo.Module}`;
+  }
 
   if (isHaveCambridge) {
     level = `${level}-CAM`;
   }
+
   level.toUpperCase();
 
   const course: Course = {
@@ -64,7 +69,7 @@ const syncCourse = async (axClassInfo: AXCourse) => {
       const status = await Promise.all([updateCourse(course)]);
       status && logger.info(`[course] update successfully`);
     } else {
-      course.status = "desgin";
+      course.status = "design";
       const newCourseId = await createCourse(course);
       course.id = newCourseId;
       logger.info(`[course] create new course successfully`);
