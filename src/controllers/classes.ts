@@ -23,10 +23,15 @@ const syncClasses = async (
   try {
     const { id: courseId, program, level, lesson_duration, center_id } = course;
 
-    const programme = ProgramConfig[program as keyof typeof ProgramConfig];
+    const programme =
+      ProgramConfig[
+        `${program} ${
+          Number(lesson_duration) / 60
+        } hours` as keyof typeof ProgramConfig
+      ];
     const lessons = programme?.[level as keyof typeof programme]?.split(",");
     if (!lessons || (lessons && lessons.length == 0)) {
-      logger.error("❌ [classes]: missing lesson config");
+      logger.error("❌ [classes]: missing lessons from programme file config");
       return [];
     }
 
