@@ -10,7 +10,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./:/app
+      - ./src:/app/src
       - ./logs:/app/logs
     environment:
       - TZ=Asia/Bangkok
