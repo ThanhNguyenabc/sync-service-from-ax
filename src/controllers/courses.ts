@@ -23,18 +23,21 @@ const createCourseInfo = (axClassInfo: AXCourse) => {
     level = `${level}-CAM`;
   }
 
-  level.toUpperCase();
+  const lesson_duration =
+    dayjs(`${axClassInfo.StartDate} ${endTime.hour}:${endTime.minute}`).diff(
+      dayjs(`${axClassInfo.StartDate} ${startTime.hour}:${startTime.minute}`)
+    ) / 60000;
+
+  const program = `${axClassInfo.ProgrammeName} ${
+    Number(lesson_duration) / 60
+  } hours`;
 
   const course: Course = {
     name: axClassInfo.ClassCode,
     center_id: axClassInfo.Center,
-    program: axClassInfo.ProgrammeName,
-    level: level,
-    lesson_duration: (
-      dayjs(`${axClassInfo.StartDate} ${endTime.hour}:${endTime.minute}`).diff(
-        dayjs(`${axClassInfo.StartDate} ${startTime.hour}:${startTime.minute}`)
-      ) / 60000
-    ).toString(),
+    program: program,
+    level: level.toUpperCase(),
+    lesson_duration: `${lesson_duration}`,
     seats: Number(axClassInfo.MaxAttendant || 0),
     room: axClassInfo.Room,
     teacher_config: "all native",

@@ -12,6 +12,8 @@ services:
     volumes:
       - ./:/app
       - ./logs:/app/logs
+    environment:
+      - TZ=Asia/Bangkok
     depends_on:
       - kafka
   zookeeper:
@@ -47,5 +49,6 @@ services:
       - 9000:9000
     environment:
       - KAFKA_BROKERCONNECT=kafka:9092
+      - TZ=Asia/Bangkok
     depends_on:
       - kafka

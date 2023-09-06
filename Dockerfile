@@ -1,4 +1,5 @@
 FROM node:latest as base
+USER root
 WORKDIR /app
 # copy all dpendecies
 COPY package.json nodemon.json tsconfig.json ./

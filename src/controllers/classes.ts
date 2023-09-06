@@ -23,12 +23,7 @@ const syncClasses = async (
   try {
     const { id: courseId, program, level, lesson_duration, center_id } = course;
 
-    const programme =
-      ProgramConfig[
-        `${program} ${
-          Number(lesson_duration) / 60
-        } hours` as keyof typeof ProgramConfig
-      ];
+    const programme = ProgramConfig[program as keyof typeof ProgramConfig];
     const lessons = programme?.[level as keyof typeof programme]?.split(",");
     if (!lessons || (lessons && lessons.length == 0)) {
       logger.error("❌ [classes]: missing lessons from programme file config");
@@ -37,20 +32,24 @@ const syncClasses = async (
 
     const teacherIds: string[] = [];
 
-    const classTeacherMap = axClassTeachers?.reduce((result: any, item) => {
+    const lessonsMap = axClassTeachers?.reduce((result: any, item) => {
       let data = (result[item.LessonNo] || {}) as { [key: string]: string };
 
-      if (item.StaffCode && teacherIds.indexOf(item.StaffCode) < 0) {
+      if (
+        item.StaffCode &&
+        item.StaffCode.length > 0 &&
+        teacherIds.indexOf(item.StaffCode) < 0
+      ) {
         teacherIds.push(item.StaffCode);
       }
-      let ids = data[`${item.Role.toLowerCase()}`];
+      let userIds = data[`${item.Role.toLowerCase()}`];
 
-      if (ids && item.Role === UserRole.TA) {
-        ids += `,${item.StaffCode}`;
+      if (userIds && item.Role === UserRole.TA) {
+        userIds += `,${item.StaffCode}`;
       } else {
-        ids = item.StaffCode;
+        userIds = item.StaffCode;
       }
-      data[`${item.Role.toLowerCase()}`] = ids;
+      data[`${item.Role.toLowerCase()}`] = userIds;
 
       return {
         ...result,
@@ -80,31 +79,34 @@ const syncClasses = async (
 
     const promises = [];
     for (let i = 0; i < axClassSchedule.length; i++) {
-      promises.push(
-        new Promise<Class>((res) => {
-          const item = axClassSchedule[i];
-          let classData: { [key: string]: any } = {};
-          if (teachersInfo && classTeacherMap) {
-            const users = classTeacherMap?.[item.LessonNo];
-            classData["teacher_id"] =
-              teachersInfo?.[users["teacher"]]?.id || null;
-            let taNum = 1;
+      const item = axClassSchedule[i];
+      if (item.LessonStatus !== "Cancelled") {
+        promises.push(
+          new Promise<Class>((res) => {
+            let classData: { [key: string]: any } = {};
+            if (teachersInfo && lessonsMap) {
+              const users = lessonsMap?.[item.LessonNo];
+              classData["teacher_id"] =
+                teachersInfo?.[users?.["teacher"]]?.id || null;
 
-            users.ta.split(",").forEach((item) => {
-              classData[`ta${taNum}_id`] = teachersInfo?.[item]?.id || null;
-            });
-          }
-          classData = {
-            ...classData,
-            duration: Number(lesson_duration),
-            lesson_id: lessons[i],
-            teacher_type: "native",
-            date_start: `${item["LessonDate"]}${item.From?.replace(":", "")}`,
-            date_end: `${item["LessonDate"]}${item.To?.replace(":", "")}`,
-          };
-          res(classData);
-        })
-      );
+              let taNum = 1;
+
+              users.ta.split(",").forEach((item) => {
+                classData[`ta${taNum}_id`] = teachersInfo?.[item]?.id || null;
+              });
+            }
+            classData = {
+              ...classData,
+              duration: Number(lesson_duration),
+              lesson_id: lessons[item.LessonNo - 1],
+              teacher_type: "native",
+              date_start: `${item["LessonDate"]}${item.From?.replace(":", "")}`,
+              date_end: `${item["LessonDate"]}${item.To?.replace(":", "")}`,
+            };
+            res(classData);
+          })
+        );
+      }
     }
     const classes = await Promise.all(promises);
     const data = {
@@ -119,7 +121,8 @@ const syncClasses = async (
       : logger.info("❌ [classes]: sync fail");
     return res;
   } catch (error) {
-    logger.error(`❌ [sync class] error --> ${error}`);
+    console.log(error);
+    logger.error(`❌ [sync classes] error --> ${error}`);
   }
   return [];
 };

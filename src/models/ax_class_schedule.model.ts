@@ -3,4 +3,5 @@ export interface AXClassSchedule {
   LessonNo: number;
   From?: string;
   To?: string;
+  LessonStatus: "Open" | "Cancelled";
 }
