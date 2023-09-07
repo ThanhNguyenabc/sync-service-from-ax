@@ -187,7 +187,7 @@ const syncClassSeats = async ({
 
     await addStudentsToCourse(data);
     logger.info("✅ [class seats]: sync successfully");
-    logger.info("-----------done all jobs----------------");
+    logger.info("-----------done all jobs------------");
     return true;
   } catch (error) {
     logger.error(`❌ [class seats] error --> ${error}`);

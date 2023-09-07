@@ -11,7 +11,7 @@ const fetcher = async (
   status: number;
   data: any;
 }> => {
-  logger.info(`[api] send function's name: ${fName}`);
+  logger.info(`👉 [api] send function's name: ${fName}`);
   try {
     const response = await axios.post(BASE_URL, data, {
       params: {
@@ -25,14 +25,14 @@ const fetcher = async (
       typeof response.data === "string" &&
       response.data.indexOf("Fatal error") >= 0
     ) {
-      logger.error(`[api] f=${fName} error --> ${response.data}`);
+      logger.error(`❌ [api] f=${fName} error --> ${response.data}`);
     }
     return {
       status: response.status,
       data: response.data,
     };
   } catch (error) {
-    logger.error(`[api] f=${fName} error --> ${error}`);
+    logger.error(`❌ [api] f=${fName} error --> ${error}`);
 
     return {
       status: 0,

@@ -1,6 +1,6 @@
 import express from "express";
-import { handleXmlFile } from "../controllers";
+import { convertXmlFile } from "../controllers";
 const router = express.Router();
 
-router.post("/parse-xml", handleXmlFile);
+router.post("/parse-xml", convertXmlFile);
 export default router;

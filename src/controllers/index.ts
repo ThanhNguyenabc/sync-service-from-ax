@@ -11,7 +11,7 @@ import { Course } from "models";
 const kafka = new KafkaManager();
 
 const handleMessage = async (message: Message) => {
-  try {
+    try {
     const axData = await parseXMLFile(message.value?.toString() || "");
 
     const classInfo = axData["ClassInformation"];
@@ -75,4 +75,4 @@ const convertXmlFile = async (req: Request, res: Response) => {
   }
 };
 
-export { convertXmlFile as handleXmlFile };
+export { convertXmlFile };
