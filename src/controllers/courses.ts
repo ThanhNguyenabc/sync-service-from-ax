@@ -85,13 +85,17 @@ const createCourseInfo = async (
 
         staff[key] = item.id;
       });
-      course.staff = JSON.stringify({ staff });
+      course.staff = JSON.stringify(staff);
     }
   }
+
   return course;
 };
 
-const syncCourse = async (axClassInfo: AXCourse) => {
+const syncCourse = async (
+  axClassInfo: AXCourse,
+  axTeacherProfile?: Array<AXTeacherProfile>
+) => {
   logger.info("🚀 [course]: sync course");
 
   try {
@@ -100,7 +104,7 @@ const syncCourse = async (axClassInfo: AXCourse) => {
         center_id: axClassInfo.Center,
         name: axClassInfo.ClassCode,
       }),
-      createCourseInfo(axClassInfo),
+      createCourseInfo(axClassInfo, axTeacherProfile),
     ]);
 
     const [currentCourse, course] = res;
