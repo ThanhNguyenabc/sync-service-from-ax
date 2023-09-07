@@ -1,6 +1,5 @@
 import express from "express";
 import bodyParser from "body-parser";
-import bodyParserXML from "body-parser-xml";
 import router from "./routes";
 import { getAppConfig } from "./config/app_configs";
 import dayjs from "dayjs";
@@ -10,7 +9,6 @@ import { cpus } from "os";
 import logger from "./utils/logger";
 
 dayjs.extend(customParseFormat);
-bodyParserXML(bodyParser);
 
 const os = cpus().length;
 
