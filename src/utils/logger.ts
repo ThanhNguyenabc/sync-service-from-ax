@@ -1,26 +1,28 @@
-import winston from "winston";
+import { createLogger, format, transports } from "winston";
+const { errors, printf } = format;
 
-const logger = winston.createLogger({
-  transports: [
-    new winston.transports.Console({
-      eol: "\r\n",
-      format: winston.format.combine(
-        winston.format.colorize(),
-        winston.format.simple()
-      ),
+const customFormat = printf(({ level, message, timestamp }) => {
+  return `[${timestamp}]  ${level}: ${message}`;
+});
+
+const logger = createLogger({
+  format: format.combine(
+    errors({ stack: true }),
+    format.timestamp({
+      format: "YYYY-MM-DD HH:mm",
     }),
-
-    new winston.transports.File({
-      eol: "\r\n",
+    customFormat,
+    format.colorize()
+  ),
+  transports: [
+    new transports.File({
       filename: "logs/xml-sync-service.log",
-      format: winston.format.combine(
-        winston.format.timestamp({
-          format: "YYYY-MM-DD HH:mm",
-        }),
-        winston.format.json()
-      ),
     }),
   ],
 });
+
+if (process.env.NODE_ENV !== "production") {
+  logger.add(new transports.Console({}));
+}
 
 export default logger;
