@@ -18,7 +18,7 @@ const syncClasses = async (
   axClassSchedule: Array<AXClassSchedule>,
   axClassTeachers?: Array<AXTeacherTA>
 ) => {
-  logger.info("[classes]: start sync 🚀");
+  logger.info("🚀 [classes]: sync classes");
 
   try {
     const { id: courseId, program, level, lesson_duration, center_id } = course;
@@ -66,13 +66,12 @@ const syncClasses = async (
     if (teacherIds.length > 0) {
       teachersInfo = await getUsers(teacherIds).then((data) => {
         return (
-          data?.reduce(
-            (result, item) => ({
-              ...result,
-              [item.staffcode]: item,
-            }),
-            {} as { [key: string]: User }
-          ) || null
+          data?.reduce((result, item) => {
+            if (item.staffcode) {
+              result[item.staffcode] = item;
+            }
+            return result;
+          }, {} as { [key: string]: User }) || null
         );
       });
     }
@@ -121,8 +120,7 @@ const syncClasses = async (
       : logger.info("❌ [classes]: sync fail");
     return res;
   } catch (error) {
-    console.log(error);
-    logger.error(`❌ [sync classes] error --> ${error}`);
+    logger.error(`❌ [classes] error --> ${error}`);
   }
   return [];
 };
@@ -134,7 +132,7 @@ const syncClassSeats = async ({
   course: Course;
   axRegistrations: Array<AXRegistration>;
 }) => {
-  logger.info("[class seats]: start sync 🚀");
+  logger.info("🚀 [class seats]: sync class seats");
   try {
     const { classes, id } = course;
     if (!classes || (classes && classes.length == 0)) {
@@ -183,13 +181,13 @@ const syncClassSeats = async ({
     studentIds?.forEach((item) => {
       data["students"].push({
         student_id: item.id,
-        date_from: validSeats[item.staffcode]["ActualStartDate"],
+        date_from: validSeats[item.staffcode!]["ActualStartDate"],
       });
     });
 
     await addStudentsToCourse(data);
-    logger.info("✅ [class seats]: done");
-    logger.info("done all processes 🚀 --->>>>");
+    logger.info("✅ [class seats]: sync successfully");
+    logger.info("-----------done all jobs----------------");
     return true;
   } catch (error) {
     logger.error(`❌ [class seats] error --> ${error}`);

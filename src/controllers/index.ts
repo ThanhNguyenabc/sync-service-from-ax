@@ -43,7 +43,7 @@ const handleMessage = async (message: Message) => {
       syncClassSeats({ course, axRegistrations: registrations });
     }
   } catch (error) {
-    logger.error(`sync error --> ${error}`);
+    logger.error(`❌ [handling message] --> ${error}`);
   }
 };
 
@@ -53,22 +53,22 @@ const convertXmlFile = async (req: Request, res: Response) => {
   try {
     const xmlData: string | undefined | null = req.body["data"] || "";
     if (!xmlData || xmlData.length == 0) {
-      return res.status(500).json({
-        status: "ok",
+      return res.status(400).json({
+        status: 400,
         message: "Data is not valid",
       });
     }
-    // handleMessage({ key: "xml-data", value: req.body["data"] || "" });
     await kafka.produce(kafka_xml_topic, [
       { key: "xml-data", value: req.body["data"] || "" },
     ]);
 
-    res.status(200).json({
+    return res.status(200).json({
       status: 200,
       message: "Received xml-data successfully",
     });
   } catch (error) {
-    res.status(500).json({
+    logger.error(`❌ [route controller] --> ${error}`);
+    return res.status(500).json({
       status: 500,
       message: "Internal server error",
     });

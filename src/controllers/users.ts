@@ -3,7 +3,7 @@ import { AXStudentProfile, User } from "../models";
 import logger from "../utils/logger";
 
 const syncStudent = async (students: Array<AXStudentProfile>) => {
-  logger.info("[students]: start sync students 🚀");
+  logger.info("🚀 [students]: sync students");
 
   try {
     const usersMap = students.reduce((res, item) => {
@@ -18,23 +18,17 @@ const syncStudent = async (students: Array<AXStudentProfile>) => {
 
     const studentCodes = Object.keys(usersMap);
 
-    let lmsExistingUsers = await getUsers(studentCodes).then((res) => {
-      if (res && res.length > 0) {
-        return res.reduce(
-          (result, item) => ({
-            ...result,
-            [item.staffcode]: {
+    let lmsExistingUsers = await getUsers(studentCodes).then((data) => {
+      return (
+        data?.reduce((result, item) => {
+          if (item.staffcode && item.id) {
+            result[item.staffcode] = {
               userId: item.id,
-            },
-          }),
-          {}
-        ) as {
-          [key: string]: {
-            userId: number;
-          };
-        };
-      }
-      return null;
+            };
+          }
+          return result;
+        }, {} as { [key: string]: { userId: number } }) ?? null
+      );
     });
 
     const updateUserList = [];
@@ -74,11 +68,9 @@ const syncStudent = async (students: Array<AXStudentProfile>) => {
     }
     return true;
   } catch (error) {
-    logger.error(`❌ [sstudents] error --> ${error}`);
+    logger.error(`❌ [students] error --> ${error}`);
   }
   return false;
 };
 
-const syncTeachers = () => {};
-
-export { syncStudent, syncTeachers };
+export { syncStudent };

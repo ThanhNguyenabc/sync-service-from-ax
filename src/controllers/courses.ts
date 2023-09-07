@@ -1,10 +1,18 @@
 import { generateSchedule, getHourMinuteFromString } from "../utils/date_utils";
-import { AXCourse, Course } from "../models";
+import { AXCourse, AXTeacherProfile, Course } from "../models";
 import dayjs from "dayjs";
-import { createCourse, getCourseByCondition, updateCourse } from "../apis";
+import {
+  createCourse,
+  getCourseByCondition,
+  getUsers,
+  updateCourse,
+} from "../apis";
 import logger from "../utils/logger";
 
-const createCourseInfo = (axClassInfo: AXCourse) => {
+const createCourseInfo = async (
+  axClassInfo: AXCourse,
+  axTeacherProfile?: Array<AXTeacherProfile>
+) => {
   const startTime = getHourMinuteFromString(axClassInfo.StartTime || "");
   const endTime = getHourMinuteFromString(axClassInfo.EndTime || "");
 
@@ -51,19 +59,51 @@ const createCourseInfo = (axClassInfo: AXCourse) => {
     ),
   };
 
+  //sync teachers to course
+  if (axTeacherProfile && axTeacherProfile.length > 0) {
+    const userIds = axTeacherProfile.reduce((result, item) => {
+      if (item.StaffCode) result.push(item.StaffCode);
+      return result;
+    }, [] as string[]);
+
+    const users = userIds.length > 0 ? await getUsers(userIds) : null;
+    if (users) {
+      let staff: { [key: string]: any } = {};
+
+      let no = 1;
+      users.forEach((item) => {
+        let key = "";
+        switch (item.role) {
+          case "teacher":
+            key = "teacher_id";
+            break;
+          case "ta":
+            key = `ta${no}_id`;
+            no += 1;
+            break;
+        }
+
+        staff[key] = item.id;
+      });
+      course.staff = JSON.stringify({ staff });
+    }
+  }
   return course;
 };
 
 const syncCourse = async (axClassInfo: AXCourse) => {
-  logger.info("[course]: start course 🚀");
+  logger.info("🚀 [course]: sync course");
 
   try {
-    const currentCourse = await getCourseByCondition({
-      center_id: axClassInfo.Center,
-      name: axClassInfo.ClassCode,
-    });
+    const res = await Promise.all([
+      getCourseByCondition({
+        center_id: axClassInfo.Center,
+        name: axClassInfo.ClassCode,
+      }),
+      createCourseInfo(axClassInfo),
+    ]);
 
-    const course = createCourseInfo(axClassInfo);
+    const [currentCourse, course] = res;
 
     if (currentCourse?.id) {
       // update course information
@@ -75,10 +115,10 @@ const syncCourse = async (axClassInfo: AXCourse) => {
       course.status = "design";
       const newCourseId = await createCourse(course);
       course.id = newCourseId;
-      logger.info(`[course] create new course successfully`);
+      newCourseId && logger.info(`[course] create new course successfully`);
     }
 
-    logger.info(`✅ done sync course-id ${course.id}`);
+    logger.info(`✅ [course] done with ${course.id}`);
     return course;
   } catch (error) {
     logger.error(`❌ [course] error --> ${error}`);
