@@ -11,8 +11,8 @@ const fetcher = async (
   status: number;
   data: any;
 }> => {
-  logger.info(`[api] send function's name: ${fName}\n`);
-    try {
+  logger.info(`[api] send function's name: ${fName}`);
+  try {
     const response = await axios.post(BASE_URL, data, {
       params: {
         f: fName,
@@ -137,7 +137,7 @@ export const getClassesByCourse = (courseId: number) => {
 
 export const getUsers = async (
   staffcodes: Array<string>
-): Promise<Array<{ id: number; staffcode: string; role: string }> | null> => {
+): Promise<Array<User> | null> => {
   try {
     const response = await fetcher("User_List_By_StaffCode", {
       staffcodes: staffcodes,
