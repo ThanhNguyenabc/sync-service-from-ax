@@ -11,7 +11,7 @@ EXPOSE 3000
 
 
 
-FROM base as production
+FROM base as prod
 RUN yarn build
 ENV NODE_ENV=production
 CMD [ "yarn", "start" ]

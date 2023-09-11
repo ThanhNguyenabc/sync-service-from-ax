@@ -4,11 +4,12 @@ services:
   app:
     build: 
       context: ./
+      target: prod
     container_name: xml_parser_app
+    restart: always
     ports:
       - 3000:3000
     volumes:
-      - ./src:/app/src
       - ./logs:/app/logs
     environment:
       - TZ=Asia/Bangkok
@@ -17,6 +18,7 @@ services:
   zookeeper:
     image: bitnami/zookeeper:latest
     container_name: zookeeper
+    restart: always
     ports:
       - 2181:2181
     environment:
@@ -26,6 +28,7 @@ services:
   kafka:
     image: bitnami/kafka:latest
     container_name: kafka
+    restart: always
     environment:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
@@ -40,6 +43,7 @@ services:
   kafdrop:
     image: obsidiandynamics/kafdrop:latest
     container_name: kafdrop
+    restart: always
     ports:
       - 9000:9000
     environment:
