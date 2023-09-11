@@ -114,12 +114,12 @@ const syncCourse = async (
       course.id = currentCourse.id;
       course.classes = currentCourse.classes;
       const status = await Promise.all([updateCourse(course)]);
-      status && logger.info(`[course] update successfully`);
+      status && logger.info(`✅ [course] update successfully`);
     } else {
       course.status = "design";
       const newCourseId = await createCourse(course);
       course.id = newCourseId;
-      newCourseId && logger.info(`[course] create new course successfully`);
+      newCourseId && logger.info(`✅ [course] create new course successfully`);
     }
 
     logger.info(`✅ [course] done with ${course.id}`);
