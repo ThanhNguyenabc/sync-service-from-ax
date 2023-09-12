@@ -167,3 +167,17 @@ export const createUsers = async (users: Array<User>): Promise<boolean> => {
   }
   return false;
 };
+
+// ---------------------------------------------------------------------------
+// ----------------------------Configs API---------------------------------------
+// ---------------------------------------------------------------------------
+
+export const fetchProgramConfig = async () => {
+  try {
+    const response = await fetcher("Ini_File_Read", {
+      filename: "partners/default/programs.cfg",
+    });
+    return response;
+  } catch (error) {}
+  return null;
+};
