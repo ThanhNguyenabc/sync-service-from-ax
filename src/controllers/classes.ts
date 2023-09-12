@@ -90,7 +90,7 @@ const syncClasses = async (
 
               let taNum = 1;
 
-              users.ta.split(",").forEach((item) => {
+              users?.ta?.split(",").forEach((item) => {
                 classData[`ta${taNum}_id`] = teachersInfo?.[item]?.id || null;
               });
             }
