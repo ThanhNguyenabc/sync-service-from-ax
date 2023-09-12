@@ -2,6 +2,8 @@ import logger from "../utils/logger";
 import { getAppConfig } from "../config/app_configs";
 import { Class, Course, User } from "../models";
 import axios from "axios";
+import InMemoryCache from "../lib/cache_manager";
+
 const BASE_URL = getAppConfig()["LMS_API_URL"];
 
 const fetcher = async (
@@ -174,10 +176,16 @@ export const createUsers = async (users: Array<User>): Promise<boolean> => {
 
 export const fetchProgramConfig = async () => {
   try {
+    const programme = InMemoryCache.get("programme");
+    if (programme) {
+      return programme;
+    }
     const response = await fetcher("Ini_File_Read", {
       filename: "partners/default/programs.cfg",
     });
-    return response;
+    const data = response.data;
+    InMemoryCache.set("programme", data);
+    return data;
   } catch (error) {}
   return null;
 };

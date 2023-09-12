@@ -8,10 +8,10 @@ import {
   UserRole,
   User,
 } from "../models";
-import ProgramConfig from "../assets/programs.json";
 import logger from "../utils/logger";
 import { addStudentsToCourse, getUsers, rolloutClasses } from "../apis";
 import dayjs from "dayjs";
+import { getProgramConfig } from "../config/app_configs";
 
 const syncClasses = async (
   course: Course,
@@ -23,7 +23,8 @@ const syncClasses = async (
   try {
     const { id: courseId, program, level, lesson_duration, center_id } = course;
 
-    const programme = ProgramConfig[program as keyof typeof ProgramConfig];
+    const programConfig = await getProgramConfig();
+    const programme = programConfig?.[program as keyof typeof programConfig];
     const lessons = programme?.[level as keyof typeof programme]?.split(",");
     if (!lessons || (lessons && lessons.length == 0)) {
       logger.error("❌ [classes]: missing lessons from programme file config");

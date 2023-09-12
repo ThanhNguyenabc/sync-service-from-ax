@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import router from "./routes";
-import { getAppConfig } from "./config/app_configs";
+import { getAppConfig, getProgramConfig } from "./config/app_configs";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import cluster from "cluster";
@@ -31,7 +31,7 @@ const createApplication = () => {
   });
 };
 
-if (cluster.isPrimary) {
+if (cluster.isPrimary && process.env.NODE_ENV === "production") {
   for (let i = 0; i < os; i++) {
     cluster.fork();
     console.log(`The Worker number: ${i + 1} is alive`);
