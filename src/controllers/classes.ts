@@ -127,8 +127,6 @@ const syncClasses = async (
       classes,
     };
 
-    console.log("data----------------");
-    console.log(data);
     const res = await rolloutClasses(data);
     res && res?.length > 0
       ? logger.info("✅ [classes]: sync successfully")
