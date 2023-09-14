@@ -23,7 +23,7 @@ const fetcher = async (
       },
     });
 
-    if (
+        if (
       typeof response.data === "string" &&
       response.data.indexOf("Fatal error") >= 0
     ) {
@@ -34,7 +34,7 @@ const fetcher = async (
       data: response.data,
     };
   } catch (error) {
-    logger.error(`❌ [api] f=${fName} error --> ${error}`);
+        logger.error(`❌ [api] f=${fName} error --> ${error}`);
 
     return {
       status: 0,

@@ -7,11 +7,14 @@ import {
   AXTeacherTA,
   UserRole,
   User,
+  Time,
 } from "../models";
 import logger from "../utils/logger";
 import { addStudentsToCourse, getUsers, rolloutClasses } from "../apis";
 import dayjs from "dayjs";
 import { getProgramConfig } from "../config/app_configs";
+import { formatHour } from "../utils/date_utils";
+import InMemoryCache from "../lib/cache_manager";
 
 const syncClasses = async (
   course: Course,
@@ -77,7 +80,16 @@ const syncClasses = async (
       });
     }
 
+    const courseTime =
+      (InMemoryCache.get(course.id || "") as {
+        startTime: Time;
+        endTime: Time;
+      }) || {};
+
     const promises = [];
+    const startTime = formatHour(courseTime["startTime"] || "");
+    const endTime = formatHour(courseTime["endTime"] || "");
+
     for (let i = 0; i < axClassSchedule.length; i++) {
       const item = axClassSchedule[i];
       if (item.LessonStatus !== "Cancelled") {
@@ -100,8 +112,8 @@ const syncClasses = async (
               duration: Number(lesson_duration),
               lesson_id: lessons[item.LessonNo - 1],
               teacher_type: "native",
-              date_start: `${item["LessonDate"]}${item.From?.replace(":", "")}`,
-              date_end: `${item["LessonDate"]}${item.To?.replace(":", "")}`,
+              date_start: `${item["LessonDate"]}${startTime}`,
+              date_end: `${item["LessonDate"]}${endTime}`,
             };
             res(classData);
           })
@@ -115,6 +127,8 @@ const syncClasses = async (
       classes,
     };
 
+    console.log("data----------------");
+    console.log(data);
     const res = await rolloutClasses(data);
     res && res?.length > 0
       ? logger.info("✅ [classes]: sync successfully")
@@ -137,7 +151,7 @@ const syncClassSeats = async ({
   try {
     const { classes, id } = course;
     if (!classes || (classes && classes.length == 0)) {
-      logger.warn(`missing classes in course_id ${id}`);
+      logger.error(`❌ [class seats] missing classes in course_id ${id}`);
       return;
     }
 
@@ -191,6 +205,7 @@ const syncClassSeats = async ({
     logger.info(
       `------------jobs is done - courseID [${course.id}]------------`
     );
+    InMemoryCache.del(course.id || "");
     return true;
   } catch (error) {
     logger.error(`❌ [class seats] error --> ${error}`);

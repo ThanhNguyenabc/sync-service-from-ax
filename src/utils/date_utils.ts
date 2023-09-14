@@ -1,3 +1,5 @@
+import { Time } from "../models";
+
 export const DAY_OF_WEEk = {
   Mon: 1,
   Tue: 2,
@@ -15,6 +17,16 @@ export const getHourMinuteFromString = (input: string) => {
     minute: Number(strings?.[1] || 0),
     second: Number(strings?.[2] || 0),
   };
+};
+
+export const addPrefixToTime = (time: number) => {
+  return time < 10 ? `0${time}` : `${time}`;
+};
+
+export const formatHour = (time: Time) => {
+  const hour = addPrefixToTime(time.hour || 0);
+  const minute = addPrefixToTime(time.minute || 0);
+  return `${hour}${minute}`;
 };
 
 export const convertHourToMinute = (hour: number, minute: number) => {

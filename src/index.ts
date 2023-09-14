@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import router from "./routes";
-import { getAppConfig, getProgramConfig } from "./config/app_configs";
+import { getAppConfig } from "./config/app_configs";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import cluster from "cluster";

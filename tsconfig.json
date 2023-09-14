@@ -10,6 +10,7 @@
     // "preserveSymlinks": true,                         /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
     "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
     "strict": true, /* Enable all strict type-checking options. */
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "sourceMap": true
   }
 }

@@ -5,3 +5,4 @@ bitnami
 .gitignore
 .git
 dist
+logs

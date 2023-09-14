@@ -8,6 +8,7 @@ import {
   updateCourse,
 } from "../apis";
 import logger from "../utils/logger";
+import InMemoryCache from "../lib/cache_manager";
 
 const createCourseInfo = async (
   axClassInfo: AXCourse,
@@ -89,7 +90,11 @@ const createCourseInfo = async (
     }
   }
 
-  return course;
+  return {
+    startTime,
+    endTime,
+    data: course,
+  };
 };
 
 const syncCourse = async (
@@ -107,8 +112,9 @@ const syncCourse = async (
       createCourseInfo(axClassInfo, axTeacherProfile),
     ]);
 
-    const [currentCourse, course] = res;
+    const [currentCourse, courseInfo] = res;
 
+    const course = courseInfo["data"];
     if (currentCourse?.id) {
       // update course information
       course.id = currentCourse.id;
@@ -123,6 +129,10 @@ const syncCourse = async (
     }
 
     logger.info(`✅ [course] done with ${course.id}`);
+    InMemoryCache.set(`${course.id}`, {
+      startTime: courseInfo["startTime"],
+      endTime: courseInfo["endTime"],
+    });
     return course;
   } catch (error) {
     logger.error(`❌ [course] error --> ${error}`);
