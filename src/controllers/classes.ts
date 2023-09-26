@@ -114,6 +114,7 @@ const syncClasses = async (
               teacher_type: "native",
               date_start: `${item["LessonDate"]}${startTime}`,
               date_end: `${item["LessonDate"]}${endTime}`,
+              classroom_id: course.room,
             };
             res(classData);
           })
@@ -127,6 +128,7 @@ const syncClasses = async (
       classes,
     };
 
+    console.log(classes);
     const res = await rolloutClasses(data);
     res && res?.length > 0
       ? logger.info("✅ [classes]: sync successfully")

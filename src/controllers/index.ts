@@ -6,7 +6,7 @@ import logger from "../utils/logger";
 import { syncStudent } from "./users";
 import { syncCourse } from "./courses";
 import { syncClassSeats, syncClasses } from "./classes";
-import { Course } from "models";
+import { AXRegistration, AXStudentProfile, Course } from "models";
 
 const kafka = new KafkaManager();
 
@@ -16,16 +16,18 @@ const handleMessage = async (message: Message) => {
 
     const classInfo = axData["ClassInformation"];
     const classSchedules = axData["ClassSchedule"]?.["ClassSchedule"];
-    const registrations = axData["Registrations"]?.["RegistrationInfo"];
+    const registrations: AXRegistration[] | undefined | null =
+      axData["Registrations"]?.["RegistrationInfo"];
     const teachers = axData["Teachers"]?.["TeacherProfile"];
     const lessonTeachers = axData["ClassLessonTeachersTAs"]?.["TeacherTA"];
-    const students = axData["StudentsInformation"]?.["StudentInformation"];
+    const students: AXStudentProfile[] | undefined | null =
+      axData["StudentsInformation"]?.["StudentInformation"];
 
     const promiseCalls = [];
     if (classInfo) {
       promiseCalls.push(syncCourse(classInfo, teachers));
     }
-    if (students) {
+    if (students && Array.isArray(students) && students.length > 0) {
       promiseCalls.push(syncStudent(students));
     }
 
@@ -35,13 +37,18 @@ const handleMessage = async (message: Message) => {
 
     // SYNC CLASSES
     if (course && classSchedules) {
-    const classes = await syncClasses(course, classSchedules, lessonTeachers);
-    course.classes = classes || [];
+      const classes = await syncClasses(course, classSchedules, lessonTeachers);
+      course.classes = classes || [];
     }
 
     // SYNC CLASSE SEATS
-    if (course && registrations) {
-    syncClassSeats({ course, axRegistrations: registrations });
+    if (
+      course &&
+      registrations &&
+      Array.isArray(registrations) &&
+      registrations.length > 0
+    ) {
+      syncClassSeats({ course, axRegistrations: registrations });
     }
   } catch (error) {
     logger.error(`❌ [handling message] --> ${error}`);
