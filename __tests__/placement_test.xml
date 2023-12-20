@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PlacementTestInformation>
+	<StudentInformation>
+		<StudentCode>S-164267</StudentCode>
+		<FirstName>Thy</FirstName>
+		<MiddleName>Nguyễn Bảo</MiddleName>
+		<LastName>Lê</LastName>
+		<PersonalSuffix/>
+		<SearchName>Lê Nguyễn Bảo Thy</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0909894409</MobilePhone>
+		<Birthday>5</Birthday>
+		<BirthMonth>September</BirthMonth>
+		<BirthYear>2012</BirthYear>
+		<DOB>2012-September-5</DOB>
+		<Telephone/>
+		<Email>phanvietfood@gmail.com</Email>
+		<EmailStudent>thy.s164267@ilamail.edu.vn</EmailStudent>
+		<Address>74 TÂN SƠN HÒA Thành phố Hồ Chí Minh South VNM</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center/>
+		<LocationID/>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>26-5-2020</EntryDate>
+	</StudentInformation>
+	<TeacherProfile>
+		<FirstName>Jake</FirstName>
+		<MiddleName>Peter</MiddleName>
+		<LastName>Hossack</LastName>
+		<Gender>Male</Gender>
+		<LocationID>2</LocationID>
+		<TeacherName>Jake Peter Hossack</TeacherName>
+		<TeacherCode/>
+		<PersonnelNumber>024534</PersonnelNumber>
+		<DOB>13-08-1988</DOB>
+		<Active>Yes</Active>
+		<Phone/>
+		<Extension/>
+		<Email>jakehossack@ilavietnam.edu.vn</Email>
+		<UserName>jakehossack@ilavietnam.edu.vn</UserName>
+		<Address>74/42 Trương Quốc Dung Phường 10 Quận Phú Nhuận Thành phố Hồ Chí Minh South VNM</Address>
+		<WorkerType>Employee</WorkerType>
+		<Status/>
+		<Role>Teacher</Role>
+		<Title/>
+		<Position/>
+		<Department/>
+		<OfficeLocation>TC-HCMC2</OfficeLocation>
+		<OfficeAddress/>
+	</TeacherProfile>
+	<PlacementTest>
+		<ID>5642846911</ID>
+		<StudentCode>S-164267</StudentCode>
+		<PersonnelNumber>024534</PersonnelNumber>
+		<Center>TC-HCMC2</Center>
+		<PTStatus>0</PTStatus>
+		<User>thuy.vo</User>
+		<Name>Võ Đặng Thị Diễm Thùy</Name>
+		<Email>thuy.vo@ilavietnam.edu.vn</Email>
+		<Note>Finished H22YJ-6B-2302 in Oct.2023
+</Note>
+	</PlacementTest>
+</PlacementTestInformation>

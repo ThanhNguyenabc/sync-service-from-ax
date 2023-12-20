@@ -1,10 +1,9 @@
 const { readFile } = require("fs");
 
-let count = 0;
+const TEST_HOST = "http://172.17.96.28:3000";
+const LOCAL_HOST = "http://localhost:3000";
 
 const sendTestingRequest = async () => {
-  count += 1;
-  console.log(`request data - ${count}`);
   readFile("./data.xml", "utf-8", async (error, data) => {
     if (error) {
       console.log("error");
@@ -12,7 +11,8 @@ const sendTestingRequest = async () => {
       return;
     }
 
-    await fetch("http://localhost:3000/parse-xml", {
+    console.log(LOCAL_HOST)
+    await fetch(`${LOCAL_HOST}/parse-xml`, {
       method: "POST",
       headers: {
         Accept: "*/*",
@@ -30,4 +30,3 @@ const sendTestingRequest = async () => {
 };
 
 sendTestingRequest();
-// setInterval(sendTestingRequest, 100);
