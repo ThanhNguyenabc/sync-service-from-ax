@@ -1,4 +1,6 @@
-import { Time } from "../models";
+import { Time } from "@/models/_index";
+
+export const LMS_TIME_FORMAT = "YYYYMMDDHHmm";
 
 export const DAY_OF_WEEk = {
   Mon: 1,

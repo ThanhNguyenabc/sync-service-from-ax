@@ -25,4 +25,18 @@ if (process.env.NODE_ENV !== "production") {
   logger.add(new transports.Console({}));
 }
 
+const ICONS = {
+  error: "❌",
+  infor: "👍",
+  start: "🚀",
+};
+
+export const logMessage = (
+  type: "error" | "infor" | "start",
+  tag: string,
+  message: string = ""
+) => {
+  return `${ICONS[type as keyof typeof ICONS]} [${tag}] --> ${message}`;
+};
+
 export default logger;
