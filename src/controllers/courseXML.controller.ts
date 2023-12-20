@@ -1,14 +1,17 @@
 import { Request, Response } from "express";
-import KafkaManager, { kafka_xml_topic } from "../lib/message_queue/kafka";
-import { parseXMLFile } from "../utils/xml_parser";
+import KafkaManager, { kafka_xml_topic } from "@/lib/message_queue/kafka";
+import { parseXMLFile } from "@/utils/xml_parser";
 import { Message } from "kafkajs";
-import logger from "../utils/logger";
-import { syncStudent } from "./users";
-import { syncCourse } from "./courses";
-import { syncClassSeats, syncClasses } from "./classes";
-import { AXRegistration, AXStudentProfile, Course } from "models";
+import logger from "@/utils/logger";
+import { AXRegistration, AXStudentProfile, Course } from "@/models/_index";
+import {
+  syncClassSeats,
+  syncClasses,
+  syncCourse,
+  syncStudent,
+} from "@/services/_index";
 
-const kafka = new KafkaManager();
+const kafka = KafkaManager.getInstance();
 
 const handleMessage = async (message: Message) => {
   try {
@@ -57,7 +60,7 @@ const handleMessage = async (message: Message) => {
 
 kafka.consume(kafka_xml_topic, handleMessage);
 
-const convertXmlFile = async (req: Request, res: Response) => {
+const handleCourseXMLFromAX = async (req: Request, res: Response) => {
   try {
     const xmlData: string | undefined | null = req.body["data"] || "";
     if (!xmlData || xmlData.length == 0) {
@@ -83,4 +86,4 @@ const convertXmlFile = async (req: Request, res: Response) => {
   }
 };
 
-export { convertXmlFile };
+export { handleCourseXMLFromAX };
