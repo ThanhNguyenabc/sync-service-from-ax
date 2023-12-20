@@ -2,7 +2,7 @@ import logger from "@/utils/logger";
 import { getAppConfig } from "@/config/app_configs";
 import axios from "axios";
 
-const BASE_URL = getAppConfig()["LMS_API_URL"];
+const BASE_URL = getAppConfig()?.["LMS_API_URL"];
 const SERVER_CRASH = 100;
 
 export const fetcher = async <T>(

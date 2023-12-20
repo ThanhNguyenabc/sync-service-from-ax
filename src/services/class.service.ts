@@ -1,5 +1,4 @@
 import dayjs from "dayjs";
-import { getProgramConfig } from "@/config/app_configs";
 import InMemoryCache from "@/lib/cache_manager";
 import {
   AXClassSchedule,
@@ -12,7 +11,7 @@ import {
   User,
   UserRole,
 } from "@/models/_index";
-import { addStudentsToCourse, getUsers, rolloutClasses } from "@/apis/_index";
+import { addStudentsToCourse, fetchProgramConfig, getUsers, rolloutClasses } from "@/apis/_index";
 import { formatHour } from "@/utils/_index";
 import logger, { logMessage } from "@/utils/logger";
 
@@ -37,7 +36,7 @@ const syncClasses = async (
   try {
     const { id: courseId, program, level, lesson_duration, center_id } = course;
 
-    const programConfig = await getProgramConfig();
+    const programConfig = await fetchProgramConfig();
     const programme = programConfig?.[program as keyof typeof programConfig];
 
     const lessons =

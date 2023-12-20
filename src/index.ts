@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import cluster from "cluster";
 import { cpus } from "os";
-import logger from "@/utils/logger";
+import logger, { logMessage } from "@/utils/logger";
 
 dayjs.extend(customParseFormat);
 
@@ -27,7 +27,7 @@ const createApplication = () => {
   });
 
   process.on("uncaughtException", (error) => {
-    logger.error(`❌ [error]  --> ${error.stack}`);
+    logger.error(logMessage("error", "app error", error.stack));
   });
 };
 
