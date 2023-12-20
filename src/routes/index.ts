@@ -1,6 +1,8 @@
+import { handleCourseXMLFromAX, syncPlacementTest } from "@/controllers/_index";
 import express from "express";
-import { convertXmlFile } from "../controllers";
-const router = express.Router();
 
-router.post("/parse-xml", convertXmlFile);
+const router = express.Router();
+router.post("/parse-xml", handleCourseXMLFromAX);
+router.post("/placement-test", syncPlacementTest);
+
 export default router;

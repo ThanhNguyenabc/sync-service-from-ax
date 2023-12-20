@@ -1,12 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
-import router from "./routes";
-import { getAppConfig } from "./config/app_configs";
+import router from "@/routes";
+import { getAppConfig } from "@/config/app_configs";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import cluster from "cluster";
 import { cpus } from "os";
-import logger from "./utils/logger";
+import logger from "@/utils/logger";
 
 dayjs.extend(customParseFormat);
 
@@ -42,5 +42,3 @@ if (cluster.isPrimary && process.env.NODE_ENV === "production") {
 } else {
   createApplication();
 }
-
-export default {};

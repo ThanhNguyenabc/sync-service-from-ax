@@ -1,4 +1,4 @@
-import { fetchProgramConfig } from "../apis";
+import { fetchProgramConfig } from "@/apis/_index";
 import AppConfig from "./configs.json";
 
 export const getAppConfig = () => {

@@ -1,18 +1,19 @@
 import { Kafka } from "kafkajs";
 import { Producer, Consumer, Message } from "kafkajs/types/index";
-import logger from "../../utils/logger";
+import logger from "@/utils/logger";
 
 const group_id = "handle-xml-consumer-group";
+
 export const kafka_xml_topic = "xml-topic";
+export const placement_test_topic = "placement-test";
 
 class KafkaManager {
   private kafka?: Kafka;
   private producer?: Producer;
   public consumer?: Consumer;
-  private instance?: KafkaManager;
-  constructor() {
-    if (this.instance) return this.instance;
+  private static instance?: KafkaManager;
 
+  private constructor() {
     this.kafka = new Kafka({
       clientId: "xml-handler-proccessor",
       brokers: ["kafka:9092"],
@@ -20,7 +21,11 @@ class KafkaManager {
     });
     this.producer = this.kafka.producer();
     this.consumer = this.kafka.consumer({ groupId: group_id });
-    this.instance = this;
+  }
+
+  static getInstance(): KafkaManager {
+    if (!KafkaManager.instance) KafkaManager.instance = new KafkaManager();
+    return KafkaManager.instance;
   }
 
   async produce(topic: string, messages: Message[]) {

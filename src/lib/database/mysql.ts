@@ -1,21 +1,20 @@
-import { getAppConfig } from "../../config/app_configs";
+import { getAppConfig } from "@/config/app_configs";
 import mysql2, { Connection } from "mysql2/promise";
 
-export default class Database {
-  static instance?: Database;
+export default class MySqlDatabase {
+  private static instance?: MySqlDatabase;
   public connection?: Connection;
 
-  constructor() {
+  private constructor() {
     this.initConnection();
   }
 
   static async getInstance() {
-    if (!Database.instance) {
-      console.debug("create database instance");
-      const database = new Database();
-      Database.instance = database;
+    if (!MySqlDatabase.instance) {
+      const database = new MySqlDatabase();
+      MySqlDatabase.instance = database;
     }
-    return Database.instance;
+    return MySqlDatabase.instance;
   }
 
   private async initConnection() {
