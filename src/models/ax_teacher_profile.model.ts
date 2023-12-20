@@ -7,4 +7,7 @@ export interface AXTeacherProfile {
   Role?: "Teacher" | "TA";
   Active: "Yes" | "No";
   StaffCode?: string;
+  Phone?: string;
+  Address?: string;
+  PersonnelNumber?: string;
 }

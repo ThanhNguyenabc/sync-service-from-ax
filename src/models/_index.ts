@@ -9,3 +9,4 @@ export * from "./class.model";
 export * from "./class_seat.model";
 export * from "./courses.model";
 export * from "./user.model";
+export * from "./ax_placement_test.model";

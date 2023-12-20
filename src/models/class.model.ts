@@ -1,3 +1,8 @@
+export enum ClassType {
+  "placement" = "placement",
+  "standard" = "standard",
+}
+
 export interface Class {
   id?: number;
   type?: string;
