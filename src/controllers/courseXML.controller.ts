@@ -9,7 +9,7 @@ import {
   syncClasses,
   syncCourse,
   syncStudent,
-} from "@/services/_index";
+} from "@/services/_index.service";
 
 const kafka = KafkaManager.getInstance();
 
