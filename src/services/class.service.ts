@@ -11,9 +11,15 @@ import {
   User,
   UserRole,
 } from "@/models/_index";
-import { addStudentsToCourse, fetchProgramConfig, getUsers, rolloutClasses } from "@/apis/_index";
+import {
+  addStudentsToCourse,
+  fetchProgramConfig,
+  getUsers,
+  rolloutClasses,
+} from "@/apis/_index";
 import { formatHour } from "@/utils/_index";
 import logger, { logMessage } from "@/utils/logger";
+import { child } from "winston";
 
 const getUsersToMap = async (ids: Array<string>) => {
   const users = await getUsers(ids);
@@ -35,7 +41,6 @@ const syncClasses = async (
   logger.info(logMessage("start", "classes", "sync classes"));
   try {
     const { id: courseId, program, level, lesson_duration, center_id } = course;
-
     const programConfig = await fetchProgramConfig();
     const programme = programConfig?.[program as keyof typeof programConfig];
 
@@ -139,7 +144,7 @@ const syncClasses = async (
 
     const res = await rolloutClasses(data);
     res && res?.length > 0
-      ? logger.info(logMessage("infor", "classes", "sync successfully"))
+      ? logger.info(logMessage("success", "classes", "sync successfully"))
       : logger.error(logMessage("error", "classes", "sync fail"));
 
     return res;
@@ -245,7 +250,7 @@ const syncClassSeats = async ({
 
     await Promise.all(promises);
 
-    logger.info(logMessage("infor", "class seats", "sync successfully"));
+    logger.info(logMessage("success", "class seats", "sync successfully"));
     logger.info(
       `------------jobs is done - courseID [${course.id}]------------`
     );

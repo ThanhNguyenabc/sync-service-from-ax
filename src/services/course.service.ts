@@ -128,14 +128,14 @@ const syncCourse = async (
       const newCourseId = await createCourse(course);
       if (newCourseId) {
         course.id = newCourseId;
-        newCourseId && logger.info(`✅ [course] `);
-        logger.info(
-          logMessage("infor", "course", `successfully create new course`)
-        );
+        newCourseId &&
+          logger.info(
+            logMessage("infor", "course", `successfully create new course`)
+          );
       }
     }
 
-    logger.info(logMessage("infor", "course", `done with ${course.id}`));
+    logger.info(logMessage("success", "course", `done with ${course.id}`));
     InMemoryCache.set(`${course.id}`, {
       startTime: courseInfo["startTime"],
       endTime: courseInfo["endTime"],

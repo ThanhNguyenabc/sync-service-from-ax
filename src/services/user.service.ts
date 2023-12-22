@@ -61,12 +61,12 @@ const syncStudent = async (students: Array<AXStudentProfile>) => {
     if (insertUserList.length > 0) {
       const status = await createUsers(insertUserList);
       status &&
-        logger.info(logMessage("infor", "student", "insert successfully"));
+        logger.info(logMessage("success", "student", "insert successfully"));
     }
     if (updateUserList.length > 0) {
       const status = await updateUsers(updateUserList);
       status &&
-        logger.info(logMessage("infor", "student", "update successfully"));
+        logger.info(logMessage("success", "student", "update successfully"));
     }
     return true;
   } catch (error) {

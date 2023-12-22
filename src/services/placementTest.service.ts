@@ -1,6 +1,20 @@
-import { createClass, createUsers, getUsers } from "@/apis/_index";
-import { createClassSeat } from "@/apis/class_seat.api";
 import {
+  createClass,
+  createUsers,
+  getUsers,
+  updateClassFields,
+} from "@/apis/_index";
+import {
+  createClassSeat,
+  updateClassSeatFieldsByClass,
+} from "@/apis/class_seat.api";
+import {
+  getPlacementTest,
+  insertPlacementTest,
+  updatePlacementTest,
+} from "@/apis/placement_test.api";
+import {
+  AXPlacementTest,
   AXPlacementTestInfor,
   Class,
   ClassSeat,
@@ -9,13 +23,56 @@ import {
 } from "@/models/_index";
 import { LMS_TIME_FORMAT } from "@/utils/date_utils";
 import logger, { logMessage } from "@/utils/logger";
+import assert from "assert";
 import dayjs from "dayjs";
 
-const addPlacementTest = async (data: AXPlacementTestInfor) => {
+const checkValidPlacementTest = (data: AXPlacementTestInfor) => {
   if (!data.PlacementTest || !data.StudentInformation || !data.TeacherProfile) {
     logger.error(logMessage("error", "placementTest", "MissingData"));
-    return;
+    return false;
   }
+
+  return true;
+};
+
+const createClassForTest = async (
+  placementTest: AXPlacementTest,
+  teacher: User
+) => {
+  const startTime = dayjs().format(LMS_TIME_FORMAT);
+  const endTime = dayjs().add(90, "minutes").format(LMS_TIME_FORMAT);
+
+  // create class
+  const studentClass: Class = {
+    duration: 90,
+    teacher_type: "native",
+    date_start: Number(startTime),
+    date_end: Number(endTime),
+    type: ClassType.placement,
+    center_id: placementTest.Center,
+    seats_taken: 1,
+    online: placementTest.PTStatus,
+    notes: placementTest.Note,
+    teacher_id: teacher.id,
+  };
+
+  const classId = await createClass(studentClass);
+
+  return classId;
+};
+
+type Users = {
+  teacher?: User;
+  student: User;
+};
+const getStudentAndTeacherInfor = async (
+  data: AXPlacementTestInfor
+): Promise<Users | null> => {
+  const isValidData = checkValidPlacementTest(data);
+  if (!isValidData) return null;
+  assert(data.PlacementTest);
+  assert(data.TeacherProfile);
+  assert(data.StudentInformation);
 
   try {
     // create users if not existing
@@ -27,7 +84,7 @@ const addPlacementTest = async (data: AXPlacementTestInfor) => {
 
     const teacherInfor: User = {
       status: "active",
-      role: data.TeacherProfile.Role?.toLowerCase(),
+      role: data.TeacherProfile.Role?.toLowerCase() || "teacher",
       center: data.PlacementTest.Center,
       firstname: data.TeacherProfile.FirstName,
       lastname: data.TeacherProfile.LastName,
@@ -52,6 +109,7 @@ const addPlacementTest = async (data: AXPlacementTestInfor) => {
     };
 
     let lmsUsers = await getUsers([studentCode, teacherCode]);
+
     if (!lmsUsers || lmsUsers.length == 0) {
       lmsUsers = await createUsers([studentInfor, teacherInfor]);
     } else if (lmsUsers.length == 1) {
@@ -66,46 +124,132 @@ const addPlacementTest = async (data: AXPlacementTestInfor) => {
       lmsUsers = [studentInfor, teacherInfor];
     }
 
-    const startTime = dayjs().format(LMS_TIME_FORMAT);
-    const endTime = dayjs().add(90, "minutes").format(LMS_TIME_FORMAT);
+    return (
+      lmsUsers?.reduce((res, item) => {
+        if (item.role !== "student") res["teacher"] = item;
+        else res["student"] = item;
+        return res;
+      }, {} as Users) || null
+    );
+  } catch (error) {}
+  return null;
+};
 
-    // create class
-    const studentClass: Class = {
-      duration: 90,
-      teacher_type: "native",
-      date_start: Number(startTime),
-      date_end: Number(endTime),
-      type: ClassType.placement,
-      center_id: data.PlacementTest.Center,
-      seats_taken: 1,
-      online: data.PlacementTest.PTStatus,
-      notes: data.PlacementTest.Note,
-      teacher_id: lmsUsers?.[1]?.id,
-    };
+const createPlacementTest = async (
+  placementTest: AXPlacementTest,
+  teacher: User,
+  student: User
+) => {
+  try {
+    const classId = await createClassForTest(placementTest, teacher);
 
-    const classId = await createClass(studentClass);
-    console.log("classss------------");
-    console.log(classId);
+    if (teacher && student) {
+      // create class_seat for student
+      if (classId) {
+        const classSeat: ClassSeat = {
+          class_id: Number(classId),
+          student_id: student.id,
+        };
 
-    // create class_seat for student
-    if (classId) {
-      const classSeat: ClassSeat = {
-        class_id: Number(classId),
-        student_id: lmsUsers?.[0]?.id,
-      };
+        const seatId = await createClassSeat({
+          classId: classId,
+          data: classSeat,
+        });
+        seatId &&
+          logger.info(
+            logMessage("success", "placementTest", "successfully add new test")
+          );
 
-      const seatId = await createClassSeat({
-        classId: classId,
-        data: classSeat,
-      });
-      seatId &&
-        logger.info(
-          logMessage("infor", "placementTest", "successfully add new test")
-        );
+        return {
+          classId,
+        };
+      }
     }
+
+    logMessage("error", "placementTest", "can not create new test");
   } catch (error) {
     logger.error(logMessage("error", "placementTest", String(error)));
   }
+  return {};
 };
 
-export default addPlacementTest;
+export const addOrUpdatePlacementTest = async (data: AXPlacementTestInfor) => {
+  if (!data.PlacementTest || !data.StudentInformation || !data.TeacherProfile) {
+    logger.error(logMessage("error", "placementTest", "MissingData"));
+    return;
+  }
+
+  logger.info(
+    logMessage("start", "placementTest", "start to sync placementTest")
+  );
+
+  const response = await getStudentAndTeacherInfor(data);
+  const { teacher, student } = response || {};
+  const placementTest = await getPlacementTest(data.PlacementTest.ID);
+
+  try {
+    if (!placementTest?.id && teacher && student) {
+      const { classId } = await createPlacementTest(
+        data.PlacementTest,
+        teacher,
+        student
+      );
+
+      // insert data to placementTest table
+      await insertPlacementTest({
+        class_id: classId,
+        placement_test_id: data.PlacementTest.ID,
+        student_code: student.staffcode,
+        teacher_code: teacher.staffcode,
+        ax_data: JSON.stringify(data),
+      });
+
+      classId &&
+        logger.info(
+          logMessage(
+            "success",
+            "placementTest",
+            `create placementTest successfully - classId:[${classId}]`
+          )
+        );
+    } else {
+      const { class_id } = placementTest || {};
+      // update class
+      if (class_id) {
+        const promises = [
+          updateClassFields({
+            id: class_id,
+            data: {
+              online: data.PlacementTest.PTStatus,
+              teacher_id: teacher?.id,
+              notes: data.PlacementTest.Note,
+            },
+          }),
+
+          updateClassSeatFieldsByClass({
+            classId: class_id,
+            data: {
+              student_id: student?.id,
+            },
+          }),
+          updatePlacementTest(`${placementTest?.id}`, {
+            ax_data: JSON.stringify(data),
+            teacher_code: teacher?.staffcode,
+            student_code: student?.staffcode,
+          }),
+        ];
+
+        await Promise.all(promises);
+        logger.info(
+          logMessage(
+            "success",
+            "placementTest",
+            `update placementTest successfully - classId:[${class_id}]`
+          )
+        );
+      }
+    }
+  } catch (error) {
+    logger.error(logMessage("error", "placementTest", `${error}`));
+  }
+};
