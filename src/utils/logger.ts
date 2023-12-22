@@ -27,12 +27,13 @@ if (process.env.NODE_ENV !== "production") {
 
 const ICONS = {
   error: "❌",
-  infor: "👍",
+  infor: "👉",
   start: "🚀",
+  success: "✅",
 };
 
 export const logMessage = (
-  type: "error" | "infor" | "start",
+  type: "error" | "infor" | "start" | "success",
   tag: string,
   message: string = ""
 ) => {
