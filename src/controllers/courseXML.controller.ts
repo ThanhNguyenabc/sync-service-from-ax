@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import KafkaManager, { kafka_xml_topic } from "@/lib/message_queue/kafka";
+import KafkaManager, { CourseTopic } from "@/lib/message_queue/kafka";
 import { parseXMLFile } from "@/utils/xml_parser";
 import { Message } from "kafkajs";
-import logger from "@/utils/logger";
+import logger, { logMessage } from "@/utils/logger";
 import { AXRegistration, AXStudentProfile, Course } from "@/models/_index";
 import {
   syncClassSeats,
@@ -11,9 +11,9 @@ import {
   syncStudent,
 } from "@/services/_index.service";
 
-const kafka = KafkaManager.getInstance();
+const kafkaManager = KafkaManager.getInstance();
 
-const handleMessage = async (message: Message) => {
+kafkaManager.consume(CourseTopic, async (topic: string, message: Message) => {
   try {
     const axData = await parseXMLFile(message.value?.toString() || "");
 
@@ -54,11 +54,9 @@ const handleMessage = async (message: Message) => {
       syncClassSeats({ course, axRegistrations: registrations });
     }
   } catch (error) {
-    logger.error(`❌ [handling message] --> ${error}`);
+    logger.error(logMessage("error", "course-xml", `${error}`));
   }
-};
-
-kafka.consume(kafka_xml_topic, handleMessage);
+});
 
 const handleCourseXMLFromAX = async (req: Request, res: Response) => {
   try {
@@ -69,7 +67,7 @@ const handleCourseXMLFromAX = async (req: Request, res: Response) => {
         message: "Data is not valid",
       });
     }
-    await kafka.produce(kafka_xml_topic, [
+    await kafkaManager.produce(CourseTopic, [
       { key: "xml-data", value: req.body["data"] || "" },
     ]);
 
