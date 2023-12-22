@@ -7,6 +7,7 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 import cluster from "cluster";
 import { cpus } from "os";
 import logger, { logMessage } from "@/utils/logger";
+import KafkaManager from "./lib/message_queue/kafka";
 
 dayjs.extend(customParseFormat);
 
@@ -23,6 +24,8 @@ const createApplication = () => {
   app.use("/", router);
 
   app.listen(CONFIG["PORT"], async () => {
+    // init kafaka
+    KafkaManager.getInstance();
     console.log(`Server started on host : ${CONFIG["HOST"]}:${CONFIG["PORT"]}`);
   });
 
@@ -34,7 +37,6 @@ const createApplication = () => {
 if (cluster.isPrimary && process.env.NODE_ENV === "production") {
   for (let i = 0; i < os; i++) {
     cluster.fork();
-    console.log(`The Worker number: ${i + 1} is alive`);
   }
   cluster.on("exit", (worker) => {
     console.log(`The Worker number: ${worker.id} has died`);
