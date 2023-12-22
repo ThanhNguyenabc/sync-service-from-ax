@@ -32,7 +32,10 @@ export const createClass = async (
   data: Class
 ): Promise<string | null | undefined> => {
   try {
-    const res = await fetcher<string>("Class_Create", data);
+    const res = await fetcher<string>("Class_Create", {
+      data,
+      utc: true,
+    });
     return res.data;
   } catch (error) {}
   return null;
@@ -41,4 +44,21 @@ export const createClass = async (
 export const getClassesByCourse = (courseId: number) => {
   try {
   } catch (error) {}
+};
+
+export const updateClassFields = async ({
+  id,
+  data,
+}: {
+  id: string;
+  data: Class;
+}): Promise<boolean | null | undefined> => {
+  try {
+    await fetcher<string>("Class_Update_Fields", {
+      id,
+      data,
+    });
+    return true;
+  } catch (error) {}
+  return false;
 };

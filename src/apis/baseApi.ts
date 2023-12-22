@@ -14,7 +14,7 @@ export const fetcher = async <T>(
   message?: string;
   error?: string;
 }> => {
-  logger.info(`👉 [api] send function's name: ${fName}`);
+  logger.info(`👉 [api] : url - ${BASE_URL}, function: ${fName}`);
   try {
     const response = await axios.post(BASE_URL, data, {
       params: {
@@ -38,7 +38,7 @@ export const fetcher = async <T>(
       let { message, data: output, error } = response.data;
       return {
         status: response.status,
-        data: output,
+        data: output || response.data,
         error,
         message,
       };

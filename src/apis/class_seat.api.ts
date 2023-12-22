@@ -1,7 +1,7 @@
 import { ClassSeat } from "@/models/class_seat.model";
 import { fetcher } from "./baseApi";
 
-const createClassSeat = async ({
+export const createClassSeat = async ({
   classId,
   data,
 }: {
@@ -18,4 +18,19 @@ const createClassSeat = async ({
   return null;
 };
 
-export { createClassSeat };
+export const updateClassSeatFieldsByClass = async ({
+  classId,
+  data,
+}: {
+  classId: string;
+  data: ClassSeat;
+}): Promise<boolean | null | undefined> => {
+  try {
+    await fetcher<string>("Class_Seat_Update_Fields_ByClass", {
+      classId,
+      data,
+    });
+    return true;
+  } catch (error) {}
+  return false;
+};
