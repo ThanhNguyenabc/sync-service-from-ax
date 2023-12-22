@@ -2,6 +2,7 @@
 
 # create folders and allow their permission
 mkdir bitnami
+mkdir bitnami/kafka
 mkdir bitnami/kafka/data
 mkdir bitnami/kafka/config
 sudo chmod u+rwx,g+rwx,o+rx bitnami
