@@ -1,7 +1,5 @@
 FROM node:latest as base
 USER root
-RUN sudo chmod a+w bitnami
-RUN sudo chmod a+w logs
 WORKDIR /app
 # copy all dpendecies
 COPY package.json nodemon.json tsconfig.json ./
