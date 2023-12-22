@@ -11,8 +11,8 @@ mkdir logs
 sudo chmod u+rwx,g+rwx,o+rx logs
 
 
-RUN chown -R 1001:1001 bitnami
-RUN chown -R 1001:1001 logs
+sudo chown -R 1001:1001 bitnami
+sudo chown -R 1001:1001 logs
 
 
 # run docker to build app
