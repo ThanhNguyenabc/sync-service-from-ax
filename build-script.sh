@@ -1,7 +1,7 @@
 
 
 # create folders and allow their permission
-mkdir binami
+mkdir bitnami
 mkdir logs
 sudo chmod a+w bitnami
 sudo chmod a+w logs
