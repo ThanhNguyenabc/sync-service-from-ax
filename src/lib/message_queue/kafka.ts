@@ -2,25 +2,23 @@ import { Kafka } from "kafkajs";
 import { Producer, Consumer, Message } from "kafkajs/types/index";
 import logger from "@/utils/logger";
 
-const group_id = "handle-xml-consumer-group";
-
-export const kafka_xml_topic = "xml-topic";
-export const placement_test_topic = "placement-test";
+export const KafkaGroupID = "handle-xml-consumer-group";
+export const CourseTopic = "courses";
+export const PlacementTestTopic = "placement-tests";
 
 class KafkaManager {
-  private kafka?: Kafka;
+  public kafka: Kafka;
   private producer?: Producer;
-  public consumer?: Consumer;
   private static instance?: KafkaManager;
-
+  private readonly consumers: Consumer[];
   private constructor() {
     this.kafka = new Kafka({
       clientId: "xml-handler-proccessor",
       brokers: ["kafka:9092"],
       connectionTimeout: 3000,
     });
+    this.consumers = [];
     this.producer = this.kafka.producer();
-    this.consumer = this.kafka.consumer({ groupId: group_id });
   }
 
   static getInstance(): KafkaManager {
@@ -38,22 +36,28 @@ class KafkaManager {
     } catch (error) {
       logger.error(`kafka producer error --> ${error}`);
     } finally {
-      await this.producer?.disconnect();
+      // await this.producer?.disconnect();
     }
   }
 
-  async consume(topic: string, cb: (value: Message) => void) {
+  async consume(topic: string, cb: (topic: string, value: Message) => void) {
+    const consumer = this.kafka.consumer({
+      groupId: `${KafkaGroupID}-${topic}`,
+    });
+
     try {
-      await this.consumer?.connect();
-      await this.consumer?.subscribe({
+      await consumer?.connect();
+      await consumer?.subscribe({
         topic,
         fromBeginning: false,
       });
-      await this.consumer?.run({
+      await consumer?.run({
         eachMessage: async ({ topic, partition, message }) => {
-          cb(message);
+          cb(topic, message);
         },
       });
+      console.log("----------consumer is connected----------");
+      this.consumers.push(consumer);
     } catch (error) {
       logger.error(`kafka consumer error --> ${error}`);
     }
