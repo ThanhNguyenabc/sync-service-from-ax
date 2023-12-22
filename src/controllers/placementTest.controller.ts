@@ -1,19 +1,24 @@
 import { Message } from "kafkajs";
 import { Request, Response } from "express";
-import KafkaManager, { placement_test_topic } from "@/lib/message_queue/kafka";
-import logger from "@/utils/logger";
+import KafkaManager, { PlacementTestTopic } from "@/lib/message_queue/kafka";
+import logger, { logMessage } from "@/utils/logger";
 import { parseXMLFile } from "@/utils/xml_parser";
-import addPlacementTest from "@/services/placementTest.service";
+import { addOrUpdatePlacementTest } from "@/services/placementTest.service";
 
-const kafka = KafkaManager.getInstance();
-const handlePlacementTest = async (message: Message) => {
-  const axData = await parseXMLFile(message.value?.toString() || "");
-  const placementTest = axData["PlacementTestInformation"];
+const kafkaManager = KafkaManager.getInstance();
 
-  if (placementTest) addPlacementTest(placementTest);
-};
-
-kafka.consume(placement_test_topic, handlePlacementTest);
+kafkaManager.consume(
+  PlacementTestTopic,
+  async (topic: string, message: Message) => {
+    try {
+      const axData = await parseXMLFile(message.value?.toString() || "");
+      const placementTest = axData["PlacementTestInformation"];
+      placementTest && addOrUpdatePlacementTest(placementTest);
+    } catch (error) {
+      logger.error(logMessage("error", "placement-test-message", `${error}`));
+    }
+  }
+);
 
 const syncPlacementTest = async (req: Request, res: Response) => {
   try {
@@ -25,10 +30,9 @@ const syncPlacementTest = async (req: Request, res: Response) => {
       });
     }
 
-    await kafka.produce(placement_test_topic, [
-      { key: "placement_test", value: req.body["data"] || "" },
+    await kafkaManager.produce(PlacementTestTopic, [
+      { key: "placement_test", value: xmlData },
     ]);
-
     return res.status(200).json({
       status: 200,
       message: "Received xml-data successfully",
@@ -41,4 +45,5 @@ const syncPlacementTest = async (req: Request, res: Response) => {
     });
   }
 };
+
 export { syncPlacementTest };
