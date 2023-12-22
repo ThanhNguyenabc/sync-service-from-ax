@@ -3,7 +3,7 @@ const { readFile } = require("fs");
 const TEST_HOST = "http://172.17.96.28:3000";
 const LOCAL_HOST = "http://localhost:3000";
 
-const sendTestingRequest = async () => {
+const syncCourseInfor = async () => {
   readFile("./data.xml", "utf-8", async (error, data) => {
     if (error) {
       console.log("error");
@@ -11,7 +11,7 @@ const sendTestingRequest = async () => {
       return;
     }
 
-    console.log(LOCAL_HOST)
+    console.log(LOCAL_HOST);
     await fetch(`${LOCAL_HOST}/parse-xml`, {
       method: "POST",
       headers: {
@@ -29,4 +29,30 @@ const sendTestingRequest = async () => {
   });
 };
 
-sendTestingRequest();
+const syncPlacementTest = async () => {
+  readFile("./placement_test.xml", "utf-8", async (error, data) => {
+    if (error) {
+      console.log("error");
+      console.log(error);
+      return;
+    }
+
+    console.log(`${LOCAL_HOST}/placement-tests`);
+    await fetch(`${LOCAL_HOST}/placement-tests`, {
+      method: "POST",
+      headers: {
+        Accept: "*/*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data: data,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  });
+};
+syncCourseInfor();
+syncPlacementTest();

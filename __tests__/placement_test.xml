@@ -31,6 +31,7 @@
 	</StudentInformation>
 	<TeacherProfile>
 		<FirstName>Jake</FirstName>
+		<StaffCode>ILAV-01699</StaffCode>
 		<MiddleName>Peter</MiddleName>
 		<LastName>Hossack</LastName>
 		<Gender>Male</Gender>
@@ -57,13 +58,14 @@
 	<PlacementTest>
 		<ID>5642846911</ID>
 		<StudentCode>S-164267</StudentCode>
+		<StaffCode>ILAV-01699</StaffCode>
 		<PersonnelNumber>024534</PersonnelNumber>
 		<Center>TC-HCMC2</Center>
 		<PTStatus>0</PTStatus>
 		<User>thuy.vo</User>
 		<Name>Võ Đặng Thị Diễm Thùy</Name>
 		<Email>thuy.vo@ilavietnam.edu.vn</Email>
-		<Note>Finished H22YJ-6B-2302 in Oct.2023
+		<Note>Finished H22YJ-6B-2302 in Oct.2023 
 </Note>
 	</PlacementTest>
 </PlacementTestInformation>
