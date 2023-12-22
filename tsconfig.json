@@ -20,7 +20,6 @@
   },
   "include": [
     "./src/**/*",
-    "src/services/_index.service.ts"
   ],
   "ts-node": {
     "require": [
