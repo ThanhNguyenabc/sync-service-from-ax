@@ -2,8 +2,8 @@ FROM node:latest as base
 USER root
 RUN mkdir /bitnami
 RUN mkdir /logs
-RUN chown root:root /bitnami
-RUN chown root:root /logs
+RUN chown -R 1001:1001 /bitnami
+RUN chown -R 1001:1001 /logs
 
 WORKDIR /app
 # copy all dpendecies
