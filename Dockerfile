@@ -1,5 +1,10 @@
 FROM node:latest as base
 USER root
+RUN mkdir /bitnami
+RUN mkdir /logs
+RUN chown root:root /bitnami
+RUN chown root:root /logs
+
 WORKDIR /app
 # copy all dpendecies
 COPY package.json nodemon.json tsconfig.json ./
