@@ -1,7 +1,7 @@
 export const Age_Mapping = [
   {
     level: "JumpStart",
-    code: "JS",
+    code: "K",
     from: 2,
     to: 6,
   },
