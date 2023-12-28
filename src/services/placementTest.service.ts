@@ -14,13 +14,14 @@ import {
   updatePlacementTest,
 } from "@/apis/placement_test.api";
 import {
-  AXPlacementTest,
   AXPlacementTestInfor,
+  AXStudentProfile,
   Class,
   ClassSeat,
   ClassType,
   User,
 } from "@/models/_index";
+import { Age_Mapping } from "@/utils/constants";
 import { LMS_TIME_FORMAT } from "@/utils/date_utils";
 import logger, { logMessage } from "@/utils/logger";
 import assert from "assert";
@@ -35,12 +36,30 @@ const checkValidPlacementTest = (data: AXPlacementTestInfor) => {
   return true;
 };
 
+const getProgramPTTest = (student: AXStudentProfile): string => {
+  const dateOfBirth = dayjs(student.DOB);
+
+  const now = dayjs();
+  const numberOfyears = now.diff(dateOfBirth, "months") / 12;
+
+  const program = Age_Mapping.filter(
+    ({ from, to }) => from <= numberOfyears && numberOfyears < to
+  )?.at(0);
+
+  return (program && `${program.code}-PT-000`) ?? "";
+};
+
 const createClassForTest = async (
-  placementTest: AXPlacementTest,
+  placementTestInfor: AXPlacementTestInfor,
   teacher: User
 ) => {
   const startTime = dayjs().format(LMS_TIME_FORMAT);
   const endTime = dayjs().add(90, "minutes").format(LMS_TIME_FORMAT);
+  const placementTest = placementTestInfor.PlacementTest;
+
+  const programPTTest = placementTestInfor.StudentInformation
+    ? getProgramPTTest(placementTestInfor.StudentInformation)
+    : "";
 
   // create class
   const studentClass: Class = {
@@ -49,11 +68,12 @@ const createClassForTest = async (
     date_start: Number(startTime),
     date_end: Number(endTime),
     type: ClassType.placement,
-    center_id: placementTest.Center,
+    center_id: placementTest?.Center,
     seats_taken: 1,
-    online: placementTest.PTStatus,
-    notes: placementTest.Note,
+    online: placementTest?.PTStatus,
+    notes: placementTest?.Note,
     teacher_id: teacher.id,
+    lesson_id: programPTTest,
   };
 
   const classId = await createClass(studentClass);
@@ -136,7 +156,7 @@ const getStudentAndTeacherInfor = async (
 };
 
 const createPlacementTest = async (
-  placementTest: AXPlacementTest,
+  placementTest: AXPlacementTestInfor,
   teacher: User,
   student: User
 ) => {
@@ -189,11 +209,7 @@ export const addOrUpdatePlacementTest = async (data: AXPlacementTestInfor) => {
 
   try {
     if (!placementTest?.id && teacher && student) {
-      const { classId } = await createPlacementTest(
-        data.PlacementTest,
-        teacher,
-        student
-      );
+      const { classId } = await createPlacementTest(data, teacher, student);
 
       // insert data to placementTest table
       await insertPlacementTest({
@@ -223,6 +239,7 @@ export const addOrUpdatePlacementTest = async (data: AXPlacementTestInfor) => {
               online: data.PlacementTest.PTStatus,
               teacher_id: teacher?.id,
               notes: data.PlacementTest.Note,
+              lesson_id: getProgramPTTest(data.StudentInformation),
             },
           }),
 

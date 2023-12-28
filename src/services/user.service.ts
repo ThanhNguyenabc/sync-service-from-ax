@@ -1,6 +1,7 @@
 import { getUsers, createUsers, updateUsers } from "@/apis/_index";
 import { AXStudentProfile, User } from "@/models/_index";
 import logger, { logMessage } from "@/utils/logger";
+import dayjs from "dayjs";
 
 const syncStudent = async (students: Array<AXStudentProfile>) => {
   logger.info(logMessage("start", "student", "sync students"));
@@ -48,6 +49,7 @@ const syncStudent = async (students: Array<AXStudentProfile>) => {
         mobile: axUser.MobilePhone,
         address: axUser.Address,
         staffcode: axUser.StudentCode,
+        birthdate: Number(dayjs(axUser.DOB).format("YYYYMMDD")),
       };
 
       if (lmsExistingUsers && lmsExistingUsers[axUser.StudentCode!]) {
