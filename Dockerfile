@@ -1,4 +1,4 @@
-FROM node:latest as base
+FROM node:18.16.1-alpine as base
 USER root
 WORKDIR /app
 # copy all dpendecies
@@ -12,7 +12,8 @@ EXPOSE 3000
 
 
 FROM base as prod
-RUN yarn build
+# RUN yarn build
+RUN echo "This is production env"
 ENV NODE_ENV=production
 CMD [ "yarn", "start" ]
 
