@@ -7,18 +7,18 @@ import { addOrUpdatePlacementTest } from "@/services/placementTest.service";
 
 const kafkaManager = KafkaManager.getInstance();
 
-// kafkaManager.consume(
-//   PlacementTestTopic,
-//   async (topic: string, message: Message) => {
-//     try {
-//       const axData = await parseXMLFile(message.value?.toString() || "");
-//       const placementTest = axData["PlacementTestInformation"];
-//       placementTest && addOrUpdatePlacementTest(placementTest);
-//     } catch (error) {
-//       logger.error(logMessage("error", "placement-test-message", `${error}`));
-//     }
-//   }
-// );
+kafkaManager.consume(
+  PlacementTestTopic,
+  async (topic: string, message: Message) => {
+    try {
+      const axData = await parseXMLFile(message.value?.toString() || "");
+      const placementTest = axData["PlacementTestInformation"];
+      placementTest && addOrUpdatePlacementTest(placementTest);
+    } catch (error) {
+      logger.error(logMessage("error", "placement-test-message", `${error}`));
+    }
+  }
+);
 
 const syncPlacementTest = async (req: Request, res: Response) => {
   try {
