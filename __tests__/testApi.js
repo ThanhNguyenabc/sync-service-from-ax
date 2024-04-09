@@ -1,6 +1,6 @@
 const { readFile } = require("fs");
 
-const TEST_HOST = "http://172.17.96.28:3000";
+const TEST_HOST = "http://172.17.97.28:3000";
 const LOCAL_HOST = "http://localhost:3000";
 
 const syncCourseInfor = async () => {
@@ -11,8 +11,7 @@ const syncCourseInfor = async () => {
       return;
     }
 
-    console.log(LOCAL_HOST);
-    await fetch(`${LOCAL_HOST}/parse-xml`, {
+    await fetch(`${TEST_HOST}/parse-xml`, {
       method: "POST",
       headers: {
         Accept: "*/*",
@@ -37,7 +36,6 @@ const syncPlacementTest = async () => {
       return;
     }
 
-    console.log(`${LOCAL_HOST}/placement-tests`);
     await fetch(`${LOCAL_HOST}/placement-tests`, {
       method: "POST",
       headers: {
@@ -55,4 +53,4 @@ const syncPlacementTest = async () => {
   });
 };
 syncCourseInfor();
-syncPlacementTest();
+// syncPlacementTest();
