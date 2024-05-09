@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ClassInformation>
+	<ClassCode>BD1YJ-2A-24S1-N</ClassCode>
+	<ClassName>a Super Juniors Summer Course</ClassName>
+	<ClassGroup>Summer</ClassGroup>
+	<ProductGroup>EY</ProductGroup>
+	<ProgrammeName>Super Juniors</ProgrammeName>
+	<LevelId>J2-B2</LevelId>
+	<LevelName>Beginner 2 level</LevelName>
+	<Module>A</Module>
+	<Hours>90</Hours>
+	<Week>6</Week>
+	<PreceedingClass/>
+	<CourseTemplate>TBC</CourseTemplate>
+	<ClassStatus>1</ClassStatus>
+	<Company/>
+	<Days>Mon/Tue/Wed/Thu/Fri</Days>
+	<Shift>5</Shift>
+	<StartTime>08:30:00</StartTime>
+	<EndTime>11:30:00</EndTime>
+	<BreakTime>0</BreakTime>
+	<UnscheduledHour>0</UnscheduledHour>
+	<MaxAttendant>19</MaxAttendant>
+	<Room>TBC</Room>
+	<TeacherName/>
+	<TeacherPersonNum/>
+	<TeacherStaffCode/>
+	<TA1Name>0</TA1Name>
+	<TA1PersonNum>0</TA1PersonNum>
+	<TA1StaffCode/>
+	<TA2Name>0</TA2Name>
+	<TA2PersonNum>0</TA2PersonNum>
+	<TA2StaffCode/>
+	<Center>TC-BD1</Center>
+	<StartDate>2024/Jun/10</StartDate>
+	<EndDate>2024/Jul/19</EndDate>
+	<CourseScheduleFileName/>
+	<Fee>39550000</Fee>
+	<NoOfSts>5</NoOfSts>
+	<CompanyCode/>
+	<ContractId/>
+</ClassInformation><?xml version="1.0" encoding="utf-8"?>
+<ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240610</LessonDate>
+		<LessonNo>1</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240611</LessonDate>
+		<LessonNo>2</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240612</LessonDate>
+		<LessonNo>3</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240613</LessonDate>
+		<LessonNo>4</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240614</LessonDate>
+		<LessonNo>5</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240617</LessonDate>
+		<LessonNo>6</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240618</LessonDate>
+		<LessonNo>7</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240619</LessonDate>
+		<LessonNo>8</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240620</LessonDate>
+		<LessonNo>9</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240621</LessonDate>
+		<LessonNo>10</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240624</LessonDate>
+		<LessonNo>11</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240625</LessonDate>
+		<LessonNo>12</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240626</LessonDate>
+		<LessonNo>13</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240627</LessonDate>
+		<LessonNo>14</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240628</LessonDate>
+		<LessonNo>15</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240701</LessonDate>
+		<LessonNo>16</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240702</LessonDate>
+		<LessonNo>17</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240703</LessonDate>
+		<LessonNo>18</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240704</LessonDate>
+		<LessonNo>19</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240705</LessonDate>
+		<LessonNo>20</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240708</LessonDate>
+		<LessonNo>21</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240709</LessonDate>
+		<LessonNo>22</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240710</LessonDate>
+		<LessonNo>23</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240711</LessonDate>
+		<LessonNo>24</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240712</LessonDate>
+		<LessonNo>25</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240715</LessonDate>
+		<LessonNo>26</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240716</LessonDate>
+		<LessonNo>27</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240717</LessonDate>
+		<LessonNo>28</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240718</LessonDate>
+		<LessonNo>29</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240719</LessonDate>
+		<LessonNo>30</LessonNo>
+		<From> 8:30</From>
+		<To>11:30</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+</ClassSchedule><?xml version="1.0" encoding="utf-8"?>
+<Teachers/><?xml version="1.0" encoding="utf-8"?>
+<ClassLessonTeachersTAs/><?xml version="1.0" encoding="utf-8"?>
+<Registrations>
+	<RegistrationInfo>
+		<Registration>Reg-001815197</Registration>
+		<RegistrationDate>30/03/2024</RegistrationDate>
+		<StudentCode>S-365022</StudentCode>
+		<ActualStartDate>10/06/2024</ActualStartDate>
+		<ActualEndDate>19/07/2024</ActualEndDate>
+		<StudentType>Brand New</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jun/10</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001815913</Registration>
+		<RegistrationDate>31/03/2024</RegistrationDate>
+		<StudentCode>S-250795</StudentCode>
+		<ActualStartDate>10/06/2024</ActualStartDate>
+		<ActualEndDate>19/07/2024</ActualEndDate>
+		<StudentType>Brand New</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jun/10</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001824376</Registration>
+		<RegistrationDate>13/04/2024</RegistrationDate>
+		<StudentCode>S-368776</StudentCode>
+		<ActualStartDate>10/06/2024</ActualStartDate>
+		<ActualEndDate>19/07/2024</ActualEndDate>
+		<StudentType>Brand New</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jun/10</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001830366</Registration>
+		<RegistrationDate>21/04/2024</RegistrationDate>
+		<StudentCode>S-182076</StudentCode>
+		<ActualStartDate>10/06/2024</ActualStartDate>
+		<ActualEndDate>19/07/2024</ActualEndDate>
+		<StudentType>Returning</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jun/10</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001834397</Registration>
+		<RegistrationDate>26/04/2024</RegistrationDate>
+		<StudentCode>S-222648</StudentCode>
+		<ActualStartDate>10/06/2024</ActualStartDate>
+		<ActualEndDate>19/07/2024</ActualEndDate>
+		<StudentType>Re-Enrolled</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass>BD1YJOLA-2A-2402</RegisPreviousClass>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jun/10</AcademicDate>
+	</RegistrationInfo>
+</Registrations><?xml version="1.0" encoding="utf-8"?>
+<StudentsInformation>
+	<StudentInformation>
+		<StudentCode>S-250795</StudentCode>
+		<FirstName>Anh</FirstName>
+		<MiddleName>Trâm</MiddleName>
+		<LastName>Nguyễn Trần</LastName>
+		<PersonalSuffix/>
+		<SearchName>Nguyễn Trần Trâm Anh</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0961978487</MobilePhone>
+		<Birthday>21</Birthday>
+		<BirthMonth>June</BirthMonth>
+		<BirthYear>2014</BirthYear>
+		<DOB>2014-June-21</DOB>
+		<Telephone/>
+		<Email>tranthihuongct@gmail.com</Email>
+		<EmailStudent>anh.s250795@ilamail.edu.vn</EmailStudent>
+		<Address>Tổ 9B, khu phố 2, Phường Hưng Long
+Tỉnh Bình Phước
+Central
+VNM</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BD2</Center>
+		<LocationID>TC-BD2</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>23/10/2022</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-365022</StudentCode>
+		<FirstName>Kiệt</FirstName>
+		<MiddleName>Vũ</MiddleName>
+		<LastName>Hu</LastName>
+		<PersonalSuffix/>
+		<SearchName>Hu Vũ Kiệt</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0938973880</MobilePhone>
+		<Birthday>9</Birthday>
+		<BirthMonth>June</BirthMonth>
+		<BirthYear>2013</BirthYear>
+		<DOB>2013-June-9</DOB>
+		<Telephone>0938973880</Telephone>
+		<Email>dianwill2000@hotmail.com</Email>
+		<EmailStudent>kiet.s365022@ilamail.edu.vn</EmailStudent>
+		<Address>Phú Lợi
+Tỉnh Bình Dương
+South
+VNM</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BD1</Center>
+		<LocationID>TC-BD1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>30/03/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-368776</StudentCode>
+		<FirstName>Hoàng</FirstName>
+		<MiddleName>Nhật</MiddleName>
+		<LastName>Võ</LastName>
+		<PersonalSuffix/>
+		<SearchName>Võ Nhật Hoàng</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0944332133</MobilePhone>
+		<Birthday>26</Birthday>
+		<BirthMonth>January</BirthMonth>
+		<BirthYear>2014</BirthYear>
+		<DOB>2014-January-26</DOB>
+		<Telephone>0944332133</Telephone>
+		<Email>hoangquocvo7@gmail.com</Email>
+		<EmailStudent>hoang.s368776@ilamail.edu.vn</EmailStudent>
+		<Address>Ấp 1
+Tỉnh Bình Phước
+Central
+VNM</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BD1</Center>
+		<LocationID>TC-BD1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>13/04/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-182076</StudentCode>
+		<FirstName>Lâm</FirstName>
+		<MiddleName>Quốc</MiddleName>
+		<LastName>Nguyễn</LastName>
+		<PersonalSuffix/>
+		<SearchName>Nguyễn Quốc Lâm</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0919023039</MobilePhone>
+		<Birthday>17</Birthday>
+		<BirthMonth>November</BirthMonth>
+		<BirthYear>2017</BirthYear>
+		<DOB>2017-November-17</DOB>
+		<Telephone/>
+		<Email>tonguyen3979@gmail.com</Email>
+		<EmailStudent>lam.s182076@ilamail.edu.vn</EmailStudent>
+		<Address>119/18 Khu phố 8, Tổ 66, Đường Nguyễn Tri Phương
+Tỉnh Bình Dương
+South
+VNM</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BD1</Center>
+		<LocationID>TC-BD1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>12/12/2020</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-222648</StudentCode>
+		<FirstName>My</FirstName>
+		<MiddleName>Quỳnh</MiddleName>
+		<LastName>Lê Ngọc</LastName>
+		<PersonalSuffix/>
+		<SearchName>Lê Ngọc Quỳnh My</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0918420469</MobilePhone>
+		<Birthday>29</Birthday>
+		<BirthMonth>May</BirthMonth>
+		<BirthYear>2016</BirthYear>
+		<DOB>2016-May-29</DOB>
+		<Telephone/>
+		<Email/>
+		<EmailStudent>my.s222648@ilamail.edu.vn</EmailStudent>
+		<Address>632 Đại lộ Bình Dương
+Tỉnh Bình Dương
+South
+VNM</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BD1</Center>
+		<LocationID>TC-BD1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>24/05/2022</EntryDate>
+	</StudentInformation>
+</StudentsInformation>

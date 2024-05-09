@@ -1,6 +1,7 @@
 export interface AXCourse {
   ClassCode?: string;
   ClassName?: string;
+  ClassGroup?: string;
   ProgrammeName?: string;
   LevelId?: string;
   Module?: string;

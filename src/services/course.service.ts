@@ -37,9 +37,16 @@ const createCourseInfo = async (
       dayjs(`${axClassInfo.StartDate} ${startTime.hour}:${startTime.minute}`)
     ) / 60000;
 
-  const program = `${axClassInfo.ProgrammeName} ${
+  let program = `${axClassInfo.ProgrammeName} ${
     Number(lesson_duration) / 60
   } hours`;
+
+  const classGroup = axClassInfo.ClassGroup;
+
+  // Add prefix with summer course
+  if (classGroup?.toLowerCase() == "summer") {
+    program = `${classGroup}${startDate.format("YYYY")} ${program}`;
+  }
 
   const course: Course = {
     name: axClassInfo.ClassCode,
@@ -89,6 +96,8 @@ const createCourseInfo = async (
       course.staff = JSON.stringify(staff);
     }
   }
+
+  console.log(course);
 
   return {
     startTime,
