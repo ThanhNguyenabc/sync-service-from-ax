@@ -97,8 +97,6 @@ const createCourseInfo = async (
     }
   }
 
-  console.log(course);
-
   return {
     startTime,
     endTime,

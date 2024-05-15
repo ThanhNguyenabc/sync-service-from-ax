@@ -19,7 +19,8 @@ import {
 } from "@/apis/_index";
 import { formatHour } from "@/utils/_index";
 import logger, { logMessage } from "@/utils/logger";
-import { child } from "winston";
+import { Courses_Classes_Calendar } from "@/utils/class_helper";
+import moment from "moment";
 
 const getUsersToMap = async (ids: Array<string>) => {
   const users = await getUsers(ids);
@@ -40,7 +41,16 @@ const syncClasses = async (
 ) => {
   logger.info(logMessage("start", "classes", "sync classes"));
   try {
-    const { id: courseId, program, level, lesson_duration, center_id } = course;
+    let {
+      id: courseId,
+      program,
+      level,
+      schedule,
+      lesson_duration,
+      staff,
+      center_id,
+      date_start,
+    } = course;
     const programConfig = await fetchProgramConfig();
     const programme = programConfig?.[program as keyof typeof programConfig];
 
@@ -94,54 +104,87 @@ const syncClasses = async (
       teachersInfo = await getUsersToMap(teacherIds);
     }
 
-    const courseTime =
-      (InMemoryCache.get(course.id || "") as {
-        startTime: Time;
-        endTime: Time;
-      }) || {};
+    // Generate calendar
+    const lessonDuration = Number(lesson_duration) / 60;
 
-    const promises = [];
-    const startTime = formatHour(courseTime["startTime"] || "");
-    const endTime = formatHour(courseTime["endTime"] || "");
+    staff = staff ? JSON.parse(staff) : null;
 
-    for (let i = 0; i < axClassSchedule.length; i++) {
-      const item = axClassSchedule[i];
-      if (item.LessonStatus !== "Cancelled") {
-        promises.push(
-          new Promise<Class>((res) => {
-            let classData: { [key: string]: any } = {};
-            if (teachersInfo && lessonsMap) {
-              const users = lessonsMap?.[item.LessonNo];
-              classData["teacher_id"] =
-                teachersInfo?.[users?.["teacher"]]?.id || null;
+    let calendar = Courses_Classes_Calendar(
+      moment(`${date_start}`, "YYYYMMDD"),
+      JSON.parse(schedule!),
+      lessons,
+      lessonDuration,
+      [],
+      lessonDuration
+    );
 
-              let taNum = 1;
+    let classes = [];
 
-              users?.ta?.split(",").forEach((item) => {
-                classData[`ta${taNum}_id`] = teachersInfo?.[item]?.id || null;
-              });
-            }
-            classData = {
-              ...classData,
-              duration: Number(lesson_duration),
-              lesson_id: lessons[item.LessonNo - 1],
-              teacher_type: "native",
-              date_start: `${item["LessonDate"]}${startTime}`,
-              date_end: `${item["LessonDate"]}${endTime}`,
-              classroom_id: course.room,
-            };
-            res(classData);
-          })
-        );
+    for (const item of calendar) {
+      let date = moment(item["date"], "YYYYMMDDHHmm");
+      for (const slot of item["session"]) {
+        const lesson_id = slot["lesson"];
+        const duration = slot["duration"] * 60;
+        const date_start = date;
+        const date_end = date_start.clone().add(duration, "minutes");
+        classes.push({
+          date_start: date_start.format("YYYYMMDDHHmm"),
+          date_end: date_end.format("YYYYMMDDHHmm"),
+          teacher_type: "native",
+          classroom_id: course.room,
+          lesson_id,
+          duration,
+          teacher_id: staff?.["teacher_id" as keyof typeof staff] ?? null,
+          ta1_id: staff?.["ta1_id" as keyof typeof staff] ?? null,
+          ta2_id: staff?.["ta2_id" as keyof typeof staff] ?? null,
+          ta3_id: staff?.["ta3_id" as keyof typeof staff] ?? null,
+        });
+        date = date_end;
       }
     }
-    const classes = await Promise.all(promises);
+
+    // for (let i = 0; i < axClassSchedule.length; i++) {
+    //   const item = axClassSchedule[i];
+    //   if (item.LessonStatus !== "Cancelled") {
+    //     promises.push(
+    //       new Promise<Class>((res) => {
+    //         let classData: { [key: string]: any } = {};
+    //         if (teachersInfo && lessonsMap) {
+    //           const users = lessonsMap?.[item.LessonNo];
+    //           classData["teacher_id"] =
+    //             teachersInfo?.[users?.["teacher"]]?.id || null;
+
+    //           let taNum = 1;
+
+    //           users?.ta?.split(",").forEach((item) => {
+    //             classData[`ta${taNum++}_id`] = teachersInfo?.[item]?.id || null;
+    //           });
+    //         }
+    //         classData = {
+    //           ...classData,
+    //           duration: Number(lesson_duration),
+    //           lesson_id: lessons[item.LessonNo - 1],
+    //           teacher_type: "native",
+    //           date_start: `${item["LessonDate"]}${startTime}`,
+    //           date_end: `${item["LessonDate"]}${endTime}`,
+    //           classroom_id: course.room,
+    //         };
+    //         res(classData);
+    //       })
+    //     );
+    //   }
+    // }
+
+    // const classes = await Promise.all(promises);
+
     const data = {
       courseId: courseId!,
       center: center_id!,
       classes,
     };
 
+    console.log(data);
+    
     const res = await rolloutClasses(data);
     res && res?.length > 0
       ? logger.info(logMessage("success", "classes", "sync successfully"))
@@ -149,6 +192,7 @@ const syncClasses = async (
 
     return res;
   } catch (error) {
+    console.log(error);
     logger.error(logMessage("error", "classes", String(error)));
   }
   return [];
