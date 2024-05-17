@@ -77,3 +77,15 @@ export const updateCourse = async (data: Course) => {
   } catch (error) {}
   return null;
 };
+
+export const getCourseById = async (
+  courseId: string
+): Promise<Course | undefined | null> => {
+  try {
+    const res = await fetcher<Course>("Courses_Read", {
+      id: courseId,
+    });
+    return res.data;
+  } catch (error) {}
+  return null;
+};

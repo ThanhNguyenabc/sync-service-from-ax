@@ -4,20 +4,18 @@ import {
   AXClassSchedule,
   AXRegistration,
   AXTeacherTA,
-  Class,
   Course,
   RegistrationType,
-  Time,
   User,
   UserRole,
 } from "@/models/_index";
 import {
   addStudentsToCourse,
   fetchProgramConfig,
+  getTimeOff,
   getUsers,
   rolloutClasses,
 } from "@/apis/_index";
-import { formatHour } from "@/utils/_index";
 import logger, { logMessage } from "@/utils/logger";
 import { Courses_Classes_Calendar } from "@/utils/class_helper";
 import moment from "moment";
@@ -51,6 +49,7 @@ const syncClasses = async (
       center_id,
       date_start,
     } = course;
+
     const programConfig = await fetchProgramConfig();
     const programme = programConfig?.[program as keyof typeof programConfig];
 
@@ -67,42 +66,51 @@ const syncClasses = async (
       return [];
     }
 
-    const teacherIds: string[] = [];
+    // const teacherIds: string[] = [];
 
-    const lessonsMap = axClassTeachers?.reduce((result: any, item) => {
-      let data = (result[item.LessonNo] || {}) as { [key: string]: string };
+    // const lessonsMap = axClassTeachers?.reduce((result: any, item) => {
+    //   let data = (result[item.LessonNo] || {}) as { [key: string]: string };
 
-      if (
-        item.StaffCode &&
-        item.StaffCode.length > 0 &&
-        teacherIds.indexOf(item.StaffCode) < 0
-      ) {
-        teacherIds.push(item.StaffCode);
-      }
-      let userIds = data[`${item.Role.toLowerCase()}`];
+    //   if (
+    //     item.StaffCode &&
+    //     item.StaffCode.length > 0 &&
+    //     teacherIds.indexOf(item.StaffCode) < 0
+    //   ) {
+    //     teacherIds.push(item.StaffCode);
+    //   }
+    //   let userIds = data[`${item.Role.toLowerCase()}`];
 
-      if (userIds && item.Role === UserRole.TA) {
-        userIds += `,${item.StaffCode}`;
-      } else {
-        userIds = item.StaffCode;
-      }
-      data[`${item.Role.toLowerCase()}`] = userIds;
+    //   if (userIds && item.Role === UserRole.TA) {
+    //     userIds += `,${item.StaffCode}`;
+    //   } else {
+    //     userIds = item.StaffCode;
+    //   }
+    //   data[`${item.Role.toLowerCase()}`] = userIds;
 
-      return {
-        ...result,
-        [item.LessonNo]: data,
-      };
-    }, {}) as {
-      [key: string]: {
-        teacher: string;
-        ta: string;
-      };
-    };
+    //   return {
+    //     ...result,
+    //     [item.LessonNo]: data,
+    //   };
+    // }, {}) as {
+    //   [key: string]: {
+    //     teacher: string;
+    //     ta: string;
+    //   };
+    // };
 
-    let teachersInfo: { [key: string]: User } | null = null;
-    if (teacherIds.length > 0) {
-      teachersInfo = await getUsersToMap(teacherIds);
-    }
+    // let teachersInfo: { [key: string]: User } | null = null;
+    // if (teacherIds.length > 0) {
+    //   teachersInfo = await getUsersToMap(teacherIds);
+    // }
+
+    // Get Time off
+    const timeoff = await Promise.all([
+      getTimeOff({ type: "global", value: "global" }),
+      getTimeOff({
+        type: "center",
+        value: center_id ?? "",
+      }),
+    ]).then((res) => res.flat());
 
     // Generate calendar
     const lessonDuration = Number(lesson_duration) / 60;
@@ -114,7 +122,7 @@ const syncClasses = async (
       JSON.parse(schedule!),
       lessons,
       lessonDuration,
-      [],
+      timeoff,
       lessonDuration
     );
 
@@ -183,8 +191,6 @@ const syncClasses = async (
       classes,
     };
 
-    console.log(data);
-    
     const res = await rolloutClasses(data);
     res && res?.length > 0
       ? logger.info(logMessage("success", "classes", "sync successfully"))

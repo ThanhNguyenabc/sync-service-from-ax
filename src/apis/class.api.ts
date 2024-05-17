@@ -41,11 +41,6 @@ export const createClass = async (
   return null;
 };
 
-export const getClassesByCourse = (courseId: number) => {
-  try {
-  } catch (error) {}
-};
-
 export const updateClassFields = async ({
   id,
   data,

@@ -1,3 +1,4 @@
+import { TimeOff } from "@/models/timeoff.model";
 import { Timeoff_Check } from "@/utils/date_utils";
 import moment, { Moment } from "moment";
 
@@ -9,7 +10,7 @@ export function Courses_Classes_Calendar(
   }>,
   lessons: Array<string>,
   lesson_duration: number,
-  timeoff: Array<{ date_from: string; date_to: string }> = [],
+  timeoff: Array<TimeOff> | null,
   content_duration = 2
 ) {
   // CALCULATE CALENDAR USING SCHEDULE AND TIME OFF
@@ -61,13 +62,10 @@ export function Courses_Classes_Calendar(
     const dateFromStr = date_from.format("YYYYMMDDHHmm");
     const dateToStr = date_to.format("YYYYMMDDHHmm");
 
-    if (Timeoff_Check(dateFromStr, dateToStr, timeoff)) {
-      // NOT AVAILABLE DUE TO TIME OFF
+    if (timeoff && Timeoff_Check(dateFromStr, dateToStr, timeoff)) {
       schedule_index++;
-    }
-    // DATE AVAILABLE
-    else {
-      calendar.push(date_from);
+    } else {
+      calendar.push(dateFromStr);
       schedule_index++;
     }
   }
