@@ -122,14 +122,15 @@ const syncCourse = async (
 
     const course = courseInfo["data"];
     if (currentCourse?.id) {
-      // update course information
+      // update course information without classes
       course.id = currentCourse.id;
-      course.classes = currentCourse.classes;
       const status = await Promise.all([updateCourse(course)]);
-      status &&
+      if (status) {
+        course.classes = currentCourse.classes;
         logger.info(
           logMessage("infor", "course", "successfully update course")
         );
+      }
     } else {
       course.status = "design";
       const newCourseId = await createCourse(course);
