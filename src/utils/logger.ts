@@ -1,4 +1,6 @@
 import { createLogger, format, transports } from "winston";
+import "winston-daily-rotate-file";
+
 const { errors, printf } = format;
 
 const customFormat = printf(({ level, message, timestamp }) => {
@@ -15,13 +17,17 @@ const logger = createLogger({
     format.colorize()
   ),
   transports: [
-    new transports.File({
+    new transports.DailyRotateFile({
       filename: "logs/xml-sync-service.log",
+      datePattern: "YYYY-MM-DD-HH",
+      zippedArchive: true,
+      maxSize: "20m",
+      maxFiles: "7d",
     }),
   ],
 });
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "development") {
   logger.add(new transports.Console({}));
 }
 
