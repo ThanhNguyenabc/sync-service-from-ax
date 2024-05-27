@@ -3,6 +3,7 @@ import { AXCourse, AXTeacherProfile, Course } from "@/models/_index";
 import dayjs from "dayjs";
 import {
   createCourse,
+  fetchProgramConfig,
   getCourseByCondition,
   getUsers,
   updateCourse,
@@ -37,6 +38,8 @@ const createCourseInfo = async (
       dayjs(`${axClassInfo.StartDate} ${startTime.hour}:${startTime.minute}`)
     ) / 60000;
 
+  // Assign program
+  const programConfig = await fetchProgramConfig();
   let program = `${axClassInfo.ProgrammeName} ${
     Number(lesson_duration) / 60
   } hours`;
@@ -44,8 +47,16 @@ const createCourseInfo = async (
   const classGroup = axClassInfo.ClassGroup;
 
   // Add prefix with summer course
-  if (classGroup?.toLowerCase() == "summer") {
-    program = `${classGroup}${startDate.format("YYYY")} ${program}`;
+  if (classGroup?.toLowerCase() == "summer" && programConfig) {
+    for (const [key, value] of Object.entries(programConfig)) {
+      if (
+        value.hasOwnProperty(level) &&
+        key.toLowerCase().indexOf("summer") >= 0
+      ) {
+        program = key;
+        break;
+      }
+    }
   }
 
   const course: Course = {
