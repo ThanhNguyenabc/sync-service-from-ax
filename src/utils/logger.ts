@@ -18,7 +18,7 @@ const logger = createLogger({
   ),
   transports: [
     new transports.DailyRotateFile({
-      filename: "logs/xml-sync-service.log",
+      filename: "logs/sync-service.log",
       datePattern: "YYYY-MM-DD",
       zippedArchive: true,
       maxSize: "20m",
