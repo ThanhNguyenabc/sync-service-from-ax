@@ -1,8 +1,8 @@
-version: '3.3'
+version: "3.3"
 
 services:
   app:
-    build: 
+    build:
       context: ./
       target: prod
     container_name: xml_parser_app
@@ -24,6 +24,8 @@ services:
       - 2181:2181
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
+    volumes:
+      - ./bitnami/zookeeper:/bitnami/zookeeper
   kafka:
     image: bitnami/kafka:latest
     container_name: kafka
@@ -35,6 +37,8 @@ services:
       - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://localhost:9093
       - KAFKA_INTER_BROKER_LISTENER_NAME=CLIENT
       - ALLOW_PLAINTEXT_LISTENER=yes
+    volumes:
+      - ./bitnami/kafka:/bitnami/kafka
     depends_on:
       - zookeeper
   kafdrop:
