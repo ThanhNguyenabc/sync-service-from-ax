@@ -14,7 +14,7 @@
 	<CourseTemplate>TBC</CourseTemplate>
 	<ClassStatus>1</ClassStatus>
 	<Company/>
-	<Days>Mon/Tue/Wed/Thu/Fri</Days>
+	<Days>Mon/Fri</Days>
 	<Shift>5</Shift>
 	<StartTime>08:30:00</StartTime>
 	<EndTime>11:30:00</EndTime>
@@ -31,9 +31,9 @@
 	<TA2Name>0</TA2Name>
 	<TA2PersonNum>0</TA2PersonNum>
 	<TA2StaffCode/>
-	<Center>TC-BD1</Center>
-	<StartDate>2024/Jun/10</StartDate>
-	<EndDate>2024/Jul/19</EndDate>
+	<Center>TC-HCMC34</Center>
+	<StartDate>2024/May/16</StartDate>
+	<EndDate>2024/Sep/02</EndDate>
 	<CourseScheduleFileName/>
 	<Fee>39550000</Fee>
 	<NoOfSts>5</NoOfSts>
@@ -362,8 +362,8 @@ Tỉnh Bình Phước
 Central
 VNM</Address>
 		<StudentGroup>Student</StudentGroup>
-		<Center>TC-BD2</Center>
-		<LocationID>TC-BD2</LocationID>
+		<Center>TC-HCMC34</Center>
+		<LocationID>TC-HCMC34</LocationID>
 		<Currency>VND</Currency>
 		<SSStudentID>0</SSStudentID>
 		<Gender/>
@@ -394,8 +394,8 @@ Tỉnh Bình Dương
 South
 VNM</Address>
 		<StudentGroup>Student</StudentGroup>
-		<Center>TC-BD1</Center>
-		<LocationID>TC-BD1</LocationID>
+		<Center>TC-HCMC34</Center>
+		<LocationID>TC-HCMC34</LocationID>
 		<Currency>VND</Currency>
 		<SSStudentID>0</SSStudentID>
 		<Gender/>
@@ -426,8 +426,8 @@ Tỉnh Bình Phước
 Central
 VNM</Address>
 		<StudentGroup>Student</StudentGroup>
-		<Center>TC-BD1</Center>
-		<LocationID>TC-BD1</LocationID>
+		<Center>TC-HCMC34</Center>
+		<LocationID>TC-HCMC34</LocationID>
 		<Currency>VND</Currency>
 		<SSStudentID>0</SSStudentID>
 		<Gender/>
@@ -458,8 +458,8 @@ Tỉnh Bình Dương
 South
 VNM</Address>
 		<StudentGroup>Student</StudentGroup>
-		<Center>TC-BD1</Center>
-		<LocationID>TC-BD1</LocationID>
+		<Center>TC-HCMC34</Center>
+		<LocationID>TC-HCMC34</LocationID>
 		<Currency>VND</Currency>
 		<SSStudentID>0</SSStudentID>
 		<Gender/>
@@ -490,8 +490,8 @@ Tỉnh Bình Dương
 South
 VNM</Address>
 		<StudentGroup>Student</StudentGroup>
-		<Center>TC-BD1</Center>
-		<LocationID>TC-BD1</LocationID>
+		<Center>TC-HCMC34</Center>
+		<LocationID>TC-HCMC34</LocationID>
 		<Currency>VND</Currency>
 		<SSStudentID>0</SSStudentID>
 		<Gender/>

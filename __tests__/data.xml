@@ -16,8 +16,8 @@
 	<Company></Company>
 	<Days>Sat/Sun</Days>
 	<Shift>6</Shift>
-	<StartTime>07:30:00</StartTime>
-	<EndTime>09:30:00</EndTime>
+	<StartTime>08:30:00</StartTime>
+	<EndTime>10:30:00</EndTime>
 	<BreakTime>0</BreakTime>
 	<UnscheduledHour>0</UnscheduledHour>
 	<MaxAttendant>19</MaxAttendant>
