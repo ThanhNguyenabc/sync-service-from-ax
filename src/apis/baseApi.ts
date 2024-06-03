@@ -1,6 +1,6 @@
 import logger from "@/utils/logger";
 import { getAppConfig } from "@/config/app_configs";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 const BASE_URL = getAppConfig()?.["LMS_API_URL"];
 const SERVER_CRASH = 100;
@@ -48,7 +48,11 @@ export const fetcher = async <T>(
       status: response.status,
       data: response.data,
     };
-  } catch (error) {
+  } catch (error: any) {
+    if (error instanceof AxiosError && process.env.NODE_ENV === "development") {
+      console.log(error.response?.headers);
+      console.log(error.response?.data);
+    }
     logger.error(`❌ [api] f=${fName} error --> ${error}`);
 
     return {
