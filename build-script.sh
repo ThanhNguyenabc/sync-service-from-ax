@@ -5,8 +5,8 @@ mkdir bitnami
 mkdir logs
 
 # chmod -R g+rwX 
-sudo chown g+rwx bitnami
-sudo chown g+rwx logs
+sudo chmod -R g+rwX bitnami
+sudo chmod -R g+rwX logs
 
 
 # run docker to build app
