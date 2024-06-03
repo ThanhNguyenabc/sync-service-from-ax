@@ -4,9 +4,9 @@
 mkdir bitnami
 mkdir logs
 
-
-sudo chown -R u+rwx,g+rwx,o+rwx bitnami
-sudo chown -R u+rwx,g+rwx,o+rwx logs
+# chmod -R g+rwX 
+sudo chown -R g+rwx bitnami
+sudo chown -R g+rwx logs
 
 
 # run docker to build app
