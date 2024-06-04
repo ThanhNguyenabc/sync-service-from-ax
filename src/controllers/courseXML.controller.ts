@@ -18,6 +18,11 @@ kafkaManager.consume(CourseTopic, async (topic: string, message: Message) => {
     const axData = await parseXMLFile(message.value?.toString() || "");
 
     const classInfo = axData["ClassInformation"];
+
+    if(classInfo["ClassGroup"] !== "Summer") {
+      return;
+    }
+    
     const classSchedules = axData["ClassSchedule"]?.["ClassSchedule"];
     const registrations: AXRegistration[] | undefined | null =
       axData["Registrations"]?.["RegistrationInfo"];
@@ -65,20 +70,23 @@ kafkaManager.consume(CourseTopic, async (topic: string, message: Message) => {
 const handleCourseXMLFromAX = async (req: Request, res: Response) => {
   try {
     const xmlData: string | undefined | null = req.body["data"] || "";
+    
     if (!xmlData || xmlData.length == 0) {
       return res.status(400).json({
         status: 400,
         message: "Data is not valid",
       });
     }
+
     await kafkaManager.produce(CourseTopic, [
       { key: "xml-data", value: req.body["data"] || "" },
     ]);
 
     return res.status(200).json({
       status: 200,
-      message: "Received xml-data successfully",
+      message: "Received data successfully",
     });
+
   } catch (error) {
     logger.error(`❌ [route controller] --> ${error}`);
     return res.status(500).json({
