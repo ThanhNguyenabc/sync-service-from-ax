@@ -41,12 +41,11 @@ kafkaManager.consume(CourseTopic, async (topic: string, message: Message) => {
     // SYNC CLASSES
     if (
       course &&
-      (!course.classes || course.classes?.length == 0) &&
       classSchedules
     ) {
       const classes = await syncClasses(course, classSchedules, lessonTeachers);
       course.classes = classes || [];
-    }
+    } 
 
     // SYNC CLASSE SEATS
     if (
