@@ -188,7 +188,7 @@ const createPlacementTest = async (
 
     logMessage("error", "placementTest", "can not create new test");
   } catch (error) {
-    logger.error(logMessage("error", "placementTest", String(error)));
+    logger.error(logMessage("error", "placementTest", (error as Error).stack ?? ""));
   }
   return {};
 };
@@ -267,6 +267,6 @@ export const addOrUpdatePlacementTest = async (data: AXPlacementTestInfor) => {
       }
     }
   } catch (error) {
-    logger.error(logMessage("error", "placementTest", `${error}`));
+    logger.error(logMessage("error", "placementTest", (error as Error).stack ?? ""));
   }
 };
