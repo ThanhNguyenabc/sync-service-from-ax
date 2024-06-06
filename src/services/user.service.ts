@@ -72,7 +72,7 @@ const syncStudent = async (students: Array<AXStudentProfile>) => {
     }
     return true;
   } catch (error) {
-    logger.error(logMessage("error", "student", `${error}`));
+    logger.error(logMessage("error", "student", (error as Error).stack ?? ""));
   }
   return false;
 };

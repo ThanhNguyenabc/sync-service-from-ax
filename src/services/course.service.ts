@@ -79,18 +79,19 @@ const createCourseInfo = async (
   };
 
   //sync teachers to course
+  let teachers = {};
   if (axTeacherProfile && axTeacherProfile.length > 0) {
-    const userIds = axTeacherProfile.reduce((result, item) => {
+    const staffCodes = axTeacherProfile.reduce((result, item) => {
       if (item.StaffCode) result.push(item.StaffCode);
       return result;
     }, [] as string[]);
 
-    const users = userIds.length > 0 ? await getUsers(userIds) : null;
+    const users = staffCodes.length > 0 ? await getUsers(staffCodes) : null;
     if (users) {
       let staff: { [key: string]: any } = {};
 
       let no = 1;
-      users?.forEach((item) => {
+      users?.forEach((item, index) => {
         let key = "";
         switch (item.role) {
           case "teacher":
@@ -101,8 +102,11 @@ const createCourseInfo = async (
             no += 1;
             break;
         }
-
         staff[key] = item.id;
+        teachers = {
+          ...teachers,
+          [staffCodes[index]]: item.id,
+        };
       });
       course.staff = JSON.stringify(staff);
     }
@@ -111,6 +115,7 @@ const createCourseInfo = async (
   return {
     startTime,
     endTime,
+    staffs: teachers,
     data: course,
   };
 };
@@ -158,10 +163,11 @@ const syncCourse = async (
     InMemoryCache.set(`${course.id}`, {
       startTime: courseInfo["startTime"],
       endTime: courseInfo["endTime"],
+      staffs: courseInfo["staffs"],
     });
     return course;
   } catch (error) {
-    logger.error(logMessage("error", "course", String(error)));
+    logger.error(logMessage("error", "course", (error as Error).stack ?? ""));
   }
 };
 

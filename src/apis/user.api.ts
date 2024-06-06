@@ -35,7 +35,6 @@ export const createUsers = async (
 ): Promise<User[] | null | undefined> => {
   try {
     const res = await fetcher<User[]>("Users_Create", { data: users });
-    const { data } = res;
     return res.data;
   } catch (error) {
     console.log(error);

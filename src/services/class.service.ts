@@ -66,43 +66,6 @@ const syncClasses = async (
       return [];
     }
 
-    // const teacherIds: string[] = [];
-
-    // const lessonsMap = axClassTeachers?.reduce((result: any, item) => {
-    //   let data = (result[item.LessonNo] || {}) as { [key: string]: string };
-
-    //   if (
-    //     item.StaffCode &&
-    //     item.StaffCode.length > 0 &&
-    //     teacherIds.indexOf(item.StaffCode) < 0
-    //   ) {
-    //     teacherIds.push(item.StaffCode);
-    //   }
-    //   let userIds = data[`${item.Role.toLowerCase()}`];
-
-    //   if (userIds && item.Role === UserRole.TA) {
-    //     userIds += `,${item.StaffCode}`;
-    //   } else {
-    //     userIds = item.StaffCode;
-    //   }
-    //   data[`${item.Role.toLowerCase()}`] = userIds;
-
-    //   return {
-    //     ...result,
-    //     [item.LessonNo]: data,
-    //   };
-    // }, {}) as {
-    //   [key: string]: {
-    //     teacher: string;
-    //     ta: string;
-    //   };
-    // };
-
-    // let teachersInfo: { [key: string]: User } | null = null;
-    // if (teacherIds.length > 0) {
-    //   teachersInfo = await getUsersToMap(teacherIds);
-    // }
-
     // Get Time off
     const timeoff = await Promise.all([
       getTimeOff({ type: "global", value: "global" }),
@@ -117,7 +80,7 @@ const syncClasses = async (
 
     staff = staff ? JSON.parse(staff) : null;
 
-    let calendar = Courses_Classes_Calendar(
+    const calendar = Courses_Classes_Calendar(
       moment(`${date_start}`, "YYYYMMDD"),
       JSON.parse(schedule!),
       lessons,
@@ -128,62 +91,61 @@ const syncClasses = async (
 
     let classes = [];
 
+    const { staffs = null } = InMemoryCache.get(courseId!) as {
+      staffs?: { [key: string]: number };
+    };
+
+    let axTeacherScheduling: {
+      [key: string]: { teacherId?: number; taIds?: number[] };
+    } = {};
+
+    axClassTeachers?.forEach((item) => {
+      let { teacherId, taIds = [] } =
+        axTeacherScheduling[item["LessonNo"]] ?? {};
+      if (item["Role"] === UserRole.Teacher) {
+        teacherId = staffs?.[item["StaffCode"]] ?? 0;
+      } else {
+        const taId = staffs?.[item["StaffCode"]] ?? 0;
+        taIds.push(taId);
+      }
+      axTeacherScheduling[item["LessonNo"]] = { teacherId, taIds };
+    });
+
+    let j = 0;
     for (const item of calendar) {
       let date = moment(item["date"], "YYYYMMDDHHmm");
-      for (const slot of item["session"]) {
-        const lesson_id = slot["lesson"];
-        const duration = slot["duration"] * 60;
-        const date_start = date;
-        const date_end = date_start.clone().add(duration, "minutes");
-        classes.push({
-          date_start: date_start.format("YYYYMMDDHHmm"),
-          date_end: date_end.format("YYYYMMDDHHmm"),
-          teacher_type: "native",
-          classroom_id: course.room,
-          lesson_id,
-          duration,
-          teacher_id: staff?.["teacher_id" as keyof typeof staff] ?? null,
-          ta1_id: staff?.["ta1_id" as keyof typeof staff] ?? null,
-          ta2_id: staff?.["ta2_id" as keyof typeof staff] ?? null,
-          ta3_id: staff?.["ta3_id" as keyof typeof staff] ?? null,
-        });
-        date = date_end;
+      const axClass = axClassSchedule[j];
+      if (axClass && axClass.LessonNo) {
+        const lessonNo = axClass.LessonNo;
+        for (const slot of item["session"]) {
+          const { teacherId, taIds } =
+            axTeacherScheduling?.[lessonNo as keyof typeof axTeacherScheduling];
+          const listOfTA = taIds?.reduce(
+            (result, item, index) => ({
+              ...result,
+              [`ta${index + 1}_id`]: item,
+            }),
+            {}
+          );
+          const lesson_id = slot["lesson"];
+          const duration = slot["duration"] * 60;
+          const date_start = date;
+          const date_end = date_start.clone().add(duration, "minutes");
+          classes.push({
+            date_start: date_start.format("YYYYMMDDHHmm"),
+            date_end: date_end.format("YYYYMMDDHHmm"),
+            teacher_type: "native",
+            classroom_id: course.room,
+            lesson_id,
+            duration,
+            teacher_id: teacherId ?? null,
+            ...listOfTA,
+          });
+          date = date_end;
+        }
       }
+      j++;
     }
-
-    // for (let i = 0; i < axClassSchedule.length; i++) {
-    //   const item = axClassSchedule[i];
-    //   if (item.LessonStatus !== "Cancelled") {
-    //     promises.push(
-    //       new Promise<Class>((res) => {
-    //         let classData: { [key: string]: any } = {};
-    //         if (teachersInfo && lessonsMap) {
-    //           const users = lessonsMap?.[item.LessonNo];
-    //           classData["teacher_id"] =
-    //             teachersInfo?.[users?.["teacher"]]?.id || null;
-
-    //           let taNum = 1;
-
-    //           users?.ta?.split(",").forEach((item) => {
-    //             classData[`ta${taNum++}_id`] = teachersInfo?.[item]?.id || null;
-    //           });
-    //         }
-    //         classData = {
-    //           ...classData,
-    //           duration: Number(lesson_duration),
-    //           lesson_id: lessons[item.LessonNo - 1],
-    //           teacher_type: "native",
-    //           date_start: `${item["LessonDate"]}${startTime}`,
-    //           date_end: `${item["LessonDate"]}${endTime}`,
-    //           classroom_id: course.room,
-    //         };
-    //         res(classData);
-    //       })
-    //     );
-    //   }
-    // }
-
-    // const classes = await Promise.all(promises);
 
     const data = {
       courseId: courseId!,
@@ -192,14 +154,13 @@ const syncClasses = async (
     };
 
     const res = await rolloutClasses(data);
-    res && res?.length > 0
+    res && res!.length > 0
       ? logger.info(logMessage("success", "classes", "sync successfully"))
       : logger.error(logMessage("error", "classes", "sync fail"));
 
     return res;
   } catch (error) {
-    console.log(error);
-    logger.error(logMessage("error", "classes", String(error)));
+    logger.error(logMessage("error", "classes",  (error as Error).stack || ""));
   }
   return [];
 };
@@ -307,9 +268,8 @@ const syncClassSeats = async ({
     InMemoryCache.del(course.id || "");
     return true;
   } catch (error) {
-    logger.error(logMessage("error", "class seats", String(error)));
+    logger.error(logMessage("error", "class seats", (error as Error).stack ?? ""));
   }
   return false;
 };
-
 export { syncClasses, syncClassSeats };
