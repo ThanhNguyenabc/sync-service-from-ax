@@ -80,9 +80,13 @@ const createCourseInfo = async (
 
   //sync teachers to course
   let teachers = {};
-  if (axTeacherProfile && axTeacherProfile.length > 0) {
-    const staffCodes = axTeacherProfile.reduce((result, item) => {
-      if (item.StaffCode) result.push(item.StaffCode);
+  let teacherProfiles = Array.isArray(axTeacherProfile)
+    ? axTeacherProfile
+    : [axTeacherProfile];
+
+  if (teacherProfiles && teacherProfiles.length > 0) {
+    const staffCodes = teacherProfiles.reduce((result, item) => {
+      if (item?.StaffCode) result.push(item.StaffCode);
       return result;
     }, [] as string[]);
 

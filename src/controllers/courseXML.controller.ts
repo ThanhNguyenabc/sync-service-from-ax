@@ -19,14 +19,16 @@ kafkaManager.consume(CourseTopic, async (topic: string, message: Message) => {
 
     const classInfo = axData["ClassInformation"];
 
-    if(classInfo["ClassGroup"] !== "Summer") {
+    if (classInfo["ClassGroup"] !== "Summer") {
       return;
     }
-    
+
     const classSchedules = axData["ClassSchedule"]?.["ClassSchedule"];
     const registrations: AXRegistration[] | undefined | null =
       axData["Registrations"]?.["RegistrationInfo"];
-    const teachers = axData["Teachers"]?.["TeacherProfile"];
+
+    let teachers = axData["Teachers"]?.["TeacherProfile"];
+
     const lessonTeachers = axData["ClassLessonTeachersTAs"]?.["TeacherTA"];
     const students: AXStudentProfile[] | undefined | null =
       axData["StudentsInformation"]?.["StudentInformation"];
@@ -44,13 +46,10 @@ kafkaManager.consume(CourseTopic, async (topic: string, message: Message) => {
     const course = results[0] as Course | undefined;
 
     // SYNC CLASSES
-    if (
-      course &&
-      classSchedules
-    ) {
+    if (course && classSchedules) {
       const classes = await syncClasses(course, classSchedules, lessonTeachers);
       course.classes = classes || [];
-    } 
+    }
 
     // SYNC CLASSE SEATS
     if (
@@ -69,7 +68,7 @@ kafkaManager.consume(CourseTopic, async (topic: string, message: Message) => {
 const handleCourseXMLFromAX = async (req: Request, res: Response) => {
   try {
     const xmlData: string | undefined | null = req.body["data"] || "";
-    
+
     if (!xmlData || xmlData.length == 0) {
       return res.status(400).json({
         status: 400,
@@ -85,7 +84,6 @@ const handleCourseXMLFromAX = async (req: Request, res: Response) => {
       status: 200,
       message: "Received data successfully",
     });
-
   } catch (error) {
     logger.error(`❌ [route controller] --> ${error}`);
     return res.status(500).json({
