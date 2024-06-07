@@ -119,7 +119,9 @@ const syncClasses = async (
         const lessonNo = axClass.LessonNo;
         for (const slot of item["session"]) {
           const { teacherId, taIds } =
-            axTeacherScheduling?.[lessonNo as keyof typeof axTeacherScheduling];
+            axTeacherScheduling?.[
+              lessonNo as keyof typeof axTeacherScheduling
+            ] ?? {};
           const listOfTA = taIds?.reduce(
             (result, item, index) => ({
               ...result,
@@ -160,7 +162,7 @@ const syncClasses = async (
 
     return res;
   } catch (error) {
-    logger.error(logMessage("error", "classes",  (error as Error).stack || ""));
+    logger.error(logMessage("error", "classes", (error as Error).stack || ""));
   }
   return [];
 };
@@ -268,7 +270,9 @@ const syncClassSeats = async ({
     InMemoryCache.del(course.id || "");
     return true;
   } catch (error) {
-    logger.error(logMessage("error", "class seats", (error as Error).stack ?? ""));
+    logger.error(
+      logMessage("error", "class seats", (error as Error).stack ?? "")
+    );
   }
   return false;
 };
