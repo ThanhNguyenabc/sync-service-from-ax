@@ -109,9 +109,10 @@ const createCourseInfo = async (
         staff[key] = item.id;
         teachers = {
           ...teachers,
-          [staffCodes[index]]: item.id,
+          [item.staffcode ?? ""]: item.id,
         };
       });
+
       course.staff = JSON.stringify(staff);
     }
   }
