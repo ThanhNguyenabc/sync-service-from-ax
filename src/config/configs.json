@@ -2,7 +2,7 @@
     "development": {
         "HOST": "localhost",
         "PORT": 3000,
-        "LMS_API_URL": "http://host.docker.internal:80/api.php",
+        "LMS_API_URL": "http://host.docker.internal:80/lms/lab/api.php",
         "MYSQL_DATABASE_HOST": "localhost",
         "MYSQL_DATABASE_USER": "root",
         "MYSQL_DATABASE_PASSWORD": "137137137",
