@@ -14,6 +14,7 @@ import {
   fetchProgramConfig,
   getTimeOff,
   getUsers,
+  removeStudentsFromCourse,
   rolloutClasses,
 } from "@/apis/_index";
 import logger, { logMessage } from "@/utils/logger";
@@ -252,13 +253,12 @@ const syncClassSeats = async ({
 
     const promises = [addStudentsToCourse(data)];
     if (inValidStudents.length > 0) {
-      //TODO: remove student
-      // promises.push(
-      //   removeStudentsFromCourse({
-      //     id: course.id!,
-      //     students: inValidStudents.map((item) => `${users![item].id}`),
-      //   })
-      // );
+      promises.push(
+        removeStudentsFromCourse({
+          id: course.id!,
+          students: inValidStudents.map((item) => `${users![item].id}`),
+        })
+      );
     }
 
     await Promise.all(promises);

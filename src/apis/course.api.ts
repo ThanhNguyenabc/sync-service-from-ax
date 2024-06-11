@@ -50,7 +50,7 @@ export const removeStudentsFromCourse = async ({
 }) => {
   const data = {
     id,
-    students,
+    student_ids: students,
   };
   try {
     await fetcher("Courses_Students_RemoveList", data);

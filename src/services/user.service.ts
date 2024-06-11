@@ -7,6 +7,7 @@ const syncStudent = async (students: Array<AXStudentProfile>) => {
   logger.info(logMessage("start", "student", "sync students"));
 
   try {
+    // Filter data to ensure that there is no duplicate data row
     const usersMap = students?.reduce((res, item) => {
       if (item.StudentCode)
         return {
@@ -18,8 +19,7 @@ const syncStudent = async (students: Array<AXStudentProfile>) => {
     }, {}) as { [key: string]: AXStudentProfile };
 
     const studentCodes = Object.keys(usersMap);
-
-    let lmsExistingUsers = await getUsers(studentCodes).then((data) => {
+    let lmsStudents = await getUsers(studentCodes).then((data) => {
       return (
         data?.reduce((result, item) => {
           if (item.staffcode && item.id) {
@@ -32,8 +32,8 @@ const syncStudent = async (students: Array<AXStudentProfile>) => {
       );
     });
 
-    const updateUserList = [];
-    const insertUserList = [];
+    const updatingUsers = [];
+    const newUsers = [];
 
     for (let i = 0; i < studentCodes.length; i++) {
       const axUser = usersMap[studentCodes[i]];
@@ -52,21 +52,21 @@ const syncStudent = async (students: Array<AXStudentProfile>) => {
         birthdate: Number(dayjs(axUser.DOB).format("YYYYMMDD")),
       };
 
-      if (lmsExistingUsers && lmsExistingUsers[axUser.StudentCode!]) {
-        userModel.id = lmsExistingUsers[axUser.StudentCode!].userId;
-        updateUserList.push(userModel);
+      if (lmsStudents && lmsStudents[axUser.StudentCode!]) {
+        userModel.id = lmsStudents[axUser.StudentCode!].userId;
+        updatingUsers.push(userModel);
       } else {
-        insertUserList.push(userModel);
+        newUsers.push(userModel);
       }
     }
 
-    if (insertUserList.length > 0) {
-      const status = await createUsers(insertUserList);
+    if (newUsers.length > 0) {
+      const status = await createUsers(newUsers);
       status &&
         logger.info(logMessage("success", "student", "insert successfully"));
     }
-    if (updateUserList.length > 0) {
-      const status = await updateUsers(updateUserList);
+    if (updatingUsers.length > 0) {
+      const status = await updateUsers(updatingUsers);
       status &&
         logger.info(logMessage("success", "student", "update successfully"));
     }
