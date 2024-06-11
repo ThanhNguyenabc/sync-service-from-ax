@@ -54,11 +54,12 @@ kafkaManager.consume(CourseTopic, async (topic: string, message: Message) => {
     // SYNC CLASSES
     if (classSchedules && course) {
       let classes: Class[] | null | undefined = [];
-      if (course.classes && course.classes.length < 0) {
-        classes = await syncClasses(course, classSchedules, lessonTeachers);
-      } else {
+      if (course.classes && course.classes.length > 0) {
         classes = await updateClasses(course, classSchedules, lessonTeachers);
+      } else {
+        classes = await syncClasses(course, classSchedules, lessonTeachers);
       }
+
       course.classes = classes ?? [];
     }
 
