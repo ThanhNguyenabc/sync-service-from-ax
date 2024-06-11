@@ -16,7 +16,7 @@ export interface Class {
   classroom_url?: string;
   project_id?: number;
   lesson_id?: string;
-  teacher_id?: number;
+  teacher_id?: number | string;
   teacher_type?: string;
   ta1_id?: number;
   ta2_id?: number;

@@ -16,6 +16,8 @@ import {
   getUsers,
   removeStudentsFromCourse,
   rolloutClasses,
+  updateClassesByCourse,
+  updateMultipleClass,
 } from "@/apis/_index";
 import logger, { logMessage } from "@/utils/logger";
 import { Courses_Classes_Calendar } from "@/utils/class_helper";
@@ -276,4 +278,83 @@ const syncClassSeats = async ({
   }
   return false;
 };
-export { syncClasses, syncClassSeats };
+
+const updateClasses = async (
+  course: Course,
+  axClassSchedule: Array<AXClassSchedule>,
+  axClassTeachers?: Array<AXTeacherTA>
+) => {
+  logger.info(logMessage("start", "classes", "update classes"));
+  try {
+    let { id: courseId = "", classes } = course;
+
+    if (!classes || classes.length == 0) {
+      logger.error(logMessage("error", "classes", "empty classes"));
+      return;
+    }
+
+    const { staffs = null } = InMemoryCache.get(courseId!) as {
+      staffs?: { [key: string]: number };
+    };
+
+    let axTeacherScheduling: {
+      [key: string]: { teacherId?: number; taIds?: number[] };
+    } = {};
+
+    axClassTeachers?.forEach((item) => {
+      let { teacherId, taIds = [] } =
+        axTeacherScheduling[item["LessonNo"]] ?? {};
+      if (item["Role"] === UserRole.Teacher) {
+        teacherId = staffs?.[item["StaffCode"]] ?? 0;
+      } else {
+        const taId = staffs?.[item["StaffCode"]] ?? 0;
+        taIds.push(taId);
+      }
+      axTeacherScheduling[item["LessonNo"]] = { teacherId, taIds };
+    });
+
+    const axLessons = axClassSchedule?.reduce((result, item) => {
+      return {
+        ...result,
+        [item.LessonDate ?? ""]: item,
+      };
+    }, {}) as { [key: string]: AXClassSchedule };
+
+    classes.forEach((itemClass, index) => {
+      const dateStart = moment(
+        `${itemClass.date_start}`,
+        "YYYYMMDDHHmm"
+      ).format("YYYYMMDD");
+      const { LessonNo } = axLessons[dateStart] ?? {};
+
+      console.log(LessonNo);
+      if (LessonNo) {
+        const { teacherId, taIds } = axTeacherScheduling[LessonNo] ?? {};
+        const listOfTA =
+          taIds?.reduce(
+            (result, item, index) => ({
+              ...result,
+              [`ta${index + 1}_id`]: item,
+            }),
+            {}
+          ) ?? {ta1_id: undefined};
+       
+        classes[index] = {
+          ...itemClass,
+          teacher_id: teacherId,
+          ...listOfTA,
+        };
+      }
+    });
+
+     await Promise.all([
+      updateClassesByCourse(courseId, classes),
+      updateMultipleClass(classes),
+    ]);
+
+    return classes;
+  } catch (error) {
+    logger.error(logMessage("error", "classes", (error as Error).stack || ""));
+  }
+};
+export { syncClasses, syncClassSeats, updateClasses };

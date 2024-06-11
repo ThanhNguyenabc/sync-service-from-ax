@@ -3,12 +3,18 @@ import KafkaManager, { CourseTopic } from "@/lib/message_queue/kafka";
 import { parseXMLFile } from "@/utils/xml_parser";
 import { Message } from "kafkajs";
 import logger, { logMessage } from "@/utils/logger";
-import { AXRegistration, AXStudentProfile, Course } from "@/models/_index";
+import {
+  AXRegistration,
+  AXStudentProfile,
+  Class,
+  Course,
+} from "@/models/_index";
 import {
   syncClassSeats,
   syncClasses,
   syncCourse,
   syncStudent,
+  updateClasses,
 } from "@/services/_index.service";
 
 const kafkaManager = KafkaManager.getInstance();
@@ -46,9 +52,14 @@ kafkaManager.consume(CourseTopic, async (topic: string, message: Message) => {
     const course = results[0] as Course | undefined;
 
     // SYNC CLASSES
-    if (course && classSchedules) {
-      const classes = await syncClasses(course, classSchedules, lessonTeachers);
-      course.classes = classes || [];
+    if (classSchedules && course) {
+      let classes: Class[] | null | undefined = [];
+      if (course.classes && course.classes.length < 0) {
+        classes = await syncClasses(course, classSchedules, lessonTeachers);
+      } else {
+        classes = await updateClasses(course, classSchedules, lessonTeachers);
+      }
+      course.classes = classes ?? [];
     }
 
     // SYNC CLASSE SEATS
