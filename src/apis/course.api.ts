@@ -2,7 +2,7 @@
 // ----------------------------Course API------------------------------------------
 // --------------------------------------------------------------------------------
 
-import { Course } from "@/models/_index";
+import { Class, Course } from "@/models/_index";
 import { fetcher } from "./baseApi";
 
 export const getCourseByCondition = async (condition: {}): Promise<
@@ -85,6 +85,21 @@ export const getCourseById = async (
     const res = await fetcher<Course>("Courses_Read", {
       id: courseId,
     });
+    return res.data;
+  } catch (error) {}
+  return null;
+};
+
+export const updateClassesByCourse = async (
+  courseId: string,
+  classes: Class[]
+): Promise<boolean | undefined | null> => {
+  try {
+    const res = await fetcher<boolean>("Courses_Update_Classes", {
+      id: courseId,
+      classes,
+    });
+    console.log(res.data);
     return res.data;
   } catch (error) {}
   return null;

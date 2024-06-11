@@ -22,8 +22,7 @@ export const rolloutClasses = async ({
     });
 
     return response.data;
-  } catch (error) {
-  }
+  } catch (error) {}
   return null;
 };
 
@@ -52,6 +51,16 @@ export const updateClassFields = async ({
       id,
       data,
     });
+    return true;
+  } catch (error) {}
+  return false;
+};
+
+export const updateMultipleClass = async (
+  classes: Class[]
+): Promise<boolean | null | undefined> => {
+  try {
+    await fetcher("Class_Update", { classes });
     return true;
   } catch (error) {}
   return false;

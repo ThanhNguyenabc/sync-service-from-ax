@@ -35,7 +35,7 @@ export const fetcher = async <T>(
     }
 
     if (typeof response.data == "object") {
-      let { message, data: output, error } = response.data;
+      let { message, data: output, error } = response.data ?? {};
       return {
         status: response.status,
         data: output || response.data,
