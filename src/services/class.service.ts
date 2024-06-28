@@ -198,14 +198,9 @@ const syncClassSeats = async ({
 
     // get all LMS student user from the above schedule map
     const ids = Object.keys(registrationMap);
-    let users: { [key: string]: User } | null = null;
+    let users: { [key: string]: User } | null = await getUsersToMap(ids);
 
-    getUsersToMap(ids).then((res) => {
-      users = res;
-    });
-
-    const validSeats: { [key: string]: any } = {};
-    const validStudents: Array<string> = [];
+    const validStudents: Array<any> = [];
     let inValidStudents: Array<string> = [];
 
     for (const key in registrationMap) {
@@ -222,46 +217,38 @@ const syncClassSeats = async ({
         "YYYYMMDD0000"
       );
       const actualEndDate = dayjs(ActualEndDate, "DD/MM/YYYY").format(
-        "YYYYMMDD0000"
+        "YYYYMMDD2359"
       );
 
       const diff = dayjs(actualEndDate).diff(actualStartDate);
       if (diff >= 0 && RegistrationStatus === RegistrationType.Registered) {
-        validSeats[StudentCode] = {
-          ActualStartDate: actualStartDate,
-          ActualEndDate: actualEndDate,
-        };
-        validStudents.push(StudentCode!);
+        const { id } = users?.[StudentCode] ?? {};
+        if (id) {
+          validStudents.push({
+            student_id: id,
+            date_from: actualStartDate,
+            date_to: actualEndDate,
+          });
+        }
       } else {
         inValidStudents.push(StudentCode!);
       }
     }
 
-    if (!users) {
-      users = await getUsersToMap(ids);
-    }
+    const promises: Promise<any>[] = [];
+ 
+    validStudents.length > 0 &&
+      promises.push(
+        addStudentsToCourse({ id: course.id!, students: validStudents })
+      );
 
-    // make completely data object to create new class_seat
-    const data = {
-      id: course.id!,
-      students: [] as any[],
-    };
-    validStudents.forEach((item) => {
-      data["students"].push({
-        student_id: users?.[item]?.id,
-        date_from: validSeats[item]["ActualStartDate"],
-      });
-    });
-
-    const promises = [addStudentsToCourse(data)];
-    if (inValidStudents.length > 0) {
+    inValidStudents.length > 0 &&
       promises.push(
         removeStudentsFromCourse({
           id: course.id!,
           students: inValidStudents.map((item) => `${users![item].id}`),
         })
       );
-    }
 
     await Promise.all(promises);
 
