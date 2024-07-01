@@ -12,6 +12,7 @@ export enum TerminationType {
 }
 
 export interface AXRegistration {
+  Registration?: string;
   StudentCode?: string;
   RegistrationDate?: string;
   ActualStartDate?: string;

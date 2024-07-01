@@ -203,15 +203,15 @@ const syncClassSeats = async ({
     const validStudents: Array<any> = [];
     let inValidStudents: Array<string> = [];
 
-    for (const key in registrationMap) {
+    for (const registration of axRegistrations) {
       const {
+        Registration = "",
+        TerminationStatus = "",
         StudentCode = "",
         ActualEndDate = "",
         ActualStartDate = "",
         RegistrationStatus,
-      } = registrationMap[
-        key as keyof typeof registrationMap
-      ] as AXRegistration;
+      } = registration || {};
 
       const actualStartDate = dayjs(ActualStartDate, "DD/MM/YYYY").format(
         "YYYYMMDD0000"
@@ -221,11 +221,14 @@ const syncClassSeats = async ({
       );
 
       const diff = dayjs(actualEndDate).diff(actualStartDate);
-      if (diff >= 0 && RegistrationStatus === RegistrationType.Registered) {
+      if (diff >= 0) {
         const { id } = users?.[StudentCode] ?? {};
         if (id) {
           validStudents.push({
             student_id: id,
+            reg_id: Registration,
+            termination_status: TerminationStatus,
+            registration_status: RegistrationStatus,
             date_from: actualStartDate,
             date_to: actualEndDate,
           });
@@ -234,20 +237,19 @@ const syncClassSeats = async ({
         inValidStudents.push(StudentCode!);
       }
     }
-
+    
     const promises: Promise<any>[] = [];
- 
+
+    if (inValidStudents.length >= 0) {
+      await removeStudentsFromCourse({
+        id: course.id!,
+        students: inValidStudents.map((item) => `${users![item].id}`),
+      });
+    }
+
     validStudents.length > 0 &&
       promises.push(
         addStudentsToCourse({ id: course.id!, students: validStudents })
-      );
-
-    inValidStudents.length > 0 &&
-      promises.push(
-        removeStudentsFromCourse({
-          id: course.id!,
-          students: inValidStudents.map((item) => `${users![item].id}`),
-        })
       );
 
     await Promise.all(promises);
@@ -317,15 +319,14 @@ const updateClasses = async (
       console.log(LessonNo);
       if (LessonNo) {
         const { teacherId, taIds } = axTeacherScheduling[LessonNo] ?? {};
-        const listOfTA =
-          taIds?.reduce(
-            (result, item, index) => ({
-              ...result,
-              [`ta${index + 1}_id`]: item,
-            }),
-            {}
-          ) ?? {ta1_id: undefined};
-       
+        const listOfTA = taIds?.reduce(
+          (result, item, index) => ({
+            ...result,
+            [`ta${index + 1}_id`]: item,
+          }),
+          {}
+        ) ?? { ta1_id: undefined };
+
         classes[index] = {
           ...itemClass,
           teacher_id: teacherId,
@@ -334,7 +335,7 @@ const updateClasses = async (
       }
     });
 
-     await Promise.all([
+    await Promise.all([
       updateClassesByCourse(courseId, classes),
       updateMultipleClass(classes),
     ]);
