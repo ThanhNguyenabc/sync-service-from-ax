@@ -129,7 +129,7 @@ const syncCourse = async (
   axClassInfo: AXCourse,
   axTeacherProfile?: Array<AXTeacherProfile>
 ) => {
-  logger.info(logMessage("start", "course", "sync course"));
+  logger.info(logMessage("start", "course",`sync course - [${axClassInfo.ClassCode}]`));
   try {
     const res = await Promise.all([
       getCourseByCondition({

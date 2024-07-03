@@ -240,7 +240,7 @@ const syncClassSeats = async ({
     
     const promises: Promise<any>[] = [];
 
-    if (inValidStudents.length >= 0) {
+    if (inValidStudents.length > 0) {
       await removeStudentsFromCourse({
         id: course.id!,
         students: inValidStudents.map((item) => `${users![item].id}`),
@@ -256,7 +256,7 @@ const syncClassSeats = async ({
 
     logger.info(logMessage("success", "class seats", "sync successfully"));
     logger.info(
-      `------------jobs is done - courseID [${course.id}]------------`
+      `------------jobs is done - courseID [${course.id}]------------\r\n`
     );
     InMemoryCache.del(course.id || "");
     return true;
@@ -316,7 +316,6 @@ const updateClasses = async (
       ).format("YYYYMMDD");
       const { LessonNo } = axLessons[dateStart] ?? {};
 
-      console.log(LessonNo);
       if (LessonNo) {
         const { teacherId, taIds } = axTeacherScheduling[LessonNo] ?? {};
         const listOfTA = taIds?.reduce(
