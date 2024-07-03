@@ -99,7 +99,6 @@ export const updateClassesByCourse = async (
       id: courseId,
       classes,
     });
-    console.log(res.data);
     return res.data;
   } catch (error) {}
   return null;

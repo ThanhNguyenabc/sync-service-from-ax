@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-slate-300">
+    <div class="p-10">
+      <h1 class="font-semibold text-xl">Logs</h1>
+      <div id="logContainer" class="flex flex-col gap-3 mt-2"></div>
+    </div>
+  </body>
+  <script>
+    const logContainer = document.getElementById("logContainer");
+    const now = new Date();
+    const date =
+      new URLSearchParams(location.search)?.get("date") ??
+      `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDay()}`;
+
+    const getLogs = async (date) => {
+      try {
+        const result = await fetch("/logs", {
+          method: "POST",
+          headers: {
+            Accept: "*/*",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ data: date }),
+        });
+        const data = await result.json();
+        if (result.status == 200) return data;
+        return {
+          error: data["error"] ?? "Something was wrong",
+        };
+      } catch (error) {
+        return {
+          error: error?.message,
+        };
+      }
+    };
+
+    getLogs(date).then((res) => {
+      if (res["error"]) {
+        logContainer.innerText = res["error"];
+        return;
+      }
+      logContainer.innerText =
+        res["data"]?.length > 0 ? res["data"] : `Log file is empty on ${date}`;
+    });
+  </script>
+</html>

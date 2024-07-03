@@ -8,6 +8,7 @@ import cluster from "cluster";
 import { cpus } from "os";
 import logger, { logMessage } from "@/utils/logger";
 import KafkaManager from "./lib/message_queue/kafka";
+import path from "path";
 
 dayjs.extend(customParseFormat);
 
@@ -15,13 +16,11 @@ const os = cpus().length;
 
 const createApplication = () => {
   const app = express();
-
-  const CONFIG = getAppConfig();
-
+  app.use(express.static(path.join(__dirname, "public")));
   app.use(bodyParser.json({ limit: "50mb" }));
   app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
-
   app.use("/", router);
+  const CONFIG = getAppConfig();
 
   app.listen(CONFIG["PORT"], async () => {
     // init kafaka

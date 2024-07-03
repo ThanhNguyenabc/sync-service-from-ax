@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-slate-300">
+    <div class="flex flex-col p-10">
+      <h1 class="font-bold text-xl mb-10">Sync XML to LMS</h1>
+      <div class="flex flex-col gap-4 mb-4">
+        <label class="">Import xml file here:</label>
+        <input
+          id="file"
+          type="file"
+          accept=".xml"
+          onchange="onFileChange(event)"
+        />
+      </div>
+      <button
+        id="btnSync"
+        class="bg-green-600 font-medium w-[160px] h-[30px] select-none rounded-2xl text-white hover:bg-green-700"
+        onclick="syncXML()"
+      >
+        Sync xml to LMS
+      </button>
+    </div>
+  </body>
+
+  <script>
+    const btnSync = document.getElementById("btnSync");
+    const fileInput = document.getElementById("file");
+
+    const onFileChange = (e) => {
+      if (!e.target.value) {
+        btnSync.classList.add("");
+      }
+    };
+
+    const convertFileToString = async (file) => {
+      return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.onload = (event) => {
+          resolve(event.target.result);
+        };
+        fileReader.error = reject;
+        fileReader.readAsText(file);
+      });
+    };
+    const syncXML = async () => {
+      if (fileInput.files.length == 0) {
+        alert("No found file. Please select xml file");
+        return;
+      }
+      const file = fileInput.files[0];
+
+      try {
+        const data = await convertFileToString(file);
+        if (data) {
+          const config = {
+            method: "POST",
+            headers: {
+              Accept: "*/*",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              data: data,
+            }),
+          };
+          let result = await fetch(`/parse-xml`, config).then((res) =>
+            res.json()
+          );
+          alert(JSON.stringify(result));
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  </script>
+</html>
