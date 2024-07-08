@@ -15,7 +15,7 @@ services:
     environment:
       - TZ=Asia/Bangkok
     networks:
-      - loki-net
+      - grafana_network
       - default
     depends_on:
       - kafka
@@ -60,9 +60,9 @@ services:
       - kafka
 
 networks:
-  loki-net:
+  grafana_network:
     external: true
-  
+
 volumes:
   src:
     driver: local
