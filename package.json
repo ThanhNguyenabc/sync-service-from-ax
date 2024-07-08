@@ -24,6 +24,7 @@
     "typescript": "^5.1.6",
     "winston": "^3.10.0",
     "winston-daily-rotate-file": "^4.7.1",
+    "winston-loki": "^6.1.2",
     "xml2js": "^0.6.2"
   },
   "devDependencies": {

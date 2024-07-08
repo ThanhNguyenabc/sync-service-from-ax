@@ -1,0 +1,54 @@
+version: "3.3"
+
+services:
+  app:
+    build:
+      context: ./
+    container_name: xml_parser_app
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/app/src
+      - ./logs:/app/logs
+    environment:
+      - TZ=Asia/Bangkok
+    depends_on:
+      - kafka
+
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    container_name: zookeeper
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    volumes:
+      - ./bitnami/zookeeper:/bitnami/zookeeper
+
+  kafka:
+    image: bitnami/kafka:latest
+    container_name: kafka
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://localhost:9093
+      - KAFKA_INTER_BROKER_LISTENER_NAME=CLIENT
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      - zookeeper
+    volumes:
+      - ./bitnami/kafka:/bitnami/kafka
+
+  kafdrop:
+    image: obsidiandynamics/kafdrop:latest
+    container_name: kafdrop
+    ports:
+      - 9000:9000
+    environment:
+      - KAFKA_BROKERCONNECT=kafka:9092
+      - TZ=Asia/Bangkok
+    depends_on:
+      - kafka
+
+volumes:
+  src:
+    driver: local

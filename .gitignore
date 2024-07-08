@@ -5,3 +5,5 @@ bitnami
 dist
 .vscode/launch.json
 logs
+grafana/data
+staging/bitnami

@@ -7,7 +7,6 @@ RUN yarn global add typescript
 RUN yarn install --network-timeout=60000
 # copy source code
 COPY ./src ./src
-EXPOSE 3000
 
 
 
@@ -15,6 +14,13 @@ FROM base as prod
 # RUN yarn build
 RUN echo "This is production env"
 ENV NODE_ENV=production
+CMD [ "yarn", "start" ]
+
+
+FROM base as staging
+# RUN yarn build
+RUN echo "This is production env"
+ENV NODE_ENV=staging
 CMD [ "yarn", "start" ]
 
 

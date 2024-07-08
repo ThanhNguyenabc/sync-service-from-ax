@@ -17,17 +17,17 @@ services:
       - TZ=Asia/Bangkok
     depends_on:
       - kafka
+
   zookeeper:
     image: bitnami/zookeeper:latest
     user: root
     container_name: zookeeper
     restart: always
-    ports:
-      - 2181:2181
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
     volumes:
       - ./bitnami/zookeeper:/bitnami/zookeeper
+
   kafka:
     image: bitnami/kafka:latest
     container_name: kafka
@@ -44,6 +44,7 @@ services:
       - ./bitnami/kafka:/bitnami/kafka
     depends_on:
       - zookeeper
+      
   kafdrop:
     image: obsidiandynamics/kafdrop:latest
     container_name: kafdrop
