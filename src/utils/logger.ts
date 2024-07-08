@@ -5,7 +5,7 @@ import LokiTransport from "winston-loki";
 
 const { errors, printf } = format;
 
-const LOKI_URL = "http://host.docker.internal:3100";
+const LOKI_URL = "http://loki:3100";
 
 const customFormat = printf(({ level, message, timestamp }) => {
   return `[${timestamp}]  ${level}: ${message}`;

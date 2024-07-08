@@ -15,6 +15,9 @@ services:
       - ./logs:/app/logs
     environment:
       - TZ=Asia/Bangkok
+    networks:
+      - default
+      - grafana_network
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
@@ -46,7 +49,7 @@ services:
       - ./bitnami/kafka:/bitnami/kafka
     depends_on:
       - zookeeper
-      
+
   kafdrop:
     image: obsidiandynamics/kafdrop:latest
     container_name: kafdrop
@@ -59,6 +62,9 @@ services:
       - TZ=Asia/Bangkok
     depends_on:
       - kafka
+networks:
+  grafana_network:
+    external: true
 
 volumes:
   src:

@@ -14,9 +14,9 @@ services:
       - ./logs:/app/logs
     environment:
       - TZ=Asia/Bangkok
-    # extra_hosts:
-    #   - "host.docker.internal:host-gateway"
-
+    networks:
+      - loki-net
+      - default
     depends_on:
       - kafka
 
@@ -59,6 +59,10 @@ services:
     depends_on:
       - kafka
 
+networks:
+  loki-net:
+    external: true
+  
 volumes:
   src:
     driver: local

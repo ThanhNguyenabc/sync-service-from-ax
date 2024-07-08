@@ -12,8 +12,7 @@ services:
     container_name: loki
     command: -config.file=/etc/loki/loki-local-config.yaml
     networks:
-      - loki-net
-
+      - grafana_network
 
   promtail:
     user: root
@@ -23,7 +22,7 @@ services:
     container_name: promtail
     command: -config.file=/etc/promtail/promtail-docker-config.yaml
     networks:
-      - loki-net
+      - grafana_network
 
   grafana:
     user: root
@@ -39,12 +38,13 @@ services:
       - GF_AUTH_DISABLE_LOGIN_FORM=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
     networks:
-      - loki-net
+      - grafana_network
     depends_on:
       - loki
 
 networks:
-  loki-net:
+  grafana_network:
+    external: true
 
 volumes:
   src:
