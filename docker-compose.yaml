@@ -12,6 +12,8 @@ services:
       - ./logs:/app/logs
     environment:
       - TZ=Asia/Bangkok
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       - kafka
 
