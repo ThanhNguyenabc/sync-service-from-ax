@@ -15,7 +15,7 @@ services:
     environment:
       - TZ=Asia/Bangkok
     extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - host.docker.internal:172.17.97.28 
     depends_on:
       - kafka
 
