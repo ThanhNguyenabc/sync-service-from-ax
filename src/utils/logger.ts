@@ -1,4 +1,5 @@
-import { createLogger, format, log, transports } from "winston";
+import { getAppConfig } from "@/config/app_configs";
+import { createLogger, format, transports } from "winston";
 import "winston-daily-rotate-file";
 import LokiTransport from "winston-loki";
 
@@ -41,6 +42,7 @@ const logger = createLogger({
   ],
 });
 
+const configs = getAppConfig();
 const env = process.env.NODE_ENV || "development";
 switch (env) {
   case "staging":
@@ -50,6 +52,7 @@ switch (env) {
         host: LOKI_URL,
         labels: {
           env: env,
+          lms_url: configs.LMS_API_URL,
         },
       })
     );
@@ -68,6 +71,7 @@ switch (env) {
         host: LOKI_URL,
         labels: {
           env: env,
+          lms_url: configs.LMS_API_URL,
         },
       })
     );

@@ -19,7 +19,7 @@ CMD [ "yarn", "start" ]
 
 FROM base as staging
 # RUN yarn build
-RUN echo "This is production env"
+RUN echo "This is staging env"
 ENV NODE_ENV=staging
 CMD [ "yarn", "start" ]
 
