@@ -54,6 +54,10 @@ switch (env) {
           env: env,
           lms_url: configs.LMS_API_URL,
         },
+        onConnectionError: (error) => {
+          console.log("loki error-----");
+          console.log(error);
+        },
       })
     );
     logger.add(
