@@ -47,6 +47,7 @@ const env = process.env.NODE_ENV || "development";
 switch (env) {
   case "staging":
   case "production":
+    console.log("init logger");
     logger.add(
       new LokiTransport({
         host: LOKI_URL,
@@ -54,6 +55,7 @@ switch (env) {
           env: env,
           lms_url: configs.LMS_API_URL,
         },
+
         onConnectionError: (error) => {
           console.log("loki error-----");
           console.log(error);

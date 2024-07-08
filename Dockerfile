@@ -3,6 +3,7 @@ USER root
 WORKDIR /app
 # copy all dpendecies
 COPY package.json nodemon.json tsconfig.json ./
+RUN apk add curl
 RUN yarn global add typescript
 RUN yarn install --network-timeout=60000
 # copy source code
