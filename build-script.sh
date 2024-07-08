@@ -6,4 +6,4 @@ mkdir logs
 
 
 # run docker to build app
-docker compose -f docker-compose.prod.yml up -d
+docker compose -f docker-compose.prod.yaml up -d
