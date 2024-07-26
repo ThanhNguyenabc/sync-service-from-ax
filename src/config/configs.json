@@ -11,7 +11,7 @@
     "staging": {
         "HOST": "localhost",
         "PORT": 4000,
-        "LMS_API_URL": "https://dev.ila.edu.vn/lms/lab/api.php",
+        "LMS_API_URL": "https://lmstest.ila.edu.vn/api.php",
         "MYSQL_DATABASE_HOST": "localhost",
         "MYSQL_DATABASE_USER": "root",
         "MYSQL_DATABASE_PASSWORD": "137137137",
