@@ -3,18 +3,11 @@ import KafkaManager, { CourseTopic } from "@/lib/message_queue/kafka";
 import { parseXMLFile } from "@/utils/xml_parser";
 import { Message } from "kafkajs";
 import logger, { logMessage } from "@/utils/logger";
-import {
-  AXRegistration,
-  AXStudentProfile,
-  Class,
-  Course,
-} from "@/models/_index";
+import { AXRegistration, AXStudentProfile, Course } from "@/models/_index";
 import {
   syncClassSeats,
-  syncClasses,
   syncCourse,
   syncStudent,
-  updateClasses,
 } from "@/services/_index.service";
 import ClassesService from "@/services/classes.service";
 
