@@ -1,6 +1,9 @@
 export type TeacherSchedulingEntry = {
   teacherId?: number;
-  taIds?: number[];
+  taIds?: {
+    [key: string]: number;
+  };
+  taCount: number;
 };
 
 export type TeacherScheduling = {

@@ -1,5 +1,3 @@
 export type LessonOutcome = {
-  [key: string]: {
-    outcomes: string[];
-  };
+  [key: string]: string[];
 };

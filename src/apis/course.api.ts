@@ -86,5 +86,5 @@ export const getLessonOutcomes = async (program: string, level: string) => {
     program,
     level,
   });
-  return res.data;
+  return res.data || {};
 };

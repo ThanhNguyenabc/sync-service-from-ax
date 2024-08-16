@@ -25,6 +25,7 @@ export interface Class {
   seats_taken?: number;
   state?: string;
   notes?: string;
+  outcomes?: string[];
   classroom_data?: string;
   classroom_currentslide?: number;
 }

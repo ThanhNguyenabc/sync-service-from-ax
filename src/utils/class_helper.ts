@@ -1,3 +1,4 @@
+import { LessonOutcome } from "@/models/lesson_outcome.model";
 import { TimeOff } from "@/models/timeoff.model";
 import { Timeoff_Check } from "@/utils/date_utils";
 import moment, { Moment } from "moment";
@@ -11,7 +12,9 @@ export function Courses_Classes_Calendar(
   lessons: Array<string>,
   lesson_duration: number,
   timeoff: Array<TimeOff> | null,
-  content_duration = 2
+  outcomes: LessonOutcome,
+  content_duration = 2,
+  firstLessonDuration: number | null = null
 ) {
   // CALCULATE CALENDAR USING SCHEDULE AND TIME OFF
 
@@ -72,8 +75,9 @@ export function Courses_Classes_Calendar(
 
   let date_index = 0;
   let lesson_index = 0;
-  let lesson_remainder = content_duration;
+  let lesson_remainder = firstLessonDuration ?? content_duration;
   let session_remainder = lesson_duration;
+  let lessonOutcomes = outcomes[lessons[lesson_index]] || [];
 
   // session = 3, lesson: 2
   let dates = [];
@@ -85,16 +89,14 @@ export function Courses_Classes_Calendar(
       session.push({
         lesson: lessons[lesson_index],
         duration: lesson_remainder,
+        outcomes: lessonOutcomes,
       });
 
       session_remainder = session_remainder - lesson_remainder;
 
       lesson_index++;
-
-      lesson_remainder = getDurationFromLesson(
-        lessons[lesson_index],
-        content_duration
-      );
+      lessonOutcomes = outcomes[lessons[lesson_index]] || [];
+      lesson_remainder = getDurationFromLesson(lessons[lesson_index]);
     }
     // MORE TIME IS LEFT IN THE CONTENT BLOCK THAN IS LEFT IN THE SESSION
     else if (lesson_remainder > session_remainder) {
@@ -102,6 +104,7 @@ export function Courses_Classes_Calendar(
       session.push({
         lesson: lessons[lesson_index],
         duration: session_remainder,
+        outcomes: lessonOutcomes.length > 1 ? [lessonOutcomes.shift()] : [],
       });
 
       dates.push({
@@ -122,6 +125,7 @@ export function Courses_Classes_Calendar(
       session.push({
         lesson: lessons[lesson_index],
         duration: lesson_remainder,
+        outcomes: lessonOutcomes,
       });
 
       dates.push({
@@ -132,11 +136,8 @@ export function Courses_Classes_Calendar(
 
       // START NEW SESSION AND A NEW CONTENT BLOCK TOO
       lesson_index++;
-      lesson_remainder = getDurationFromLesson(
-        lessons[lesson_index],
-        content_duration
-      );
-
+      lesson_remainder = getDurationFromLesson(lessons[lesson_index]);
+      lessonOutcomes = outcomes[lessons[lesson_index]] || [];
       session = [];
       session_remainder = lesson_duration;
     }
@@ -153,16 +154,9 @@ export function Courses_Classes_Calendar(
   return dates;
 }
 
-function getDurationFromLesson(lesson: string, contentDuration: number) {
-  // default duration is 2
-  if (!lesson || !Number(lesson[0]) || contentDuration == 2) return 2;
-
-  let hour = lesson[0];
-  for (let i = 1; i < lesson.length; i++) {
-    if (lesson[i] == "h") break;
-    hour += lesson[i];
-  }
-  return Number(hour);
+export function getDurationFromLesson(lesson: string) {
+  const hour = parseInt(lesson, 10);
+  return Number.isNaN(hour) ? 2 : hour;
 }
 
 function getDayOfWeek(date: Moment) {
