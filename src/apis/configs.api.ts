@@ -9,19 +9,16 @@ import { TimeOff } from "@/models/timeoff.model";
 export const fetchProgramConfig = async (): Promise<
   object | undefined | null
 > => {
-  try {
-    const programme = InMemoryCache.get("programme");
-    if (programme) {
-      return programme;
-    }
-    const response = await fetcher<object>("Ini_File_Read", {
-      filename: "partners/default/programs.cfg",
-    });
-    const data = response.data;
-    InMemoryCache.set("programme", data);
-    return data;
-  } catch (error) {}
-  return null;
+  const programme = InMemoryCache.get("programme");
+  if (programme) {
+    return programme;
+  }
+  const response = await fetcher<object>("Ini_File_Read", {
+    filename: "partners/default/programs.cfg",
+  });
+  const data = response.data;
+  InMemoryCache.set("programme", data);
+  return data;
 };
 
 export const getTimeOff = async ({
@@ -31,13 +28,10 @@ export const getTimeOff = async ({
   type: string;
   value: string;
 }): Promise<Array<TimeOff> | []> => {
-  try {
-    const response = await fetcher<Array<TimeOff>>("Timeoff_Read", {
-      value,
-      type,
-    });
-    const data = response.data;
-    return data ? data : [];
-  } catch (error) {}
-  return [];
+  const response = await fetcher<Array<TimeOff>>("Timeoff_Read", {
+    value,
+    type,
+  });
+  const data = response.data;
+  return data || [];
 };

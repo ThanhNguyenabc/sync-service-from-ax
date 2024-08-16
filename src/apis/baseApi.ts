@@ -1,8 +1,9 @@
 import logger from "@/utils/logger";
 import { getAppConfig } from "@/config/app_configs";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 const BASE_URL = getAppConfig()?.["LMS_API_URL"];
+const DEFAULT_ERROR = 500;
 const SERVER_CRASH = 100;
 
 export const fetcher = async <T>(
@@ -26,16 +27,17 @@ export const fetcher = async <T>(
 
     if (
       typeof response.data === "string" &&
-      response.data.indexOf("Fatal error") >= 0
+      response.data.indexOf("Fatal error") > -1
     ) {
       logger.error(`❌ [api] f=${fName} error --> ${response.data}`);
       return {
-        status: SERVER_CRASH,
+        status: DEFAULT_ERROR,
+        error: "LMS Backend Error",
       };
     }
 
     if (typeof response.data == "object") {
-      let { message, data: output, error } = response.data ?? {};
+      const { message, data: output, error } = response.data ?? {};
       return {
         status: response.status,
         data: output || response.data,
@@ -48,15 +50,12 @@ export const fetcher = async <T>(
       status: response.status,
       data: response.data,
     };
-  } catch (error: any) {
-    if (error instanceof AxiosError && process.env.NODE_ENV === "development") {
-      console.log(error.response?.headers);
-      console.log(error.response?.data);
-    }
-    logger.error(`❌ [api] f=${fName} error --> ${error}`);
-
+  } catch (error: unknown) {
+    const errMessage = (error as Error).stack;
+    logger.error(`❌ [api] f=${fName} error --> ${errMessage}`);
     return {
       status: SERVER_CRASH,
+      error: errMessage,
     };
   }
 };

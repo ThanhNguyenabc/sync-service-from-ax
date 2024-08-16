@@ -4,17 +4,15 @@
 
 import { Class, Course } from "@/models/_index";
 import { fetcher } from "./baseApi";
+import { LessonOutcome } from "@/models/lesson_outcome.model";
 
 export const getCourseByCondition = async (condition: {}): Promise<
   Course | null | undefined
 > => {
-  try {
-    const response = await fetcher<Course>("Courses_Check_Exist", {
-      search: condition,
-    });
-    return response.data;
-  } catch (error) {}
-  return null;
+  const response = await fetcher<Course>("Courses_Check_Exist", {
+    search: condition,
+  });
+  return response.data;
 };
 
 export const addStudentsToCourse = async ({
@@ -28,17 +26,13 @@ export const addStudentsToCourse = async ({
   students: Array<{ student_id: string; date_from: string }>;
   options?: {};
 }) => {
-  const data = {
+  const res = await fetcher<boolean>("Courses_MultipleStudents_Add", {
     id,
     students,
     amount: 0,
     options,
-  };
-  try {
-    await fetcher("Courses_MultipleStudents_Add", data);
-    return true;
-  } catch (error) {}
-  return false;
+  });
+  return res.data;
 };
 
 export const removeStudentsFromCourse = async ({
@@ -48,58 +42,49 @@ export const removeStudentsFromCourse = async ({
   id: string;
   students: Array<string>;
 }) => {
-  const data = {
+  const res = await fetcher("Courses_Students_RemoveList", {
     id,
     student_ids: students,
-  };
-  try {
-    await fetcher("Courses_Students_RemoveList", data);
-    return true;
-  } catch (error) {
-    return false;
-  }
+  });
+  return res.data;
 };
 
 export const createCourse = async (
   data: Course
 ): Promise<string | null | undefined> => {
-  try {
-    const response = await fetcher<string>("Courses_New", { data });
-    return response.data;
-  } catch (error) {}
-  return null;
+  const response = await fetcher<string>("Courses_New", { data });
+  return response.data;
 };
 
 export const updateCourse = async (data: Course) => {
-  try {
-    const response = await fetcher("Courses_Update", { course: data });
-    return response.data;
-  } catch (error) {}
-  return null;
+  const response = await fetcher("Courses_Update", { course: data });
+  return response.data;
 };
 
 export const getCourseById = async (
   courseId: string
 ): Promise<Course | undefined | null> => {
-  try {
-    const res = await fetcher<Course>("Courses_Read", {
-      id: courseId,
-    });
-    return res.data;
-  } catch (error) {}
-  return null;
+  const res = await fetcher<Course>("Courses_Read", {
+    id: courseId,
+  });
+  return res.data;
 };
 
 export const updateClassesByCourse = async (
   courseId: string,
   classes: Class[]
 ): Promise<boolean | undefined | null> => {
-  try {
-    const res = await fetcher<boolean>("Courses_Update_Classes", {
-      id: courseId,
-      classes,
-    });
-    return res.data;
-  } catch (error) {}
-  return null;
+  const res = await fetcher<boolean>("Courses_Update_Classes", {
+    id: courseId,
+    classes,
+  });
+  return res.data;
+};
+
+export const getLessonOutcomes = async (program: string, level: string) => {
+  const res = await fetcher<LessonOutcome>("Course_List_Outcome", {
+    program,
+    level,
+  });
+  return res.data;
 };
