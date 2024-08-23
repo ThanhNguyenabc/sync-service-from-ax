@@ -1,3 +1,4 @@
+import { ClassSession } from "@/models/class_session";
 import { LessonOutcome } from "@/models/lesson_outcome.model";
 import { TimeOff } from "@/models/timeoff.model";
 import { Timeoff_Check } from "@/utils/date_utils";
@@ -99,14 +100,36 @@ export function Courses_Classes_Calendar(
       lesson_remainder = getDurationFromLesson(lessons[lesson_index]);
     }
     // MORE TIME IS LEFT IN THE CONTENT BLOCK THAN IS LEFT IN THE SESSION
-    else if (lesson_remainder > session_remainder) {
+    else if (session_remainder < lesson_remainder) {
       // ADD A LESSON THAT TAKES ALL THE SESSION REMINDER
-      session.push({
-        lesson: lessons[lesson_index],
+      const pastSession: ClassSession = dates.slice(-1)[0]?.session?.slice(-1)[0];
+      const currLesson = lessons[lesson_index];
+      const sessionData: ClassSession = {
+        lesson: currLesson,
         duration: session_remainder,
-        outcomes: lessonOutcomes.length > 1 ? [lessonOutcomes.shift()] : [],
-      });
+        outcomes: [],
+      };
+      lesson_remainder = lesson_remainder - session_remainder;
+      if (lessonOutcomes.length > 0) {
+        const pastOutcome =
+          pastSession?.["lesson"] == currLesson
+            ? pastSession["outcomes"]?.length
+            : 0;
 
+        const lessonTime = getDurationFromLesson(currLesson);
+        const totalLearnedTime = lessonTime - lesson_remainder;
+        const outcomeDuration = lessonTime / outcomes[currLesson].length;
+
+        // Needed outcome for this time
+        const outcomeNumber =
+          Math.floor(totalLearnedTime / outcomeDuration) - pastOutcome;
+
+        if (outcomeNumber > 0) {
+          sessionData["outcomes"] = lessonOutcomes.splice(0, outcomeNumber);
+        }
+      }
+
+      session.push(sessionData);
       dates.push({
         date: calendar[date_index],
         session,

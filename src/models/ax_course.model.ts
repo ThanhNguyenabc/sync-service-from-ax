@@ -16,3 +16,11 @@ export interface AXCourse {
   CourseTemplate?: string;
   Center?: string;
 }
+
+export const ClassStatusMapping = {
+  "1": "Brand new",
+  "2": "Next class",
+  "3": "On going",
+  "4": "Finished",
+  "5": "Cancelled",
+};

@@ -68,10 +68,10 @@ export default class ClassesService {
         staffs?: { [key: string]: number };
       };
       const timeoff = await this.getAllTimeoff(center_id);
+      const lessonOutcomes = await getLessonOutcomes(program, level);
 
       // Generate calendar
       const now = moment().format("YYYYMMDDHHmm");
-      console.log("time now --> ", now);
       const currentClasses = classes;
       let pastClasses: Class[] = [];
       const pastLessonDuration: { [key: string]: number } = {};
@@ -95,9 +95,14 @@ export default class ClassesService {
 
         date_start = nextClass?.["date_start"] ?? parseInt(now, 10);
 
-        if (!isSameLesson) {
+        if (isSameLesson) {
+          lessonOutcomes[
+            nextClass["lesson_id"] as keyof typeof lessonOutcomes
+          ] = nextClass["outcomes"] ?? [];
+        } else {
           currLessonIdx++;
         }
+
         lessons = lessons.slice(currLessonIdx);
         const firstLesson = lessons[0];
         remainingSession =
@@ -105,7 +110,6 @@ export default class ClassesService {
           (pastLessonDuration[firstLesson] ?? 0);
       }
 
-      const lessonOutcomes = await getLessonOutcomes(program, level);
       const startDate = moment(`${date_start}`, "YYYYMMDD");
 
       const calendar = Courses_Classes_Calendar(
@@ -146,8 +150,6 @@ export default class ClassesService {
       let j = 0;
       const newClasses: any[] = [...pastClasses];
 
-      console.log("calendar");
-      console.log(calendar);
       for (const item of calendar) {
         let date = moment(item["date"], "YYYYMMDDHHmm");
         const axClass = axClassSchedule[j];
@@ -185,8 +187,6 @@ export default class ClassesService {
         classes: newClasses,
       };
 
-      console.log("data");
-      console.log(data);
       const res = await rolloutClasses(data);
       res && res!.length > 0
         ? logger.info(logMessage("success", "classes", "sync successfully"))

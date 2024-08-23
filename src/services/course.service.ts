@@ -1,5 +1,10 @@
 import { generateSchedule, getHourMinuteFromString } from "@/utils/date_utils";
-import { AXCourse, AXTeacherProfile, Course } from "@/models/_index";
+import {
+  AXCourse,
+  AXTeacherProfile,
+  ClassStatusMapping,
+  Course,
+} from "@/models/_index";
 import dayjs from "dayjs";
 import {
   createCourse,
@@ -68,6 +73,11 @@ const createCourseInfo = async (
     seats: Number(axClassInfo.MaxAttendant || 0),
     room: axClassInfo.Room,
     teacher_config: "all native",
+    status: axClassInfo.ClassStatus
+      ? ClassStatusMapping[
+          axClassInfo.ClassStatus as keyof typeof ClassStatusMapping
+        ]
+      : "",
     date_start: Number(startDate.format("YYYYMMDD")),
     date_end: Number(endDate.format("YYYYMMDD")),
     schedule: JSON.stringify(
@@ -129,7 +139,9 @@ const syncCourse = async (
   axClassInfo: AXCourse,
   axTeacherProfile?: Array<AXTeacherProfile>
 ) => {
-  logger.info(logMessage("start", "course",`sync course - [${axClassInfo.ClassCode}]`));
+  logger.info(
+    logMessage("start", "course", `sync course - [${axClassInfo.ClassCode}]`)
+  );
   try {
     const res = await Promise.all([
       getCourseByCondition({
@@ -153,7 +165,6 @@ const syncCourse = async (
         );
       }
     } else {
-      course.status = "design";
       const newCourseId = await createCourse(course);
       if (newCourseId) {
         course.id = newCourseId;
