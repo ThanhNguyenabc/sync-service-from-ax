@@ -19,10 +19,6 @@ kafkaManager.consume(CourseTopic, async (topic: string, message: Message) => {
 
     const classInfo = axData["ClassInformation"];
 
-    if (classInfo["ClassGroup"] !== "Summer") {
-      return;
-    }
-
     const classSchedules = axData["ClassSchedule"]?.["ClassSchedule"];
     const registrations: AXRegistration[] | undefined | null =
       axData["Registrations"]?.["RegistrationInfo"];
