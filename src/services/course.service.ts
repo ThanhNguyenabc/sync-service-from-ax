@@ -15,6 +15,7 @@ import {
 } from "@/apis/_index";
 import logger, { logMessage } from "@/utils/logger";
 import InMemoryCache from "@/lib/cache_manager";
+import { MultipleDurationProgram } from "@/utils/constants";
 
 const createCourseInfo = async (
   axClassInfo: AXCourse,
@@ -43,26 +44,14 @@ const createCourseInfo = async (
       dayjs(`${axClassInfo.StartDate} ${startTime.hour}:${startTime.minute}`)
     ) / 60000;
 
-  // Assign program
-  const programConfig = await fetchProgramConfig();
-  let program = `${axClassInfo.ProgrammeName} ${
-    Number(lesson_duration) / 60
-  } hours`;
+  await fetchProgramConfig();
 
-  const classGroup = axClassInfo.ClassGroup;
+  let axProgram = `${axClassInfo.ProgrammeName}`;
 
-  // Add prefix with summer course
-  if (classGroup?.toLowerCase() == "summer" && programConfig) {
-    for (const [key, value] of Object.entries(programConfig)) {
-      if (
-        value.hasOwnProperty(level) &&
-        key.toLowerCase().indexOf("summer") >= 0
-      ) {
-        program = key;
-        break;
-      }
-    }
-  }
+  const program =
+    axProgram in MultipleDurationProgram
+      ? `${axProgram} ${Number(lesson_duration) / 60} hours`
+      : axProgram;
 
   const course: Course = {
     name: axClassInfo.ClassCode,
@@ -128,8 +117,8 @@ const createCourseInfo = async (
   }
 
   return {
-    startTime,
-    endTime,
+    startTime: `${startTime.hour}:${startTime.minute}`,
+    endTime: `${endTime.hour}:${endTime.minute}`,
     staffs: teachers,
     data: course,
   };

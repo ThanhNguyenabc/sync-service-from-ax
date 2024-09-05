@@ -1,15 +1,14 @@
-import { getLessonOutcomes, rolloutClasses } from "@/apis/_index";
+import { rolloutClasses, RollOutClassParams } from "@/apis/_index";
 import { fetchProgramConfig, getTimeOff } from "@/apis/configs.api";
 import InMemoryCache from "@/lib/cache_manager";
-import { AXClassSchedule, AXTeacherTA, Class, UserRole } from "@/models/_index";
+import { AXClassSchedule, AXTeacherTA, UserRole } from "@/models/_index";
 import { Course } from "@/models/courses.model";
-import { TeacherScheduling } from "@/models/teacher_scheduling";
 import {
-  Courses_Classes_Calendar,
-  getDurationFromLesson,
-} from "@/utils/class_helper";
+  TeacherScheduling,
+  TeacherSchedulingEntry,
+} from "@/models/teacher_scheduling";
+
 import logger, { logMessage } from "@/utils/logger";
-import moment from "moment";
 
 export default class ClassesService {
   static async getAllTimeoff(centerId: string) {
@@ -41,7 +40,6 @@ export default class ClassesService {
         id: courseId,
         program = "",
         level = "",
-        classes = [],
         schedule,
         lesson_duration,
         center_id = "",
@@ -63,131 +61,80 @@ export default class ClassesService {
         );
         return [];
       }
-      const lessonDuration = Number(lesson_duration) / 60;
-      const { staffs = null } = InMemoryCache.get(courseId!) as {
+      // }
+      // const lessonDuration = Number(lesson_duration) / 60;
+      const {
+        staffs = null,
+        startTime = "",
+        endTime = "",
+      } = InMemoryCache.get(courseId!) as {
         staffs?: { [key: string]: number };
+        startTime?: string;
+        endTime?: string;
       };
-      const timeoff = await this.getAllTimeoff(center_id);
-      const lessonOutcomes = await getLessonOutcomes(program, level);
-
-      // Generate calendar
-      const now = moment().format("YYYYMMDDHHmm");
-      const currentClasses = classes;
-      let pastClasses: Class[] = [];
-      const pastLessonDuration: { [key: string]: number } = {};
-      let remainingSession = null;
-
-      //GET ALL PAST CLASSES
-      currentClasses?.forEach((item) => {
-        const { date_start, lesson_id = "", duration = 0 } = item || {};
-        if (`${date_start}` >= now) return;
-        pastClasses.push(item);
-        pastLessonDuration[lesson_id] =
-          Number(pastLessonDuration[lesson_id] ?? 0) + Number(duration / 60);
-      });
-
-      if (pastClasses.length > 0) {
-        const nextClass = currentClasses[pastClasses.length];
-        const pastClass = pastClasses[pastClasses.length - 1];
-        let currLessonIdx = lessons.indexOf(pastClass.lesson_id ?? "");
-        const isSameLesson =
-          nextClass && nextClass["lesson_id"] == pastClass["lesson_id"];
-
-        date_start = nextClass?.["date_start"] ?? parseInt(now, 10);
-
-        if (isSameLesson) {
-          lessonOutcomes[
-            nextClass["lesson_id"] as keyof typeof lessonOutcomes
-          ] = nextClass["outcomes"] ?? [];
-        } else {
-          currLessonIdx++;
-        }
-
-        lessons = lessons.slice(currLessonIdx);
-        const firstLesson = lessons[0];
-        remainingSession =
-          getDurationFromLesson(firstLesson) -
-          (pastLessonDuration[firstLesson] ?? 0);
-      }
-
-      const startDate = moment(`${date_start}`, "YYYYMMDD");
-
-      const calendar = Courses_Classes_Calendar(
-        startDate,
-        JSON.parse(schedule!),
-        lessons,
-        lessonDuration,
-        timeoff,
-        lessonOutcomes,
-        lessonDuration,
-        remainingSession
-      );
 
       // Group each lesson with teacher and ta
       const axTeacherScheduling: TeacherScheduling = {};
-      axClassTeachers?.forEach((item) => {
-        const { LessonNo = "", StaffCode = "", Role } = item || {};
-        const staffId = staffs?.[StaffCode] ?? 0;
-        let {
-          teacherId = undefined,
-          taIds = {},
-          taCount = 0,
-        } = axTeacherScheduling[LessonNo] || {};
 
-        if (Role == UserRole.Teacher) {
-          teacherId = staffId;
-        } else if (Role == UserRole.TA) {
-          taIds = { ...taIds, [`ta${taCount + 1}_id`]: staffId };
-          taCount++;
+      console.log(staffs);
+      let taIndex = 1;
+      axClassTeachers?.forEach((item) => {
+        const {
+          LessonNo = "",
+          StaffCode = "",
+          Role,
+          Duration = "",
+          From = "",
+          To = "",
+        } = item || {};
+        const staffId = staffs?.[StaffCode] ?? 0;
+
+        let data = axTeacherScheduling[LessonNo] || {};
+
+        if (Object.keys(data).length == 0) {
+          // reset taIndex
+          taIndex = 1;
         }
-        axTeacherScheduling[LessonNo] = {
-          teacherId,
-          taIds,
-          taCount: taCount,
-        };
+
+        switch (Role) {
+          case UserRole.Teacher:
+            const time = [From || startTime, To || endTime];
+            if (!data.teacher_id) {
+              data.teacher_id = staffId;
+              data.teacher_time_slot = time;
+            } else {
+              data.teacher2_id = staffId;
+              data.teacher2_time_slot = time;
+            }
+            break;
+          case UserRole.TA:
+            data = {
+              ...data,
+              [`ta${taIndex++}_id` as keyof TeacherSchedulingEntry]: staffId,
+            };
+            break;
+        }
+        axTeacherScheduling[LessonNo] = data;
       });
 
-      let j = 0;
-      const newClasses: any[] = [...pastClasses];
-
-      for (const item of calendar) {
-        let date = moment(item["date"], "YYYYMMDDHHmm");
-        const axClass = axClassSchedule[j];
-        if (axClass && axClass.LessonNo) {
-          const lessonNo = axClass.LessonNo;
-          for (const slot of item["session"]) {
-            const { teacherId, taIds } =
-              axTeacherScheduling?.[
-                lessonNo as keyof typeof axTeacherScheduling
-              ] ?? {};
-            const lesson_id = slot["lesson"];
-            const duration = slot["duration"] * 60;
-            const date_start = date;
-            const date_end = date_start.clone().add(duration, "minutes");
-            newClasses.push({
-              date_start: date_start.format("YYYYMMDDHHmm"),
-              date_end: date_end.format("YYYYMMDDHHmm"),
-              teacher_type: "native",
-              classroom_id: course.room,
-              outcomes: slot["outcomes"],
-              lesson_id,
-              duration,
-              teacher_id: teacherId ?? null,
-              ...taIds,
-            });
-            date = date_end;
-          }
-        }
-        j++;
-      }
-
-      const data = {
-        courseId: courseId!,
-        center: center_id!,
-        classes: newClasses,
+      const data: RollOutClassParams = {
+        id: courseId!,
+        center_id: center_id!,
+        teacherSchedule: axTeacherScheduling,
+        lesson_duration: Number(lesson_duration),
+        program,
+        level,
+        teacher_config: "all native",
+        date_start: date_start?.toString() || "",
+        schedule: JSON.parse(schedule || ""),
       };
 
+      console.log("send data = ", JSON.stringify(data));
+
       const res = await rolloutClasses(data);
+
+      console.log("----> classes ");
+      console.log(res);
       res && res!.length > 0
         ? logger.info(logMessage("success", "classes", "sync successfully"))
         : logger.error(logMessage("error", "classes", "sync fail"));

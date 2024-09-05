@@ -4,21 +4,29 @@
 
 import { Class } from "@/models/_index";
 import { fetcher } from "./baseApi";
+import { TeacherSchedulingEntry } from "@/models/teacher_scheduling";
 
-export const rolloutClasses = async ({
-  courseId,
-  center,
-  classes,
-}: {
-  courseId: string;
-  center: string;
-  classes: Array<any>;
-}): Promise<Array<Class> | null | undefined> => {
-  const response = await fetcher<Array<Class>>("Courses_Rollout", {
-    id: courseId,
-    center,
-    classes,
+export type RollOutClassParams = {
+  id: string;
+  center_id: string;
+  lesson_duration: number;
+  program: string;
+  level: string;
+  teacher_config: string;
+  date_start: string;
+  schedule: { time: string; day: string }[];
+  teacherSchedule: {
+    [key: string]: TeacherSchedulingEntry;
+  };
+};
+export const rolloutClasses = async (
+  data: RollOutClassParams
+): Promise<Array<Class> | null | undefined> => {
+  const response = await fetcher<Array<Class>>("Courses_Classes_Rollout", {
+    course: data,
   });
+
+  console.log("response ==> ", response.data);
   return response.data;
 };
 

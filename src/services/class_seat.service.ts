@@ -51,7 +51,7 @@ const syncClassSeats = async ({
     let users: { [key: string]: User } | null = await getUsersToMap(ids);
 
     const validStudents: Array<any> = [];
-    let inValidStudents: Array<string> = [];
+    let inValidStudents: Array<number> = [];
 
     for (const registration of axRegistrations) {
       const {
@@ -71,9 +71,10 @@ const syncClassSeats = async ({
       );
 
       const diff = dayjs(actualEndDate).diff(actualStartDate);
-      if (diff >= 0) {
-        const { id } = users?.[StudentCode] ?? {};
-        if (id) {
+      const { id } = users?.[StudentCode] || {};
+
+      if (id) {
+        if (diff >= 0) {
           validStudents.push({
             student_id: id,
             reg_id: Registration,
@@ -82,9 +83,9 @@ const syncClassSeats = async ({
             date_from: actualStartDate,
             date_to: actualEndDate,
           });
+        } else {
+          inValidStudents.push(id);
         }
-      } else {
-        inValidStudents.push(StudentCode!);
       }
     }
 
@@ -92,8 +93,8 @@ const syncClassSeats = async ({
 
     if (inValidStudents.length > 0) {
       await removeStudentsFromCourse({
-        id: course.id!,
-        students: inValidStudents.map((item) => `${users![item].id}`),
+        id: `${course.id}`,
+        students: inValidStudents,
       });
     }
 

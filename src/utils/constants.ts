@@ -7,7 +7,7 @@ export const Age_Mapping = [
   },
   {
     program: "SuperJunior",
-    code : "SJ",
+    code: "SJ",
     from: 6,
     to: 12,
   },
@@ -19,8 +19,12 @@ export const Age_Mapping = [
   },
   {
     program: "GlobalEnglish",
-    code : "GE",
+    code: "GE",
     from: 17,
     to: 100,
   },
 ];
+
+export const MultipleDurationProgram = {
+  "Global English": true,
+};
