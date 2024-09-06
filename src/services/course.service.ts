@@ -79,9 +79,7 @@ const createCourseInfo = async (
 
   //sync teachers to course
   let teachers = {};
-  let teacherProfiles = Array.isArray(axTeacherProfile)
-    ? axTeacherProfile
-    : [axTeacherProfile];
+  let teacherProfiles = axTeacherProfile;
 
   if (teacherProfiles && teacherProfiles.length > 0) {
     const staffCodes = teacherProfiles.reduce((result, item) => {
@@ -93,16 +91,17 @@ const createCourseInfo = async (
     if (users) {
       let staff: { [key: string]: any } = {};
 
-      let no = 1;
+      let taNum = 1;
+      let teacherNum = 2;
       users?.forEach((item, index) => {
         let key = "";
         switch (item.role) {
           case "teacher":
-            key = "teacher_id";
+            if (!staff["teacher_id"]) key = "teacher_id";
+            else key = `teacher${teacherNum++}_id`;
             break;
           case "ta":
-            key = `ta${no}_id`;
-            no += 1;
+            key = `ta${taNum++}_id`;
             break;
         }
         staff[key] = item.id;

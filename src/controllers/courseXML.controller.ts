@@ -3,7 +3,7 @@ import KafkaManager, { CourseTopic } from "@/lib/message_queue/kafka";
 import { parseXMLFile } from "@/utils/xml_parser";
 import { Message } from "kafkajs";
 import logger, { logMessage } from "@/utils/logger";
-import { AXRegistration, AXStudentProfile, Course } from "@/models/_index";
+import { AXRegistration, Course } from "@/models/_index";
 import {
   syncClassSeats,
   syncCourse,
@@ -23,11 +23,13 @@ kafkaManager.consume(CourseTopic, async (topic: string, message: Message) => {
     const registrations: AXRegistration[] | undefined | null =
       axData["Registrations"]?.["RegistrationInfo"];
 
-    let teachers = axData["Teachers"]?.["TeacherProfile"];
+    const axTeachers = axData["Teachers"]?.["TeacherProfile"];
+    const teachers = Array.isArray(axTeachers) ? axTeachers : [axTeachers];
+
+    const axStudents = axData["StudentsInformation"]?.["StudentInformation"];
+    const students = Array.isArray(axStudents) ? axStudents : [axStudents];
 
     const lessonTeachers = axData["ClassLessonTeachersTAs"]?.["TeacherTA"];
-    const students: AXStudentProfile[] | undefined | null =
-      axData["StudentsInformation"]?.["StudentInformation"];
 
     const promiseCalls = [];
     if (classInfo) {

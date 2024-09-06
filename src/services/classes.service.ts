@@ -76,7 +76,6 @@ export default class ClassesService {
       // Group each lesson with teacher and ta
       const axTeacherScheduling: TeacherScheduling = {};
 
-      console.log(staffs);
       let taIndex = 1;
       axClassTeachers?.forEach((item) => {
         const {
@@ -129,12 +128,8 @@ export default class ClassesService {
         schedule: JSON.parse(schedule || ""),
       };
 
-      console.log("send data = ", JSON.stringify(data));
-
       const res = await rolloutClasses(data);
 
-      console.log("----> classes ");
-      console.log(res);
       res && res!.length > 0
         ? logger.info(logMessage("success", "classes", "sync successfully"))
         : logger.error(logMessage("error", "classes", "sync fail"));

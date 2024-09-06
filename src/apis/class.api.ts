@@ -26,7 +26,6 @@ export const rolloutClasses = async (
     course: data,
   });
 
-  console.log("response ==> ", response.data);
   return response.data;
 };
 
