@@ -19,6 +19,7 @@ export interface AXRegistration {
   ActualEndDate?: string;
   StudentType?: string;
   RegistrationStatus?: RegistrationType;
+  RegistrationType?: string;
   TerminationStatus?: TerminationType;
   RegisPreviousClass?: string;
   TransferedFrom?: string;

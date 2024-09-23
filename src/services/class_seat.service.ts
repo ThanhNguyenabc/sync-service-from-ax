@@ -56,6 +56,7 @@ const syncClassSeats = async ({
     for (const registration of axRegistrations) {
       const {
         Registration = "",
+        RegistrationType = "",
         TerminationStatus = "",
         StudentCode = "",
         ActualEndDate = "",
@@ -79,6 +80,7 @@ const syncClassSeats = async ({
             student_id: id,
             reg_id: Registration,
             termination_status: TerminationStatus,
+            registation_type: RegistrationType,
             registration_status: RegistrationStatus,
             date_from: actualStartDate,
             date_to: actualEndDate,
