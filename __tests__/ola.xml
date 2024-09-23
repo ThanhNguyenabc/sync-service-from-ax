@@ -1,42 +1,2849 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ClassInformation>
-    <ClassCode>H39YJOLA-1B-24S1-V</ClassCode>
-    <ClassName>Shining Stars Summer</ClassName>
-    <ClassGroup>Summer</ClassGroup>
-    <ProductGroup>OLA-EY</ProductGroup>
-    <ProgrammeName>Shining Stars</ProgrammeName>
-    <LevelId>OLAJ1-B1</LevelId>
-    <LevelName>Beginner 1 level</LevelName>
-    <Module>B</Module>
-    <Hours>90</Hours>
-    <Week>6</Week>
-    <PreceedingClass/>
-    <CourseTemplate>TBC</CourseTemplate>
-    <ClassStatus>5</ClassStatus>
-    <Company/>
-    <Days>Mon/Tue/Wed/Thu/Fri</Days>
-    <Shift>5</Shift>
-    <StartTime>08:30:00</StartTime>
-    <EndTime>11:30:00</EndTime>
-    <BreakTime>0</BreakTime>
-    <UnscheduledHour>90</UnscheduledHour>
-    <MaxAttendant>25</MaxAttendant>
-    <Room>TBC</Room>
-    <TeacherName/>
-    <TeacherPersonNum/>
-    <TeacherStaffCode/>
-    <TA1Name>0</TA1Name>
-    <TA1PersonNum>0</TA1PersonNum>
-    <TA1StaffCode/>
-    <TA2Name>0</TA2Name>
-    <TA2PersonNum>0</TA2PersonNum>
-    <TA2StaffCode/>
-    <Center>TC-HCMC34</Center>
-    <StartDate>2024/Jun/10</StartDate>
-    <EndDate/>
-    <CourseScheduleFileName/>
-    <Fee>22550000</Fee>
-    <NoOfSts>0</NoOfSts>
-    <CompanyCode/>
-    <ContractId/>
-</ClassInformation>
+	<ClassCode>BR1YKOLA-K5-2401</ClassCode>
+	<ClassName>Step Up</ClassName>
+	<ClassGroup>Public</ClassGroup>
+	<ProductGroup>OLA-EY</ProductGroup>
+	<ProgrammeName>StepUp</ProgrammeName>
+	<LevelId>OLA-K5</LevelId>
+	<LevelName>Level 5</LevelName>
+	<Module/>
+	<Hours>64</Hours>
+	<Week>16</Week>
+	<PreceedingClass>BR1YKOLA-K4-2401</PreceedingClass>
+	<CourseTemplate>OLAStepUp/K5/2hrs/Dur64/V1</CourseTemplate>
+	<ClassStatus>3</ClassStatus>
+	<Company/>
+	<Days>Sat/Sun</Days>
+	<Shift>6</Shift>
+	<StartTime>07:45:00</StartTime>
+	<EndTime>09:45:00</EndTime>
+	<BreakTime>0</BreakTime>
+	<UnscheduledHour>0</UnscheduledHour>
+	<MaxAttendant>25</MaxAttendant>
+	<Room>102</Room>
+	<TeacherName>Kabelo Dylan Motlhatlhedi</TeacherName>
+	<TeacherPersonNum>031923</TeacherPersonNum>
+	<TeacherStaffCode>ILAV-15762</TeacherStaffCode>
+	<TA1Name>Nguyễn Hoàng Uyên Nhi</TA1Name>
+	<TA1PersonNum>025530</TA1PersonNum>
+	<TA1StaffCode>ILAV-01552</TA1StaffCode>
+	<TA2Name>Lâm Thanh Hưng</TA2Name>
+	<TA2PersonNum>026128</TA2PersonNum>
+	<TA2StaffCode>ILAV-01838</TA2StaffCode>
+	<Center>TC-BR1</Center>
+	<StartDate>2024/Jul/21</StartDate>
+	<EndDate>2024/Nov/09</EndDate>
+	<CourseScheduleFileName/>
+	<Fee>12480000</Fee>
+	<NoOfSts>23</NoOfSts>
+	<CompanyCode/>
+	<ContractId/>
+</ClassInformation><?xml version="1.0" encoding="utf-8"?>
+<ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240721</LessonDate>
+		<LessonNo>1</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240727</LessonDate>
+		<LessonNo>2</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240728</LessonDate>
+		<LessonNo>3</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240803</LessonDate>
+		<LessonNo>4</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240804</LessonDate>
+		<LessonNo>5</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240810</LessonDate>
+		<LessonNo>6</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240811</LessonDate>
+		<LessonNo>7</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240817</LessonDate>
+		<LessonNo>8</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240818</LessonDate>
+		<LessonNo>9</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240824</LessonDate>
+		<LessonNo>10</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240825</LessonDate>
+		<LessonNo>11</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240831</LessonDate>
+		<LessonNo>12</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240901</LessonDate>
+		<LessonNo>13</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240907</LessonDate>
+		<LessonNo>14</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240908</LessonDate>
+		<LessonNo>15</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240914</LessonDate>
+		<LessonNo>16</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240915</LessonDate>
+		<LessonNo>17</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240921</LessonDate>
+		<LessonNo>18</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240922</LessonDate>
+		<LessonNo>19</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240928</LessonDate>
+		<LessonNo>20</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20240929</LessonDate>
+		<LessonNo>21</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20241005</LessonDate>
+		<LessonNo>22</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20241006</LessonDate>
+		<LessonNo>23</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20241012</LessonDate>
+		<LessonNo>24</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20241013</LessonDate>
+		<LessonNo>25</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20241019</LessonDate>
+		<LessonNo>26</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20241020</LessonDate>
+		<LessonNo>27</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20241026</LessonDate>
+		<LessonNo>28</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20241027</LessonDate>
+		<LessonNo>29</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20241102</LessonDate>
+		<LessonNo>30</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20241103</LessonDate>
+		<LessonNo>31</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+	<ClassSchedule>
+		<LessonDate>20241109</LessonDate>
+		<LessonNo>32</LessonNo>
+		<From> 7:45</From>
+		<To> 9:45</To>
+		<LessonStatus>Open</LessonStatus>
+	</ClassSchedule>
+</ClassSchedule><?xml version="1.0" encoding="utf-8"?>
+<Teachers>
+	<TeacherProfile>
+		<FirstName>Thư</FirstName>
+		<MiddleName>Ngọc Anh</MiddleName>
+		<LastName>Nguyễn</LastName>
+		<Gender>Female</Gender>
+		<LocationID>6</LocationID>
+		<TeacherName>Nguyễn Ngọc Anh Thư</TeacherName>
+		<TeacherCode/>
+		<PersonnelNumber>024966</PersonnelNumber>
+		<StaffCode>ILAV-01362</StaffCode>
+		<DOB>07-11-1998</DOB>
+		<Active>Yes</Active>
+		<Phone/>
+		<Extension/>
+		<Email>thunguyen031@ilavietnam.edu.vn</Email>
+		<UserName>thunguyen031@ilavietnam.edu.vn</UserName>
+		<Address/>
+		<WorkerType>Employee</WorkerType>
+		<Status/>
+		<Role>TA</Role>
+		<Title/>
+		<Position/>
+		<Department/>
+		<OfficeLocation>TC-BR1</OfficeLocation>
+		<OfficeAddress/>
+		<Nationality>Vietnamese</Nationality>
+	</TeacherProfile>
+	<TeacherProfile>
+		<FirstName>Nhi</FirstName>
+		<MiddleName>Hoàng Uyên</MiddleName>
+		<LastName>Nguyễn</LastName>
+		<Gender>Female</Gender>
+		<LocationID>6</LocationID>
+		<TeacherName>Nguyễn Hoàng Uyên Nhi</TeacherName>
+		<TeacherCode/>
+		<PersonnelNumber>025530</PersonnelNumber>
+		<StaffCode>ILAV-01552</StaffCode>
+		<DOB>07-02-2002</DOB>
+		<Active>Yes</Active>
+		<Phone>uyennhinguyenhoang7273@gmail.com</Phone>
+		<Extension/>
+		<Email>nhinguyen026@ilavietnam.edu.vn</Email>
+		<UserName>nhinguyen026@ilavietnam.edu.vn</UserName>
+		<Address/>
+		<WorkerType>Employee</WorkerType>
+		<Status/>
+		<Role>TA</Role>
+		<Title/>
+		<Position/>
+		<Department/>
+		<OfficeLocation>TC-BR1</OfficeLocation>
+		<OfficeAddress/>
+		<Nationality>Vietnamese</Nationality>
+	</TeacherProfile>
+	<TeacherProfile>
+		<FirstName>Andreas</FirstName>
+		<MiddleName>Federico</MiddleName>
+		<LastName>Astrinakis</LastName>
+		<Gender>Male</Gender>
+		<LocationID>6</LocationID>
+		<TeacherName>Andreas Federico Astrinakis</TeacherName>
+		<TeacherCode/>
+		<PersonnelNumber>025979</PersonnelNumber>
+		<StaffCode>ILAV-01750</StaffCode>
+		<DOB>20-09-1988</DOB>
+		<Active>Yes</Active>
+		<Phone/>
+		<Extension/>
+		<Email>andreasastrinakis@ilavietnam.edu.vn</Email>
+		<UserName>andreasastrinakis@ilavietnam.edu.vn</UserName>
+		<Address/>
+		<WorkerType>Employee</WorkerType>
+		<Status/>
+		<Role>Teacher</Role>
+		<Title/>
+		<Position/>
+		<Department/>
+		<OfficeLocation>TC-BR1</OfficeLocation>
+		<OfficeAddress/>
+		<Nationality>USA</Nationality>
+	</TeacherProfile>
+	<TeacherProfile>
+		<FirstName>Hưng</FirstName>
+		<MiddleName>Thanh</MiddleName>
+		<LastName>Lâm</LastName>
+		<Gender>Male</Gender>
+		<LocationID>6</LocationID>
+		<TeacherName>Lâm Thanh Hưng</TeacherName>
+		<TeacherCode/>
+		<PersonnelNumber>026128</PersonnelNumber>
+		<StaffCode>ILAV-01838</StaffCode>
+		<DOB>26-11-2001</DOB>
+		<Active>Yes</Active>
+		<Phone>0337125489</Phone>
+		<Extension/>
+		<Email>hunglam01@ilavietnam.edu.vn</Email>
+		<UserName>hunglam01@ilavietnam.edu.vn</UserName>
+		<Address/>
+		<WorkerType>Employee</WorkerType>
+		<Status/>
+		<Role>TA</Role>
+		<Title/>
+		<Position/>
+		<Department/>
+		<OfficeLocation>TC-BR1</OfficeLocation>
+		<OfficeAddress/>
+		<Nationality>Vietnamese</Nationality>
+	</TeacherProfile>
+	<TeacherProfile>
+		<FirstName>Nhi</FirstName>
+		<MiddleName>Uyển</MiddleName>
+		<LastName>Trần</LastName>
+		<Gender>Female</Gender>
+		<LocationID>6</LocationID>
+		<TeacherName>Trần Uyển Nhi</TeacherName>
+		<TeacherCode/>
+		<PersonnelNumber>026424</PersonnelNumber>
+		<StaffCode>ILAV-01907</StaffCode>
+		<DOB>17-07-2001</DOB>
+		<Active>Yes</Active>
+		<Phone/>
+		<Extension/>
+		<Email>nhitran012@ilavietnam.edu.vn</Email>
+		<UserName>nhitran012@ilavietnam.edu.vn</UserName>
+		<Address/>
+		<WorkerType>Employee</WorkerType>
+		<Status/>
+		<Role>TA</Role>
+		<Title/>
+		<Position/>
+		<Department/>
+		<OfficeLocation>TC-BR1</OfficeLocation>
+		<OfficeAddress/>
+		<Nationality>Vietnamese</Nationality>
+	</TeacherProfile>
+	<TeacherProfile>
+		<FirstName>Nguyễn</FirstName>
+		<MiddleName>Ngọc Mai</MiddleName>
+		<LastName>Linh</LastName>
+		<Gender>Female</Gender>
+		<LocationID>6</LocationID>
+		<TeacherName>Nguyễn Ngọc Mai Linh</TeacherName>
+		<TeacherCode/>
+		<PersonnelNumber>027280</PersonnelNumber>
+		<StaffCode>ILAV-02323</StaffCode>
+		<DOB>04-06-1995</DOB>
+		<Active>Yes</Active>
+		<Phone/>
+		<Extension/>
+		<Email>nguyenlinh010@ilavietnam.edu.vn</Email>
+		<UserName>nguyenlinh010@ilavietnam.edu.vn</UserName>
+		<Address>80/7 Tân Hòa ĐôngPhường 14Quận 6 Thành phố Hồ Chí MinhSouthVNM</Address>
+		<WorkerType>Employee</WorkerType>
+		<Status/>
+		<Role>Teacher</Role>
+		<Title/>
+		<Position/>
+		<Department/>
+		<OfficeLocation>TC-BR1</OfficeLocation>
+		<OfficeAddress/>
+		<Nationality>Vietnamese</Nationality>
+	</TeacherProfile>
+	<TeacherProfile>
+		<FirstName>QUYÊN</FirstName>
+		<MiddleName>CHIÊM HOÀNG</MiddleName>
+		<LastName>TRẦN</LastName>
+		<Gender>Female</Gender>
+		<LocationID>6</LocationID>
+		<TeacherName>TRẦN CHIÊM HOÀNG QUYÊN</TeacherName>
+		<TeacherCode/>
+		<PersonnelNumber>027589</PersonnelNumber>
+		<StaffCode>ILAV-02463</StaffCode>
+		<DOB>30-09-2003</DOB>
+		<Active>Yes</Active>
+		<Phone>0325471284</Phone>
+		<Extension/>
+		<Email>quyentran05@ilavietnam.edu.vn</Email>
+		<UserName>quyentran05@ilavietnam.edu.vn</UserName>
+		<Address/>
+		<WorkerType>Employee</WorkerType>
+		<Status/>
+		<Role>TA</Role>
+		<Title/>
+		<Position/>
+		<Department/>
+		<OfficeLocation>TC-BR1</OfficeLocation>
+		<OfficeAddress/>
+		<Nationality>Vietnamese</Nationality>
+	</TeacherProfile>
+	<TeacherProfile>
+		<FirstName>Samuel</FirstName>
+		<MiddleName>Joseph</MiddleName>
+		<LastName>Badger</LastName>
+		<Gender>Male</Gender>
+		<LocationID>6</LocationID>
+		<TeacherName>Samuel Joseph Badger</TeacherName>
+		<TeacherCode/>
+		<PersonnelNumber>030206</PersonnelNumber>
+		<StaffCode>ILAV-14119</StaffCode>
+		<DOB>23-08-1996</DOB>
+		<Active>Yes</Active>
+		<Phone/>
+		<Extension/>
+		<Email>samuel.badger@ilavietnam.edu.vn</Email>
+		<UserName>samuel.badger@ilavietnam.edu.vn</UserName>
+		<Address/>
+		<WorkerType>Employee</WorkerType>
+		<Status/>
+		<Role>Teacher</Role>
+		<Title/>
+		<Position/>
+		<Department/>
+		<OfficeLocation>TC-BR1</OfficeLocation>
+		<OfficeAddress/>
+		<Nationality>British</Nationality>
+	</TeacherProfile>
+</Teachers><?xml version="1.0" encoding="utf-8"?>
+<ClassLessonTeachersTAs>
+	<TeacherTA>
+		<LessonNo>1</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>024966</TeacherTACode>
+		<StaffCode>ILAV-01362</StaffCode>
+		<Duration>2.00</Duration>
+		
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>1</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>1</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>1</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>2</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>2</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>2</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>2</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>027589</TeacherTACode>
+		<StaffCode>ILAV-02463</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>3</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>3</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>3</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>3</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>027589</TeacherTACode>
+		<StaffCode>ILAV-02463</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>4</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>4</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>4</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026128</TeacherTACode>
+		<StaffCode>ILAV-01838</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>4</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>5</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>5</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>5</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>5</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>027589</TeacherTACode>
+		<StaffCode>ILAV-02463</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>6</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>6</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>6</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026128</TeacherTACode>
+		<StaffCode>ILAV-01838</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>6</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>7</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>7</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>7</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>7</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>027589</TeacherTACode>
+		<StaffCode>ILAV-02463</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>8</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>8</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>8</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>027589</TeacherTACode>
+		<StaffCode>ILAV-02463</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>8</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>030206</TeacherTACode>
+		<StaffCode>ILAV-14119</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>9</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>9</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>9</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>027589</TeacherTACode>
+		<StaffCode>ILAV-02463</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>9</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>030206</TeacherTACode>
+		<StaffCode>ILAV-14119</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>10</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>10</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026424</TeacherTACode>
+		<StaffCode>ILAV-01907</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>10</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>11</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>11</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>11</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>027589</TeacherTACode>
+		<StaffCode>ILAV-02463</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>11</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>030206</TeacherTACode>
+		<StaffCode>ILAV-14119</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>12</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>12</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026424</TeacherTACode>
+		<StaffCode>ILAV-01907</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>12</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>12</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>030206</TeacherTACode>
+		<StaffCode>ILAV-14119</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>13</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>13</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>13</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>027589</TeacherTACode>
+		<StaffCode>ILAV-02463</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>13</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>030206</TeacherTACode>
+		<StaffCode>ILAV-14119</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>14</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>14</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>14</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026424</TeacherTACode>
+		<StaffCode>ILAV-01907</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>14</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>15</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>15</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>15</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>15</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>027589</TeacherTACode>
+		<StaffCode>ILAV-02463</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>16</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>16</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>16</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026424</TeacherTACode>
+		<StaffCode>ILAV-01907</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>16</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>17</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>17</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>17</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>17</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>027589</TeacherTACode>
+		<StaffCode>ILAV-02463</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>18</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>18</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>18</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026424</TeacherTACode>
+		<StaffCode>ILAV-01907</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>18</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>19</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>19</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>19</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>19</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>027589</TeacherTACode>
+		<StaffCode>ILAV-02463</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>20</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>20</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>20</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>20</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>027589</TeacherTACode>
+		<StaffCode>ILAV-02463</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>21</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>21</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>21</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>21</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>027589</TeacherTACode>
+		<StaffCode>ILAV-02463</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>22</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>22</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>22</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026128</TeacherTACode>
+		<StaffCode>ILAV-01838</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>22</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>23</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>23</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>23</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026128</TeacherTACode>
+		<StaffCode>ILAV-01838</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>23</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>24</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>24</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>24</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026128</TeacherTACode>
+		<StaffCode>ILAV-01838</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>24</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>25</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>25</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>25</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026128</TeacherTACode>
+		<StaffCode>ILAV-01838</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>25</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>26</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>26</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>26</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026128</TeacherTACode>
+		<StaffCode>ILAV-01838</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>26</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>27</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>27</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>27</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026128</TeacherTACode>
+		<StaffCode>ILAV-01838</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>27</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>28</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>28</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>28</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026128</TeacherTACode>
+		<StaffCode>ILAV-01838</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>28</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>29</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>29</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>29</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026128</TeacherTACode>
+		<StaffCode>ILAV-01838</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>29</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>30</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>30</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>30</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026128</TeacherTACode>
+		<StaffCode>ILAV-01838</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>30</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>31</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>31</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>31</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026128</TeacherTACode>
+		<StaffCode>ILAV-01838</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>31</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>32</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>025530</TeacherTACode>
+		<StaffCode>ILAV-01552</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>32</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>025979</TeacherTACode>
+		<StaffCode>ILAV-01750</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 7:45</From>
+		<To> 8:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>32</LessonNo>
+		<Role>TA</Role>
+		<TeacherTACode>026128</TeacherTACode>
+		<StaffCode>ILAV-01838</StaffCode>
+		<Duration>2.00</Duration>
+		<From> 7:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+	<TeacherTA>
+		<LessonNo>32</LessonNo>
+		<Role>Teacher</Role>
+		<TeacherTACode>027280</TeacherTACode>
+		<StaffCode>ILAV-02323</StaffCode>
+		<Duration>1.00</Duration>
+		<From> 8:45</From>
+		<To> 9:45</To>
+	</TeacherTA>
+</ClassLessonTeachersTAs><?xml version="1.0" encoding="utf-8"?>
+<Registrations>
+	<RegistrationInfo>
+		<Registration>Reg-001851684</Registration>
+		<RegistrationDate>19/05/2024</RegistrationDate>
+		<StudentCode>S-378521</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>20/07/2024</ActualEndDate>
+		<StudentType>Brand New</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>Saving</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001864079</Registration>
+		<RegistrationDate>31/05/2024</RegistrationDate>
+		<StudentCode>S-383413</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>19/07/2024</ActualEndDate>
+		<StudentType>Brand New</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>Saving</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001869463</Registration>
+		<RegistrationDate>05/06/2024</RegistrationDate>
+		<StudentCode>S-379537</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Re-Enrolled</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass>BR1YKOLA-K4-2401</RegisPreviousClass>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001869464</Registration>
+		<RegistrationDate>05/06/2024</RegistrationDate>
+		<StudentCode>S-377759</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Re-Enrolled</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass>BR1YKOLA-K4-2401</RegisPreviousClass>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001869465</Registration>
+		<RegistrationDate>05/06/2024</RegistrationDate>
+		<StudentCode>S-381719</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Re-Enrolled</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass>BR1YKOLA-K4-2401</RegisPreviousClass>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001869460</Registration>
+		<RegistrationDate>05/06/2024</RegistrationDate>
+		<StudentCode>S-342594</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Re-Enrolled</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass>BR1YKOLA-K4-2401</RegisPreviousClass>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001869461</Registration>
+		<RegistrationDate>05/06/2024</RegistrationDate>
+		<StudentCode>S-344615</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Re-Enrolled</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass>BR1YKOLA-K4-2401</RegisPreviousClass>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001869462</Registration>
+		<RegistrationDate>05/06/2024</RegistrationDate>
+		<StudentCode>S-359964</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Re-Enrolled</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass>BR1YKOLA-K4-2401</RegisPreviousClass>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001876075</Registration>
+		<RegistrationDate>12/06/2024</RegistrationDate>
+		<StudentCode>S-385944</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Brand New</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001886237</Registration>
+		<RegistrationDate>23/06/2024</RegistrationDate>
+		<StudentCode>S-371481</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Brand New</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001889802</Registration>
+		<RegistrationDate>26/06/2024</RegistrationDate>
+		<StudentCode>S-392891</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Brand New</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001901854</Registration>
+		<RegistrationDate>13/07/2024</RegistrationDate>
+		<StudentCode>S-347638</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Re-Enrolled</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass>BR1YKOLA-K4-2401</RegisPreviousClass>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001901434</Registration>
+		<RegistrationDate>13/07/2024</RegistrationDate>
+		<StudentCode>S-348582</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Re-Enrolled</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass>BR1YKOLA-K4-2401</RegisPreviousClass>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001902587</Registration>
+		<RegistrationDate>14/07/2024</RegistrationDate>
+		<StudentCode>S-312124</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Re-Enrolled</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass>BR1YKOLA-K4-2401</RegisPreviousClass>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001902597</Registration>
+		<RegistrationDate>14/07/2024</RegistrationDate>
+		<StudentCode>S-338668</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Re-Enrolled</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass>BR1YKOLA-K4-2401</RegisPreviousClass>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001905352</Registration>
+		<RegistrationDate>18/07/2024</RegistrationDate>
+		<StudentCode>S-398996</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Brand New</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001905673</Registration>
+		<RegistrationDate>19/07/2024</RegistrationDate>
+		<StudentCode>S-350382</StudentCode>
+		<ActualStartDate>21/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Re-Enrolled</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass>BR1YKOLA-K4-2401</RegisPreviousClass>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/21</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001909667</Registration>
+		<RegistrationDate>24/07/2024</RegistrationDate>
+		<StudentCode>S-401219</StudentCode>
+		<ActualStartDate>03/08/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Brand New</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Aug/03</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001913035</Registration>
+		<RegistrationDate>28/07/2024</RegistrationDate>
+		<StudentCode>S-397156</StudentCode>
+		<ActualStartDate>28/07/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Other</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom>BR1WT-YKOLA-K3-2405</TransferedFrom>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Jul/28</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001914188</Registration>
+		<RegistrationDate>30/07/2024</RegistrationDate>
+		<StudentCode>S-332210</StudentCode>
+		<ActualStartDate>18/08/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Re-Enrolled</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass>BR1YKOLA-K4-2401</RegisPreviousClass>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Aug/18</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001922385</Registration>
+		<RegistrationDate>10/08/2024</RegistrationDate>
+		<StudentCode>S-405806</StudentCode>
+		<ActualStartDate>17/08/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Brand New</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Aug/17</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001921764</Registration>
+		<RegistrationDate>10/08/2024</RegistrationDate>
+		<StudentCode>S-396030</StudentCode>
+		<ActualStartDate>10/08/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Other</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom>BR1WT-YKOLA-K3-2405</TransferedFrom>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Aug/10</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001923931</Registration>
+		<RegistrationDate>14/08/2024</RegistrationDate>
+		<StudentCode>S-406776</StudentCode>
+		<ActualStartDate>17/08/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Brand New</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Aug/17</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001927543</Registration>
+		<RegistrationDate>19/08/2024</RegistrationDate>
+		<StudentCode>S-404838</StudentCode>
+		<ActualStartDate>24/08/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Brand New</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Aug/24</AcademicDate>
+	</RegistrationInfo>
+	<RegistrationInfo>
+		<Registration>Reg-001931646</Registration>
+		<RegistrationDate>24/08/2024</RegistrationDate>
+		<StudentCode>S-407100</StudentCode>
+		<ActualStartDate>07/09/2024</ActualStartDate>
+		<ActualEndDate>09/11/2024</ActualEndDate>
+		<StudentType>Brand New</StudentType>
+		<RegistrationStatus>Registered</RegistrationStatus>
+		<TerminationStatus>None</TerminationStatus>
+		<RegistrationType>None</RegistrationType>
+		<RegisPreviousClass/>
+		<TransferedFrom/>
+		<CompanyCode/>
+		<ContractId/>
+		<AcademicDate>2024/Sep/07</AcademicDate>
+	</RegistrationInfo>
+</Registrations><?xml version="1.0" encoding="utf-8"?>
+<StudentsInformation>
+	<StudentInformation>
+		<StudentCode>S-403127</StudentCode>
+		<FirstName>Phú</FirstName>
+		<MiddleName>Văn Thiên</MiddleName>
+		<LastName>Nguyễn</LastName>
+		<PersonalSuffix/>
+		<SearchName>Nguyễn Văn Thiên Phú</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0822353839</MobilePhone>
+		<Birthday>12</Birthday>
+		<BirthMonth>June</BirthMonth>
+		<BirthYear>2019</BirthYear>
+		<DOB>2019-June-12</DOB>
+		<Telephone>0822353839</Telephone>
+		<Email/>
+		<EmailStudent>phu.s403127@ilamail.edu.vn</EmailStudent>
+		<Address>tbc</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>7/30/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-403957</StudentCode>
+		<FirstName>Đăng</FirstName>
+		<MiddleName>Thái</MiddleName>
+		<LastName>Nguyễn</LastName>
+		<PersonalSuffix/>
+		<SearchName>Nguyễn Thái Đăng</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0949993344</MobilePhone>
+		<Birthday>27</Birthday>
+		<BirthMonth>May</BirthMonth>
+		<BirthYear>2019</BirthYear>
+		<DOB>2019-May-27</DOB>
+		<Telephone>0949993344</Telephone>
+		<Email>thaison1093@gmail.com</Email>
+		<EmailStudent>dang.s403957@ilamail.edu.vn</EmailStudent>
+		<Address>br</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>8/2/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-403957</StudentCode>
+		<FirstName>Đăng</FirstName>
+		<MiddleName>Thái</MiddleName>
+		<LastName>Nguyễn</LastName>
+		<PersonalSuffix/>
+		<SearchName>Nguyễn Thái Đăng</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0949993344</MobilePhone>
+		<Birthday>27</Birthday>
+		<BirthMonth>May</BirthMonth>
+		<BirthYear>2019</BirthYear>
+		<DOB>2019-May-27</DOB>
+		<Telephone>0949993344</Telephone>
+		<Email>thaison1093@gmail.com</Email>
+		<EmailStudent>dang.s403957@ilamail.edu.vn</EmailStudent>
+		<Address>br</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>8/2/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-342594</StudentCode>
+		<FirstName>Huy</FirstName>
+		<MiddleName/>
+		<LastName>Nguyễn Gia</LastName>
+		<PersonalSuffix/>
+		<SearchName>Nguyễn Gia  Huy</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0868853015</MobilePhone>
+		<Birthday>21</Birthday>
+		<BirthMonth>April</BirthMonth>
+		<BirthYear>2020</BirthYear>
+		<DOB>2020-April-21</DOB>
+		<Telephone>0868853015</Telephone>
+		<Email>nguyentatthien0299@gmail.com</Email>
+		<EmailStudent>huy.s342594@ilamail.edu.vn</EmailStudent>
+		<Address>Tổ 5 khu phố 4. Số nhà 78 Nguyễn Hữu Huân
+Tỉnh Bà Rịa - Vũng Tàu
+South
+VNM</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>12/19/2023</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-344615</StudentCode>
+		<FirstName>Vy</FirstName>
+		<MiddleName>Linh</MiddleName>
+		<LastName>Nguyễn Ngọc</LastName>
+		<PersonalSuffix/>
+		<SearchName>Nguyễn Ngọc Linh Vy</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0362087665</MobilePhone>
+		<Birthday>1</Birthday>
+		<BirthMonth>December</BirthMonth>
+		<BirthYear>2020</BirthYear>
+		<DOB>2020-December-1</DOB>
+		<Telephone>0362087665</Telephone>
+		<Email>sklamthu@gmail.com</Email>
+		<EmailStudent>vy.s344615@ilamail.edu.vn</EmailStudent>
+		<Address>.</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>HO-ILAV</Center>
+		<LocationID>HO-ILAV</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>12/28/2023</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-359964</StudentCode>
+		<FirstName>Đăng Phương</FirstName>
+		<MiddleName>Ngọc</MiddleName>
+		<LastName>Mai</LastName>
+		<PersonalSuffix/>
+		<SearchName>Mai Ngọc Đăng Phương</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0977001088</MobilePhone>
+		<Birthday>23</Birthday>
+		<BirthMonth>February</BirthMonth>
+		<BirthYear>2021</BirthYear>
+		<DOB>2021-February-23</DOB>
+		<Telephone>0977001088</Telephone>
+		<Email>chicuong300490@gmail.com</Email>
+		<EmailStudent>dang.s359964@ilamail.edu.vn</EmailStudent>
+		<Address>27 Nguyễn Trọng Quảng</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center/>
+		<LocationID/>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>3/12/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-379537</StudentCode>
+		<FirstName>Diệu</FirstName>
+		<MiddleName>Vương Tứ</MiddleName>
+		<LastName>Đinh</LastName>
+		<PersonalSuffix/>
+		<SearchName>Đinh Vương Tứ Diệu</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0938080825</MobilePhone>
+		<Birthday>30</Birthday>
+		<BirthMonth>October</BirthMonth>
+		<BirthYear>2020</BirthYear>
+		<DOB>2020-October-30</DOB>
+		<Telephone>0938080825</Telephone>
+		<Email>dinhkimdieu98@gmail.com</Email>
+		<EmailStudent>dieu.s379537@ilamail.edu.vn</EmailStudent>
+		<Address>BR</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>5/21/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-377759</StudentCode>
+		<FirstName>Bão</FirstName>
+		<MiddleName>Hoài</MiddleName>
+		<LastName>Phạm</LastName>
+		<PersonalSuffix/>
+		<SearchName>Phạm Hoài Bão</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0933009802</MobilePhone>
+		<Birthday>19</Birthday>
+		<BirthMonth>August</BirthMonth>
+		<BirthYear>2021</BirthYear>
+		<DOB>2021-August-19</DOB>
+		<Telephone>0933009802</Telephone>
+		<Email>kimhiendinh94@gmail.com</Email>
+		<EmailStudent>bao.s377759@ilamail.edu.vn</EmailStudent>
+		<Address>BR</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>5/17/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-381719</StudentCode>
+		<FirstName>Nhân</FirstName>
+		<MiddleName>Trọng</MiddleName>
+		<LastName>Dương</LastName>
+		<PersonalSuffix/>
+		<SearchName>Dương Trọng Nhân</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0933377992</MobilePhone>
+		<Birthday>31</Birthday>
+		<BirthMonth>August</BirthMonth>
+		<BirthYear>2020</BirthYear>
+		<DOB>2020-August-31</DOB>
+		<Telephone>0933377992</Telephone>
+		<Email>duongngocchau@gmail.com</Email>
+		<EmailStudent>nhan.s381719@ilamail.edu.vn</EmailStudent>
+		<Address>,</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>5/26/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-385944</StudentCode>
+		<FirstName>Nhi</FirstName>
+		<MiddleName>Ngọc Bảo</MiddleName>
+		<LastName>Phạm</LastName>
+		<PersonalSuffix/>
+		<SearchName>Phạm Ngọc Bảo Nhi</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0931980690</MobilePhone>
+		<Birthday>5</Birthday>
+		<BirthMonth>June</BirthMonth>
+		<BirthYear>2021</BirthYear>
+		<DOB>2021-June-5</DOB>
+		<Telephone>0931980690</Telephone>
+		<Email>hungq93@gmail.com</Email>
+		<EmailStudent>nhi.s385944@ilamail.edu.vn</EmailStudent>
+		<Address>VT</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-VT1</Center>
+		<LocationID>TC-VT1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>6/7/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-371481</StudentCode>
+		<FirstName>Khang</FirstName>
+		<MiddleName>Ngọc</MiddleName>
+		<LastName>Phan</LastName>
+		<PersonalSuffix/>
+		<SearchName>Phan Ngọc Khang</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0976123673</MobilePhone>
+		<Birthday>21</Birthday>
+		<BirthMonth>May</BirthMonth>
+		<BirthYear>2021</BirthYear>
+		<DOB>2021-May-21</DOB>
+		<Telephone>0976123673</Telephone>
+		<Email>emnguyen679@gmail.com</Email>
+		<EmailStudent>khang.s371481@ilamail.edu.vn</EmailStudent>
+		<Address>12</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>4/23/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-392891</StudentCode>
+		<FirstName>An</FirstName>
+		<MiddleName>Ngọc Khánh</MiddleName>
+		<LastName>Nguyễn</LastName>
+		<PersonalSuffix/>
+		<SearchName>Nguyễn Ngọc Khánh An</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0934050232</MobilePhone>
+		<Birthday>3</Birthday>
+		<BirthMonth>April</BirthMonth>
+		<BirthYear>2019</BirthYear>
+		<DOB>2019-April-3</DOB>
+		<Telephone>0934050232</Telephone>
+		<Email>quangilymtics@gmail.com</Email>
+		<EmailStudent>an.s392891@ilamail.edu.vn</EmailStudent>
+		<Address>Phan Văn Trị</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>6/26/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-397156</StudentCode>
+		<FirstName>An</FirstName>
+		<MiddleName>Trường</MiddleName>
+		<LastName>Nguyễn</LastName>
+		<PersonalSuffix/>
+		<SearchName>Nguyễn Trường An</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0902147939</MobilePhone>
+		<Birthday>13</Birthday>
+		<BirthMonth>January</BirthMonth>
+		<BirthYear>2021</BirthYear>
+		<DOB>2021-January-13</DOB>
+		<Telephone>0902147939</Telephone>
+		<Email>cscdcc007@gmail.com</Email>
+		<EmailStudent>an.s397156@ilamail.edu.vn</EmailStudent>
+		<Address>VT</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>7/10/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-347638</StudentCode>
+		<FirstName>Thịnh</FirstName>
+		<MiddleName>Phúc</MiddleName>
+		<LastName>Nguyễn</LastName>
+		<PersonalSuffix/>
+		<SearchName>Nguyễn Phúc Thịnh</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0964755658</MobilePhone>
+		<Birthday>10</Birthday>
+		<BirthMonth>June</BirthMonth>
+		<BirthYear>2020</BirthYear>
+		<DOB>2020-June-10</DOB>
+		<Telephone>0964755658</Telephone>
+		<Email>phucttptqd123@gmail.com</Email>
+		<EmailStudent>thinh.s347638@ilamail.edu.vn</EmailStudent>
+		<Address>BR</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center/>
+		<LocationID/>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>1/11/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-348582</StudentCode>
+		<FirstName>Duy</FirstName>
+		<MiddleName>Khải</MiddleName>
+		<LastName>Đỗ</LastName>
+		<PersonalSuffix/>
+		<SearchName>Đỗ Khải Duy</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0975279568</MobilePhone>
+		<Birthday>4</Birthday>
+		<BirthMonth>April</BirthMonth>
+		<BirthYear>2020</BirthYear>
+		<DOB>2020-April-4</DOB>
+		<Telephone>0975279568</Telephone>
+		<Email>phamthithanhthao23@gmail.com</Email>
+		<EmailStudent>duy.s348582@ilamail.edu.vn</EmailStudent>
+		<Address>Đất Đỏ</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>1/16/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-312124</StudentCode>
+		<FirstName>Khang</FirstName>
+		<MiddleName>Minh</MiddleName>
+		<LastName>Thạch</LastName>
+		<PersonalSuffix/>
+		<SearchName>Thạch Minh Khang</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0934234596</MobilePhone>
+		<Birthday>3</Birthday>
+		<BirthMonth>June</BirthMonth>
+		<BirthYear>2020</BirthYear>
+		<DOB>2020-June-3</DOB>
+		<Telephone/>
+		<Email>thanhhang100996@gmail.com</Email>
+		<EmailStudent>khang.s312124@ilamail.edu.vn</EmailStudent>
+		<Address>BR
+Tỉnh Bà Rịa - Vũng Tàu
+South
+VNM</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>8/24/2023</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-338668</StudentCode>
+		<FirstName>Nhiên</FirstName>
+		<MiddleName>Trần An</MiddleName>
+		<LastName>Nguyễn</LastName>
+		<PersonalSuffix/>
+		<SearchName>Nguyễn Trần An Nhiên</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0908152312</MobilePhone>
+		<Birthday>19</Birthday>
+		<BirthMonth>March</BirthMonth>
+		<BirthYear>2021</BirthYear>
+		<DOB>2021-March-19</DOB>
+		<Telephone>0908152312</Telephone>
+		<Email>tranthithuytrang@gmail.com</Email>
+		<EmailStudent>nhien.s338668@ilamail.edu.vn</EmailStudent>
+		<Address>Xuyên Mộc</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-VT1</Center>
+		<LocationID>TC-VT1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>12/2/2023</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-396030</StudentCode>
+		<FirstName>Vy</FirstName>
+		<MiddleName>Lê Khánh</MiddleName>
+		<LastName>Phạm</LastName>
+		<PersonalSuffix/>
+		<SearchName>Phạm Lê Khánh Vy</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0989040709</MobilePhone>
+		<Birthday>8</Birthday>
+		<BirthMonth>November</BirthMonth>
+		<BirthYear>2021</BirthYear>
+		<DOB>2021-November-8</DOB>
+		<Telephone>0989040709</Telephone>
+		<Email>minhchi0602@gmail.com</Email>
+		<EmailStudent>vy.s396030@ilamail.edu.vn</EmailStudent>
+		<Address>br</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>7/7/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-398996</StudentCode>
+		<FirstName>Đức</FirstName>
+		<MiddleName>Hoàng</MiddleName>
+		<LastName>Nguyễn</LastName>
+		<PersonalSuffix/>
+		<SearchName>Nguyễn Hoàng Đức</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0967017395</MobilePhone>
+		<Birthday>9</Birthday>
+		<BirthMonth>December</BirthMonth>
+		<BirthYear>2021</BirthYear>
+		<DOB>2021-December-9</DOB>
+		<Telephone>0967017395</Telephone>
+		<Email>kimha7395@gmail.com</Email>
+		<EmailStudent>duc.s398996@ilamail.edu.vn</EmailStudent>
+		<Address>BR</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>7/16/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-350382</StudentCode>
+		<FirstName>Quang</FirstName>
+		<MiddleName>Trọng Phú</MiddleName>
+		<LastName>Trần</LastName>
+		<PersonalSuffix/>
+		<SearchName>Trần Trọng Phú Quang</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0933299070</MobilePhone>
+		<Birthday>22</Birthday>
+		<BirthMonth>August</BirthMonth>
+		<BirthYear>2021</BirthYear>
+		<DOB>2021-August-22</DOB>
+		<Telephone>0933299070</Telephone>
+		<Email>damtram2810@gmail.com</Email>
+		<EmailStudent>quang.s350382@ilamail.edu.vn</EmailStudent>
+		<Address>br</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>1/24/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-401219</StudentCode>
+		<FirstName>An</FirstName>
+		<MiddleName>Le Thiên</MiddleName>
+		<LastName>Hà</LastName>
+		<PersonalSuffix/>
+		<SearchName>Hà Le Thiên An</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0979089918</MobilePhone>
+		<Birthday>12</Birthday>
+		<BirthMonth>June</BirthMonth>
+		<BirthYear>2021</BirthYear>
+		<DOB>2021-June-12</DOB>
+		<Telephone>0979089918</Telephone>
+		<Email>lethidiep1204@gmail.com</Email>
+		<EmailStudent>an.s401219@ilamail.edu.vn</EmailStudent>
+		<Address>br</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>7/23/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-332210</StudentCode>
+		<FirstName>Vân</FirstName>
+		<MiddleName>Ngọc Kim</MiddleName>
+		<LastName>Trác</LastName>
+		<PersonalSuffix/>
+		<SearchName>Trác Ngọc Kim Vân</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0909974812</MobilePhone>
+		<Birthday>26</Birthday>
+		<BirthMonth>September</BirthMonth>
+		<BirthYear>2020</BirthYear>
+		<DOB>2020-September-26</DOB>
+		<Telephone>0909974812</Telephone>
+		<Email>Kanhi0812@gmail.com</Email>
+		<EmailStudent>van.s332210@ilamail.edu.vn</EmailStudent>
+		<Address>62 Phường Võ Thị Sáu</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>11/9/2023</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-405806</StudentCode>
+		<FirstName>Trúc</FirstName>
+		<MiddleName>Hà Thanh</MiddleName>
+		<LastName>Bùi</LastName>
+		<PersonalSuffix/>
+		<SearchName>Bùi Hà Thanh Trúc</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0932086613</MobilePhone>
+		<Birthday>5</Birthday>
+		<BirthMonth>November</BirthMonth>
+		<BirthYear>2020</BirthYear>
+		<DOB>2020-November-5</DOB>
+		<Telephone>0932086613</Telephone>
+		<Email>bkit.b.duy@gmail.com</Email>
+		<EmailStudent>truc.s405806@ilamail.edu.vn</EmailStudent>
+		<Address>Ngãi Giao</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>8/10/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-406776</StudentCode>
+		<FirstName>Kim</FirstName>
+		<MiddleName>Mỹ</MiddleName>
+		<LastName>Nguyễn</LastName>
+		<PersonalSuffix/>
+		<SearchName>Nguyễn Mỹ Kim</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0376572921</MobilePhone>
+		<Birthday>21</Birthday>
+		<BirthMonth>July</BirthMonth>
+		<BirthYear>2021</BirthYear>
+		<DOB>2021-July-21</DOB>
+		<Telephone>0376572921</Telephone>
+		<Email>hanhong241298@gmail.com</Email>
+		<EmailStudent>kim.s406776@ilamail.edu.vn</EmailStudent>
+		<Address>BR</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>8/13/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-404838</StudentCode>
+		<FirstName>Anh</FirstName>
+		<MiddleName>Kỳ</MiddleName>
+		<LastName>Nguyễn</LastName>
+		<PersonalSuffix/>
+		<SearchName>Nguyễn Kỳ Anh</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0979707076</MobilePhone>
+		<Birthday>27</Birthday>
+		<BirthMonth>June</BirthMonth>
+		<BirthYear>2020</BirthYear>
+		<DOB>2020-June-27</DOB>
+		<Telephone>0979707076</Telephone>
+		<Email>hungvn010@gmail.com</Email>
+		<EmailStudent>anh.s404838@ilamail.edu.vn</EmailStudent>
+		<Address>BR</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>8/6/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-407100</StudentCode>
+		<FirstName>Nguyên</FirstName>
+		<MiddleName>Phúc</MiddleName>
+		<LastName>Đinh</LastName>
+		<PersonalSuffix/>
+		<SearchName>Đinh Phúc Nguyên</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0971981929</MobilePhone>
+		<Birthday>15</Birthday>
+		<BirthMonth>September</BirthMonth>
+		<BirthYear>2021</BirthYear>
+		<DOB>2021-September-15</DOB>
+		<Telephone>0971981929</Telephone>
+		<Email>thanhvi1929@gmail.com</Email>
+		<EmailStudent>nguyen.s407100@ilamail.edu.vn</EmailStudent>
+		<Address>tvc</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>8/14/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-383413</StudentCode>
+		<FirstName>Minh</FirstName>
+		<MiddleName>Thành Thiên</MiddleName>
+		<LastName>Nguyễn</LastName>
+		<PersonalSuffix/>
+		<SearchName>Nguyễn Thành Thiên Minh</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0977482739</MobilePhone>
+		<Birthday>2</Birthday>
+		<BirthMonth>May</BirthMonth>
+		<BirthYear>2020</BirthYear>
+		<DOB>2020-May-2</DOB>
+		<Telephone>0977482739</Telephone>
+		<Email>nguyenphuongthaonpt91@gmail.com</Email>
+		<EmailStudent>minh.s383413@ilamail.edu.vn</EmailStudent>
+		<Address>BR</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>5/31/2024</EntryDate>
+	</StudentInformation>
+	<StudentInformation>
+		<StudentCode>S-378521</StudentCode>
+		<FirstName>Khôi</FirstName>
+		<MiddleName>Minh</MiddleName>
+		<LastName>Võ</LastName>
+		<PersonalSuffix/>
+		<SearchName>Võ Minh Khôi</SearchName>
+		<ContactPerson/>
+		<Children/>
+		<Language>en-us</Language>
+		<Hobbies/>
+		<NoteLine/>
+		<MobilePhone>0934013585</MobilePhone>
+		<Birthday>1</Birthday>
+		<BirthMonth>August</BirthMonth>
+		<BirthYear>2020</BirthYear>
+		<DOB>2020-August-1</DOB>
+		<Telephone>0934013585</Telephone>
+		<Email>ntnquynh0202@gmail.com</Email>
+		<EmailStudent>khoi.s378521@ilamail.edu.vn</EmailStudent>
+		<Address>br</Address>
+		<StudentGroup>Student</StudentGroup>
+		<Center>TC-BR1</Center>
+		<LocationID>TC-BR1</LocationID>
+		<Currency>VND</Currency>
+		<SSStudentID>0</SSStudentID>
+		<Gender/>
+		<EntryDate>5/19/2024</EntryDate>
+	</StudentInformation>
+</StudentsInformation>

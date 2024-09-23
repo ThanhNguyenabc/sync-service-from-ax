@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ClassInformation>
-	<ClassCode>BD1YJ-2A-24S1-N</ClassCode>
+	<ClassCode>H34YJ-2A-24S1-N</ClassCode>
 	<ClassName>a Super Juniors Summer Course</ClassName>
 	<ClassGroup>Summer</ClassGroup>
 	<ProductGroup>EY</ProductGroup>
@@ -20,7 +20,7 @@
 	<EndTime>11:30:00</EndTime>
 	<BreakTime>0</BreakTime>
 	<UnscheduledHour>0</UnscheduledHour>
-	<MaxAttendant>19</MaxAttendant>
+	<MaxAttendant>26</MaxAttendant>
 	<Room>TBC</Room>
 	<TeacherName/>
 	<TeacherPersonNum/>
