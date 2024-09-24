@@ -59,6 +59,7 @@ const createCourseInfo = async (
     program: program,
     level: level.toUpperCase(),
     lesson_duration: `${lesson_duration}`,
+    course_template: axClassInfo.CourseTemplate,
     seats: Number(axClassInfo.MaxAttendant || 0),
     room: axClassInfo.Room,
     teacher_config: "all native",

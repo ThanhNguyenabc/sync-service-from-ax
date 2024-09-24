@@ -23,4 +23,5 @@ export interface Course {
   classes?: Array<Class>;
   staff?: string;
   students?: string;
+  course_template?: string;
 }
