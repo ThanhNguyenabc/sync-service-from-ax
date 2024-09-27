@@ -24,10 +24,18 @@ kafkaManager.consume(CourseTopic, async (topic: string, message: Message) => {
       axData["Registrations"]?.["RegistrationInfo"];
 
     const axTeachers = axData["Teachers"]?.["TeacherProfile"];
-    const teachers = Array.isArray(axTeachers) ? axTeachers : [axTeachers];
+    const teachers = axTeachers
+      ? Array.isArray(axTeachers)
+        ? axTeachers
+        : [axTeachers]
+      : [];
 
     const axStudents = axData["StudentsInformation"]?.["StudentInformation"];
-    const students = Array.isArray(axStudents) ? axStudents : [axStudents];
+    const students = axStudents
+      ? Array.isArray(axStudents)
+        ? axStudents
+        : [axStudents]
+      : [];
 
     const lessonTeachers = axData["ClassLessonTeachersTAs"]?.["TeacherTA"];
 
@@ -35,7 +43,7 @@ kafkaManager.consume(CourseTopic, async (topic: string, message: Message) => {
     if (classInfo) {
       promiseCalls.push(syncCourse(classInfo, teachers));
     }
-    if (students && Array.isArray(students) && students.length > 0) {
+    if (students.length > 0) {
       promiseCalls.push(syncStudent(students));
     }
 
