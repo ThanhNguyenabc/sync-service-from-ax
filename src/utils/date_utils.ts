@@ -1,5 +1,4 @@
 import { Time } from "@/models/_index";
-import { Dayjs } from "dayjs";
 
 export const LMS_TIME_FORMAT = "YYYYMMDDHHmm";
 

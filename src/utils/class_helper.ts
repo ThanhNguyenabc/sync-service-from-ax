@@ -166,13 +166,11 @@ export function Courses_Classes_Calendar(
     }
   }
 
-  // Doan Nhat Nam 03/07/2023 : Fix dont add last lesson when lesson duration > content duration
   if (session.length > 0)
     dates.push({
       date: calendar[date_index],
       session,
     });
-  // Doan Nhat Nam 03/07/2023 : Fix dont add last lesson when lesson duration > content duration
 
   return dates;
 }

@@ -26,6 +26,14 @@ export const logMessage = (
   return `${ICONS[type as keyof typeof ICONS]} [${tag}] --> ${message}`;
 };
 
+const configs = getAppConfig();
+const env = process.env.NODE_ENV || "development";
+
+const defaultLabels = {
+  env: env,
+  lms_url: configs.LMS_API_URL,
+};
+
 const logger = createLogger({
   format: format.combine(
     errors({ stack: true }),
@@ -38,30 +46,14 @@ const logger = createLogger({
   transports: [
     new LokiTransport({
       host: LOKI_URL,
+      labels: { ...defaultLabels },
     }),
   ],
 });
 
-const configs = getAppConfig();
-const env = process.env.NODE_ENV || "development";
 switch (env) {
   case "staging":
   case "production":
-    console.log("init logger");
-    logger.add(
-      new LokiTransport({
-        host: LOKI_URL,
-        labels: {
-          env: env,
-          lms_url: configs.LMS_API_URL,
-        },
-
-        onConnectionError: (error) => {
-          console.log("loki error-----");
-          console.log(error);
-        },
-      })
-    );
     logger.add(
       new transports.DailyRotateFile({
         filename: "logs/sync-service.log",
@@ -72,17 +64,9 @@ switch (env) {
     );
     break;
   default:
-    logger.add(
-      new LokiTransport({
-        host: LOKI_URL,
-        labels: {
-          env: env,
-          lms_url: configs.LMS_API_URL,
-        },
-      })
-    );
     logger.add(new transports.Console({ format: customFormat }));
     break;
 }
 
+export { defaultLabels };
 export default logger;

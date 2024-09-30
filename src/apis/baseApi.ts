@@ -1,21 +1,58 @@
 import logger from "@/utils/logger";
 import { getAppConfig } from "@/config/app_configs";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 const BASE_URL = getAppConfig()?.["LMS_API_URL"];
 const DEFAULT_ERROR = 500;
 const SERVER_CRASH = 100;
 
-export const fetcher = async <T>(
-  fName: string,
-  data: any
-): Promise<{
+type ResponseData<T> = {
   status: number;
   data?: T;
   message?: string;
-  error?: string;
-}> => {
-  logger.info(`👉 [api] : url - ${BASE_URL}, function: ${fName}`);
+};
+
+axios.interceptors.request.use((config) => {
+  logger.info(
+    `👉 [api-request] : url - ${BASE_URL}, function: ${config.params["f"]}`
+  );
+  return config;
+});
+
+axios.interceptors.response.use(
+  (response) => {
+    const customResponse = response;
+
+    if (
+      typeof response.data === "string" &&
+      response.data.indexOf("Fatal error") > -1
+    ) {
+      const errorString = response.data;
+      logger.error(`❌ [api-response] f=${response.config.params["f"]} error --> ${errorString}`);
+
+      customResponse.data = {
+        status: DEFAULT_ERROR,
+        message: "ERROR IS FROM LMS BE",
+        data: errorString,
+      };
+    } else if (typeof customResponse.data == "object") {
+      const { message, data: output, error } = customResponse.data ?? {};
+      customResponse.data = {
+        status: customResponse.status,
+        data: output || customResponse.data,
+        message: message,
+      };
+    }
+
+    return customResponse;
+  },
+  (error) => Promise.reject(error)
+);
+
+export const fetcher = async <T>(
+  fName: string,
+  data: any
+): Promise<ResponseData<T>> => {
   try {
     const response = await axios.post(BASE_URL, data, {
       params: {
@@ -25,37 +62,16 @@ export const fetcher = async <T>(
       },
     });
 
-    if (
-      typeof response.data === "string" &&
-      response.data.indexOf("Fatal error") > -1
-    ) {
-      logger.error(`❌ [api] f=${fName} error --> ${response.data}`);
-      return {
-        status: DEFAULT_ERROR,
-        error: "LMS Backend Error",
-      };
-    }
-
-    if (typeof response.data == "object") {
-      const { message, data: output, error } = response.data ?? {};
-      return {
-        status: response.status,
-        data: output || response.data,
-        error,
-        message,
-      };
-    }
-
-    return {
-      status: response.status,
-      data: response.data,
-    };
+    return response.data;
   } catch (error: unknown) {
     const errMessage = (error as Error).stack;
-    logger.error(`❌ [api] f=${fName} error --> ${errMessage}`);
+    console.log("error---------");
+    console.log((error as AxiosError).toJSON());
+    console.log("------------------");
+    logger.error(`❌ [api-response] f=${fName} error --> ${errMessage}`);
     return {
       status: SERVER_CRASH,
-      error: errMessage,
+      message: errMessage,
     };
   }
 };

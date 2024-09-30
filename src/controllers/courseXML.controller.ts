@@ -3,13 +3,14 @@ import KafkaManager, { CourseTopic } from "@/lib/message_queue/kafka";
 import { parseXMLFile } from "@/utils/xml_parser";
 import { Message } from "kafkajs";
 import logger, { logMessage } from "@/utils/logger";
-import { AXRegistration, Course } from "@/models/_index";
+import { Course } from "@/models/_index";
 import {
   syncClassSeats,
   syncCourse,
   syncStudent,
 } from "@/services/_index.service";
 import ClassesService from "@/services/classes.service";
+import { convertToArray } from "@/utils/array_helper";
 
 const kafkaManager = KafkaManager.getInstance();
 
@@ -19,25 +20,23 @@ kafkaManager.consume(CourseTopic, async (topic: string, message: Message) => {
 
     const classInfo = axData["ClassInformation"];
 
-    const classSchedules = axData["ClassSchedule"]?.["ClassSchedule"];
-    const registrations: AXRegistration[] | undefined | null =
-      axData["Registrations"]?.["RegistrationInfo"];
+    const classSchedules = convertToArray(
+      axData["ClassSchedule"]?.["ClassSchedule"]
+    );
 
-    const axTeachers = axData["Teachers"]?.["TeacherProfile"];
-    const teachers = axTeachers
-      ? Array.isArray(axTeachers)
-        ? axTeachers
-        : [axTeachers]
-      : [];
+    const registrations = convertToArray(
+      axData["Registrations"]?.["RegistrationInfo"]
+    );
 
-    const axStudents = axData["StudentsInformation"]?.["StudentInformation"];
-    const students = axStudents
-      ? Array.isArray(axStudents)
-        ? axStudents
-        : [axStudents]
-      : [];
+    const teachers = convertToArray(axData["Teachers"]?.["TeacherProfile"]);
 
-    const lessonTeachers = axData["ClassLessonTeachersTAs"]?.["TeacherTA"];
+    const students = convertToArray(
+      axData["StudentsInformation"]?.["StudentInformation"]
+    );
+
+    const lessonTeachers = convertToArray(
+      axData["ClassLessonTeachersTAs"]?.["TeacherTA"]
+    );
 
     const promiseCalls = [];
     if (classInfo) {
