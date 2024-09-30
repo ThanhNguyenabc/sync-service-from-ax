@@ -28,14 +28,16 @@ axios.interceptors.response.use(
       response.data.indexOf("Fatal error") > -1
     ) {
       const errorString = response.data;
-      logger.error(`❌ [api-response] f=${response.config.params["f"]} error --> ${errorString}`);
+      logger.error(
+        `❌ [api-response] f=${response.config.params["f"]} error --> ${errorString}`
+      );
 
       customResponse.data = {
         status: DEFAULT_ERROR,
         message: "ERROR IS FROM LMS BE",
         data: errorString,
       };
-    } else if (typeof customResponse.data == "object") {
+    } else {
       const { message, data: output, error } = customResponse.data ?? {};
       customResponse.data = {
         status: customResponse.status,
