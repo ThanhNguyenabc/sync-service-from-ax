@@ -57,7 +57,7 @@ const createCourseInfo = async (
     name: axClassInfo.ClassCode,
     center_id: axClassInfo.Center,
     program: program,
-    level: level.toUpperCase(),
+    level: level,
     lesson_duration: `${lesson_duration}`,
     course_template: axClassInfo.CourseTemplate,
     seats: Number(axClassInfo.MaxAttendant || 0),
@@ -155,6 +155,7 @@ const syncCourse = async (
       }
     } else {
       const newCourseId = await createCourse(course);
+     
       if (newCourseId) {
         course.id = newCourseId;
         newCourseId &&
