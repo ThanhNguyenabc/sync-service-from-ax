@@ -2,7 +2,7 @@
 // ----------------------------Class API--------------------------------------
 // ---------------------------------------------------------------------------
 
-import { Class } from "@/models/_index";
+import { AXClassSchedule, Class } from "@/models/_index";
 import { fetcher } from "./baseApi";
 import { TeacherSchedulingEntry } from "@/models/teacher_scheduling";
 
@@ -15,6 +15,7 @@ export type RollOutClassParams = {
   teacher_config: string;
   date_start: string;
   schedule: { time: string; day: string }[];
+  classSchedule: AXClassSchedule[];
   teacherSchedule: {
     [key: string]: TeacherSchedulingEntry;
   };

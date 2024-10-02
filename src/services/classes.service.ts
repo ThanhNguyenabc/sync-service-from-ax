@@ -61,8 +61,6 @@ export default class ClassesService {
         );
         return [];
       }
-      // }
-      // const lessonDuration = Number(lesson_duration) / 60;
       const {
         staffs = null,
         startTime = "",
@@ -126,6 +124,7 @@ export default class ClassesService {
         teacher_config: "all native",
         date_start: date_start?.toString() || "",
         schedule: JSON.parse(schedule || ""),
+        classSchedule: axClassSchedule,
       };
 
       const res = await rolloutClasses(data);
