@@ -12,6 +12,8 @@ type ResponseData<T> = {
   message?: string;
 };
 
+axios.defaults.timeout = 30000;
+
 axios.interceptors.request.use((config) => {
   logger.info(
     `👉 [api-request] : url - ${BASE_URL}, function: ${config.params["f"]}`
@@ -28,6 +30,7 @@ axios.interceptors.response.use(
       response.data.indexOf("Fatal error") > -1
     ) {
       const errorString = response.data;
+      console.log("--------");
       logger.error(
         `❌ [api-response] f=${response.config.params["f"]} error --> ${errorString}`
       );
@@ -66,14 +69,13 @@ export const fetcher = async <T>(
 
     return response.data;
   } catch (error: unknown) {
-    const errMessage = (error as Error).stack;
-    console.log("error---------");
-    console.log((error as AxiosError).toJSON());
-    console.log("------------------");
-    logger.error(`❌ [api-response] f=${fName} error --> ${errMessage}`);
+    const err = error as AxiosError;
+    logger.error(
+      `❌ [api-response] f=${fName} error --> ${err?.stack} , ${err?.response?.data}`
+    );
     return {
       status: SERVER_CRASH,
-      message: errMessage,
+      message: err.stack,
     };
   }
 };
