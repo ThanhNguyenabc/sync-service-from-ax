@@ -4,6 +4,7 @@ export enum RegistrationType {
   "Registered" = "Registered",
   "Transfered" = "Transfered",
   "Reverted" = "Reverted",
+  "Observe" = "Observe",
 }
 
 export enum TerminationType {

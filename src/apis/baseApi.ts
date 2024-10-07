@@ -51,7 +51,13 @@ axios.interceptors.response.use(
 
     return customResponse;
   },
-  (error) => Promise.reject(error)
+  (error) => {
+    const err = error as AxiosError;
+    logger.error(
+      `❌ [api-response] f=${err.config?.params["f"]} CRASH_SERVER --> ${err?.status} , data = ${err?.response?.data}, message = ${err.message}`
+    );
+    return Promise.reject(error);
+  }
 );
 
 export const fetcher = async <T>(
@@ -69,15 +75,9 @@ export const fetcher = async <T>(
 
     return response.data;
   } catch (error: unknown) {
-    const err = error as AxiosError;
-    logger.error(
-      `❌ [api-response] f=${fName} CRASH_SERVER --> ${err?.status} , ${
-        err?.response?.data || err.message
-      }`
-    );
     return {
       status: SERVER_CRASH,
-      message: err.stack,
+      message: "",
     };
   }
 };
