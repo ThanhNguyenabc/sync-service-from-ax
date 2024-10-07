@@ -71,7 +71,7 @@ export const fetcher = async <T>(
   } catch (error: unknown) {
     const err = error as AxiosError;
     logger.error(
-      `❌ [api-response] f=${fName} CRASHSERVER --> ${err?.stack} , ${
+      `❌ [api-response] f=${fName} CRASH_SERVER --> ${err?.status} , ${
         err?.response?.data || err.message
       }`
     );
