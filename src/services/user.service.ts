@@ -47,7 +47,7 @@ const syncStudent = async (students: Array<AXStudentProfile>) => {
         midname: axUser.MiddleName,
         email: axUser.Email,
         mobile: axUser.MobilePhone,
-        address: axUser.Address,
+        address: axUser.Address?.replaceAll("\n", " "),
         staffcode: axUser.StudentCode,
         birthdate: Number(dayjs(axUser.DOB).format("YYYYMMDD")),
       };
